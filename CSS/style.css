@@ -6,7 +6,7 @@
 .header{
     min-height: 100vh;
     width: 100%;
-    background-image: url("../IMG/banner.png.jpeg");
+    background-image: url("banner.webp");
     background-position: center;
     background-size: cover;
     position: relative;
@@ -71,7 +71,7 @@ nav img{
 .hero{
     position:relative;
     height:85vh;
-    background:url("homepage.jpeg") center center/cover no-repeat;
+    background:url("banner.webp") center center/cover no-repeat;
     display:flex;
     align-items:center;
 }
