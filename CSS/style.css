@@ -136,12 +136,11 @@ nav img{
 
 .login1 {  
   align-items: center; 
-  justify-items: center; 
 }
 
 .login-logo{
     text-align:center;
-    padding:20px;
+    padding:30px;
     color:black;
     font-size:30px;
     font-weight:600;
@@ -152,7 +151,7 @@ nav img{
 .login-container{
     justify-content: center;
     align-items: center;
-    background:rgba(255,255,255,0.15);
+    background:rgba(255, 255, 255, 0);
     backdrop-filter:blur(15px);
     -webkit-backdrop-filter:blur(15px);
     border:1px solid rgba(255,255,255,0.3);
@@ -164,18 +163,18 @@ nav img{
 /* TABS */
 
 .tabs{
-    background:#0ea5e9;
+    background:#0ea4e9;
     display:flex;
-    gap:20px;
-    padding:15px;
+    gap:50px;
+    padding:12px;
 }
 
 .tab{
     flex:1;
-    background:white;
+    background:rgb(255, 255, 255);
     border:none;
-    border-radius:12px;
-    padding:15px;
+    border-radius:15px;
+    padding:5px;
     font-size:22px;
     font-weight:600;
     cursor:pointer;
@@ -199,7 +198,8 @@ label{
     display:block;
     margin-bottom:8px;
     font-size:18px;
-    color:white;
+    color:black;
+    font-weight: 400;
 }
 
 
@@ -216,7 +216,7 @@ label{
     left:15px;
     top:50%;
     transform:translateY(-50%);
-    color:#666;
+    color:#000000;
 }
 
 .input-box input{
@@ -273,7 +273,7 @@ label{
 /* FORGOT PASSWORD */
 
 .forgot{
-    text-decoration-color: black;
+    text-decoration-color: rgb(0, 0, 0);
     text-align:center;
     margin-top:20px;
 }
