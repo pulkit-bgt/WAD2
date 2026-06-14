@@ -3,15 +3,7 @@
     padding:0;
     font-family: "Pliant", sans-serif;
 }
-.header{
-    min-height: 100vh;
-    width: 100%;
-    background-image: url("banner.webp");
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    background-repeat: no-repeat;
-}
+
 nav{
     display: flex;
     padding: 1% 3%;
@@ -70,7 +62,7 @@ nav img{
 
 .hero{
     position:relative;
-    height:85vh;
+    height:86vh;
     background:url("banner.webp") center center/cover no-repeat;
     display:flex;
     align-items:center;
@@ -82,7 +74,7 @@ nav img{
     left:0;
     width:100%;
     height:100%;
-    background:rgba(255,255,255,0.45);
+    background:rgba(255, 255, 255, 0);
 }
 
 .hero-content{
