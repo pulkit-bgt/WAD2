@@ -1,13 +1,4 @@
 
-
-document.querySelector(".login-btn").addEventListener("click", () => {
-    alert("Redirecting to Login Page..
-
-        
-
-document.querySelector(".login-btn").addEventListener("click", () => {
-    alert("Redirecting to Login Page..
-
 function togglePassword(){
 
     let password =
