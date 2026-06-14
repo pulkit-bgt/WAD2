@@ -31,21 +31,50 @@ rel="stylesheet">
         </nav>
     </section>
 <main>
-      <h2>Login Form</h2>
-    
-        <form action="/login" method="post">
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" required><br><br>
-    
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
-    
-            <input type="submit" value="Login">
-            
-            <a href="forgot-password.html">Forgot Password?</a><br><br>
+    <div class="login-container">
+    <div class="login1">
 
-        <input type="submit" value="Login">
-        </form>
+    <div class="login-logo">
+        <i class="fa-solid fa-user-graduate"></i>
+        ResolveHub Portal
+    </div>
+
+    <div class="tabs">
+        <button class="tab active">STUDENT LOGIN</button>
+        <button class="tab">ADMIN LOGIN</button>
+    </div>
+
+    <div class="form-section">
+
+        <label>Email</label>
+
+        <div class="input-box">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Enter your email">
+        </div>
+
+        <label>Password</label>
+
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+
+        <div class="show-password">
+            <input type="checkbox" id="showPass"
+                   onclick="togglePassword()">
+            <label for="showPass">Show Password</label>
+        </div>
+
+        <button class="loginpage-btn">LOGIN</button>
+
+        <div class="forgot">
+            <a href="#">Forgot Password?</a>
+        </div>
+
+    </div>
+</div>
+</div>
     </main>
     <footer class="site-footer">
         <p>© 2026 My Website
