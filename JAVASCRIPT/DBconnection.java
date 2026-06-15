@@ -1,4 +1,6 @@
 package db;
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -93,48 +95,31 @@ public class Student {
 
 
 /*student DAO(Data Access Object) for database operations related to student details*/
-package dao;
 
-import db.DBConnection;
-import model.Student;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+public boolean addStudent(Student student) {
 
-public class StudentDAO {
+    boolean status = false;
 
-    public boolean addStudent(Student student) {
+    String query =
+            "INSERT INTO students(name,email,department) VALUES(?,?,?)";
 
-        boolean status = false;
+    try (
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(query)
+    ) {
 
-        try {
+        ps.setString(1, student.getName());
+        ps.setString(2, student.getEmail());
+        ps.setString(3, student.getDepartment());
 
-            Connection con =
-                    DBConnection.getConnection();
+        status = ps.executeUpdate() > 0;
 
-            String query =
-                    "INSERT INTO students(name,email,department)"
-                            + " VALUES(?,?,?)";
-
-            PreparedStatement ps =
-                    con.prepareStatement(query);
-
-            ps.setString(1, student.getName());
-            ps.setString(2, student.getEmail());
-            ps.setString(3,
-                    student.getDepartment());
-
-            int rows = ps.executeUpdate();
-
-            if(rows > 0)
-                status = true;
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-        return status;
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+    return status;
 }
 
 /*Event model for event details*/
@@ -198,13 +183,6 @@ public class Event {
 
 
 /* logic screen or transiton screen for adding student and event details */
-
-
-
-package ui;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class LoginFrame extends JFrame {
 
@@ -272,54 +250,20 @@ public class LoginFrame extends JFrame {
 
 /*dashboard for admin to add student and event details*/
 
-package ui;
-
-import javax.swing.*;
 
 public class Dashboard extends JFrame {
 
     public Dashboard() {
 
         setTitle("Campus Pulse Dashboard");
-
         setSize(600,400);
 
-        JMenuBar bar = new JMenuBar();
-
-        JMenu studentMenu =
-                new JMenu("Students");
-
-        JMenu eventMenu =
-                new JMenu("Events");
-
-        JMenu noticeMenu =
-                new JMenu("Notices");
-
-        bar.add(studentMenu);
-        bar.add(eventMenu);
-        bar.add(noticeMenu);
-
-        setJMenuBar(bar);
-
-        JLabel label =
-                new JLabel(
-                        "Welcome to Campus Pulse",
-                        SwingConstants.CENTER
-                );
-
-        add(label);
-
-        setVisible(true);
-
-        setDefaultCloseOperation(
-                EXIT_ON_CLOSE
-        );
+        setLocationRelativeTo(null);
     }
 }
 
 /*main class to run the application or output f'unction*/
 
-import ui.LoginFrame;
 
 public class Main {
 
@@ -396,3 +340,151 @@ public class Feedback {
     }
 }
 
+
+
+/*code for submitted reports*/
+
+public class Report {
+    private int reportId;
+    private String title;
+    private String category;
+    private String submittedBy;
+    private String status;
+    private String submittedDate;
+
+    public Report(int reportId, String title, String category,
+                  String submittedBy, String status, String submittedDate) {
+        this.reportId = reportId;
+        this.title = title;
+        this.category = category;
+        this.submittedBy = submittedBy;
+        this.status = status;
+        this.submittedDate = submittedDate;
+    }
+
+    public int getReportId() {
+        return reportId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getSubmittedBy() {
+        return submittedBy;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getSubmittedDate() {
+        return submittedDate;
+    }
+}
+
+/* dasboard service */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DashboardService {
+
+    public List<Report> getSubmittedReports() {
+
+        // Replace with database query
+        List<Report> reports = new ArrayList<>();
+
+        reports.add(new Report(
+                101,
+                "Broken Classroom Projector",
+                "Infrastructure",
+                "Rahul Kumar",
+                "Submitted",
+                "2026-06-15"
+        ));
+
+        reports.add(new Report(
+                102,
+                "Library WiFi Issue",
+                "Technology",
+                "Ananya Singh",
+                "Submitted",
+                "2026-06-15"
+        ));
+
+        return reports;
+    }
+}
+
+/*dashboard controller */
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class DashboardController {
+
+    private final DashboardService dashboardService = new DashboardService();
+
+    @GetMapping("/api/dashboard/reports")
+    public List<Report> getReports() {
+        return dashboardService.getSubmittedReports();
+    }
+}
+
+/*database connection or version*/
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "reports")
+public class Report {
+
+    @Id
+    private Long reportId;
+
+    private String title;
+    private String category;
+    private String submittedBy;
+    private String status;
+    private String submittedDate;
+
+    // Getters and Setters
+}
+
+/* report repository */
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface ReportRepository extends JpaRepository<Report, Long> {
+
+    List<Report> findByStatus(String status);
+}
+
+
+/*controller using database */
+
+@RestController
+@RequestMapping("/api/dashboard")
+public class DashboardController {
+
+    private final ReportRepository reportRepository;
+
+    public DashboardController(ReportRepository reportRepository) {
+        this.reportRepository = reportRepository;
+    }
+
+    @GetMapping("/submitted-reports")
+    public List<Report> getSubmittedReports() {
+        return reportRepository.findByStatus("Submitted");
+    }
+}
