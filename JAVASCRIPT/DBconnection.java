@@ -35,6 +35,10 @@ public class DBConnection
 
         return con;
     }
+
+    public static void main(String[] args) {
+        // simple test to satisfy environments expecting a main method
+    }
 }
 /* student model for student details */
 
@@ -59,6 +63,13 @@ public class Student {
         this.email = email;
         this.department = department;
     }
+
+        public Student(String department, String email, int id, String name) {
+            this.department = department;
+            this.email = email;
+            this.id = id;
+            this.name = name;
+        }
 
     public int getId() {
         return id;
@@ -91,7 +102,7 @@ public class Student {
     public void setDepartment(String department) {
         this.department = department;
     }
-}
+    }
 
 
 /*student DAO(Data Access Object) for database operations related to student details*/
@@ -450,7 +461,6 @@ public class Report {
 
     @Id
     private Long reportId;
-
     private String title;
     private String category;
     private String submittedBy;
