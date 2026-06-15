@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta name="viewpoint" content="with=device-width, initial-scale=1.0">
+    <title>Report Issue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="logo.webp"></a>
+            <div class="nav-links">
+                <ul>
+                
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li><a href="reportissue.html">ISSUE</a></li>
+                <li><a href="dashboard.html">DASHBOARD</a></li>
+                <li><a href="adminpanel.html">ADMIN</a></li>
+                <li><a href="aboutus.html">ABOUT</a></li>
+                <li><a href="contactus.html">CONTACT</a></li>
+                <button class="login-btn" onclick="window.location.href='login.html'">LOGIN</button>
+                
+                </ul>
+
+            </div>
+        </nav>
+    </section>
+
+<div class="container">
+    <h2>Report Campus Issue</h2>
+
+    <form id="issueForm">
+
+        <label>Category</label>
+        <select id="category">
+            <option>Facilities</option>
+            <option>Academic</option>
+            <option>IT</option>
+            <option>Housing</option>
+            <option>Safety</option>
+        </select>
+
+        <label>Title</label>
+        <input type="text" id="title" required>
+
+        <label>Description</label>
+        <textarea id="description"></textarea>
+
+        <label>Location</label>
+        <input type="text" id="location">
+
+        <label>Priority</label>
+        <select id="priority">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+            <option>Critical</option>
+        </select>
+
+        <button type="submit">Submit Report</button>
+
+    </form>
+</div>
+<footer class="site-footer">
+        <p>© 2026 My Website
+            <br>
+            All Rights Reserved
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
