@@ -34,20 +34,12 @@ public class Post {
 }
 
 
-
-
-
-
-package com.campuspulse.javapackage com.campuspulse.javapackage com.campuspulse.javapackage com.camp
-
-
-
 import java.sql.*;
 import java.util.Scanner;
 
-public class CampusPulseDB {
+public class Resolve hub {
 
-    static final String URL = "jdbc:mysql://localhost:3306/campus_pulse";
+    static final String URL = "jdbc:mysql://localhost:3306/ResolveHub";
     static final String USER = "root";
     static final String PASS = "your_password";
 
@@ -57,7 +49,7 @@ public class CampusPulseDB {
 
         while (true) {
 
-            System.out.println("\n===== CAMPUS PULSE (DB VERSION) =====");
+            System.out.println("\n===== RESOLVE HUB (DB VERSION) =====");
             System.out.println("1. View Events");
             System.out.println("2. Register Event");
             System.out.println("3. View Registrations");
@@ -172,12 +164,6 @@ public class CampusPulseDB {
 }
 
 
-
-
-
-
-
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -225,12 +211,12 @@ class Notification {
     }
 }
 
-// Campus Pulse Main System
-class CampusPulse {
+// Resolve Hub Main System
+class ResolveHub {
     private List<Student> students;
     private List<Post> posts;
 
-    public CampusPulse() {
+    public ResolveHub() {
         students = new ArrayList<>();
         posts = new ArrayList<>();
     }
@@ -261,25 +247,25 @@ class CampusPulse {
 }
 
 // Main Driver Class
-public class CampusPulseApp {
+public class ResolveHubApp {
     public static void main(String[] args) {
 
-        CampusPulse campusPulse = new CampusPulse();
+        ResolveHub resolveHub = new ResolveHub();
 
         // Add Students
-        campusPulse.addStudent(new Student(1, "Rahul"));
-        campusPulse.addStudent(new Student(2, "Priya"));
+        resolveHub.addStudent(new Student(1, "Rahul"));
+        resolveHub.addStudent(new Student(2, "Priya"));
 
         // Create Posts
-        campusPulse.createPost(
+        resolveHub.createPost(
                 "Tech Fest 2025",
                 "Registration is now open for the annual tech fest.");
 
-        campusPulse.createPost(
+        resolveHub.createPost(
                 "Placement Drive",
                 "ABC Company will visit campus next week.");
 
         // Display Feed
-        campusPulse.displayPosts();
+        resolveHub.displayPosts();
     }
 }
