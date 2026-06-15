@@ -1,48 +1,4 @@
-package com.resolvehub.entity;
-
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "posts")
-public class Post {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String title;
-    private String content;
-    private String author;
-
-    public Post() {}
-
-    public Post(String title, String content, String author) {
-        this.title = title;
-        this.content = content;
-        this.author = author;
-    }
-
-    public Long getId() { return id; }
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-
-    public String getContent() { return content; }
-    public void setContent(String content) { this.content = content; }
-
-    public String getAuthor() { return author; }
-    public void setAuthor(String author) { this.author = author; }
-}
-
-
-
-
-
-
-package com.campuspulse.javapackage com.campuspulse.javapackage com.campuspulse.javapackage com.camp
-
-
-
-mport java.sql.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class CampusPulseDB {
@@ -134,6 +90,7 @@ public class CampusPulseDB {
                 System.out.println("Registration successful!");
             }
 
+        
             con.close();
 
         } catch (Exception e) {
@@ -168,118 +125,5 @@ public class CampusPulseDB {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-}
-
-
-
-
-
-
-
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-// Student Class
-class Student {
-    private int id;
-    private String name;
-
-    public Student(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
-
-// Post Class
-class Post {
-    private String title;
-    private String content;
-    private Date timestamp;
-
-    public Post(String title, String content) {
-        this.title = title;
-        this.content = content;
-        this.timestamp = new Date();
-    }
-
-    @Override
-    public String toString() {
-        return "\nTitle: " + title +
-               "\nContent: " + content +
-               "\nPosted On: " + timestamp +
-               "\n------------------------";
-    }
-}
-
-// Notification Class
-class Notification {
-    public static void send(String message) {
-        System.out.println("📢 Notification: " + message);
-    }
-}
-
-// Campus Pulse Main System
-class CampusPulse {
-    private List<Student> students;
-    private List<Post> posts;
-
-    public CampusPulse() {
-        students = new ArrayList<>();
-        posts = new ArrayList<>();
-    }
-
-    public void addStudent(Student student) {
-        students.add(student);
-        System.out.println(student.getName() + " registered successfully.");
-    }
-
-    public void createPost(String title, String content) {
-        Post post = new Post(title, content);
-        posts.add(post);
-
-        Notification.send("New campus update posted: " + title);
-    }
-
-    public void displayPosts() {
-        if (posts.isEmpty()) {
-            System.out.println("No posts available.");
-            return;
-        }
-
-        System.out.println("\n===== Campus Feed =====");
-        for (Post post : posts) {
-            System.out.println(post);
-        }
-    }
-}
-
-// Main Driver Class
-public class CampusPulseApp {
-    public static void main(String[] args) {
-
-        CampusPulse campusPulse = new CampusPulse();
-
-        // Add Students
-        campusPulse.addStudent(new Student(1, "Rahul"));
-        campusPulse.addStudent(new Student(2, "Priya"));
-
-        // Create Posts
-        campusPulse.createPost(
-                "Tech Fest 2025",
-                "Registration is now open for the annual tech fest.");
-
-        campusPulse.createPost(
-                "Placement Drive",
-                "ABC Company will visit campus next week.");
-
-        // Display Feed
-        campusPulse.displayPosts();
     }
 }
