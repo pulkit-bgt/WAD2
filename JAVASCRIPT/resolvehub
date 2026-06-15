@@ -42,7 +42,7 @@ package com.campuspulse.javapackage com.campuspulse.javapackage com.campuspulse.
 
 
 
-mport java.sql.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class CampusPulseDB {
