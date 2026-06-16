@@ -1,4 +1,4 @@
-package db;
+package db; 
 
 
 import java.sql.Connection;
@@ -457,7 +457,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "reports")
-public class Report {
+class report {
 
     @Id
     private Long reportId;
