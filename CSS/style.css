@@ -97,6 +97,7 @@
       }
 
       .hero-content{
+      margin-top: -50px;
       position:relative;
       z-index:2;
       max-width:600px;
@@ -104,23 +105,52 @@
       }
 
       .hero-content h1{
-      font-size:3.75rem;
-      color:#000;
-      line-height:1.2;
+      font-size: 6em;
+      font-weight:725;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      line-height:0.5em;
       margin-bottom:30px;
+      
       }
+
+      .firstname{
+         color:#000000
+      }
+
+      .lastname{
+      color: #1e88e5;
+      margin-left: -25px;
+      }
+
+      .hero-content h2{
+      font-size: 1.25em;
+      margin-top: -10px;
+      margin-left: 5px;
+      color:rgba(0, 0, 0, 0.750);
+      font-weight: 300;
+      }
+      .hero-content h3{
+      color:rgba(0, 0, 0, 0.750); 
+      margin-top:10px;
+      margin-bottom: 20px;
+      margin-left: -15px;
+      font-size: 1em;
+      font-weight: 700;
+      }
+      
 
    /* HOMEPAGE BTNS */   
 
       .buttons{
       display:flex;
-      gap:15px;
+      gap:25px;
       flex-wrap:wrap;
+      margin-top: 10px;
       }
 
       .buttons button{
       padding:12px 24px;
-      font-weight: 700;
+      font-weight: 775;
       border:none;
       border-radius:8px;
       cursor:pointer;
@@ -184,6 +214,84 @@
       line-height: 1.6;
       }
 
+      
+   /* Team Section */
+
+      #team {
+      padding: 80px 20px;
+      background: #ffffff;
+      text-align: center;
+      }
+
+      #team h2 {
+      font-size: 2.5rem;
+      color: #25a2eb;
+      margin-bottom: 50px;
+      text-decoration: underline;
+      text-decoration-color: rgba(0, 0, 0, 0.500);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+      }
+
+   /* Cards Container */
+      
+      .team-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      }
+
+   /* Individual Card */
+
+      .member-card {
+      width: 300px;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+      }
+
+      .member-card {
+      width: 300px;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+      }
+
+      .member-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      }
+
+   /* Image */
+
+      .member-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      }
+
+   /* Text */
+
+      .member-card h3 {
+      margin-top: 15px;
+      color: #111827;
+      }
+
+      .member-card h4 {
+      color: #2563eb;
+      margin: 8px 0;
+      }
+
+      .member-card p {
+      padding: 0 20px 20px;
+      color: #6b7280;
+      line-height: 1.6;
+      }
 
    /*FOOTER*/   
       .site-footer {
@@ -408,6 +516,25 @@
       transform: scale(1.03);
       }
 
+   .b-dashboard-btn {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      padding: 14px;
+      background: #10b981;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s ease;
+      }
+
+   .b-dashboard-btn:hover {
+      background: #059669;
+      transform: scale(1.03);
+      }
+      
+
 /* REPORT ISSUE HTML - START */
 
 
@@ -557,3 +684,5 @@
 
 
 /* LOGIN PAGE HTML - END */      
+
+

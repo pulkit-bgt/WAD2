@@ -32,10 +32,25 @@
         ResolveHub Portal
     </div>
 
-    <div class="tabs">
-        <button class="tab active">STUDENT LOGIN</button>
-        <button class="tab">ADMIN LOGIN</button>
-    </div>
+   <div class="tabs">
+    <button class="tab active" onclick="showLogin('student')">
+        STUDENT LOGIN
+    </button>
+
+    <button class="tab" onclick="showLogin('admin')">
+        ADMIN LOGIN
+    </button>
+</div>
+
+<div id="studentForm">
+    <h3>Student Login</h3>
+    <!-- Student Fields -->
+</div>
+
+<div id="adminForm" style="display:none;">
+    <h3>Admin Login</h3>
+    <!-- Admin Fields -->
+</div>
 
     <div class="form-section">
 

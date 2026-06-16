@@ -19,3 +19,26 @@ function togglePassword(){
 
     },150);
 }
+
+
+function showLogin(type) {
+
+    const tabs = document.querySelectorAll(".tab");
+
+    tabs.forEach(tab => tab.classList.remove("active"));
+
+    if(type === "student") {
+
+        tabs[0].classList.add("active");
+
+        document.getElementById("studentForm").style.display = "block";
+        document.getElementById("adminForm").style.display = "none";
+
+    } else {
+
+        tabs[1].classList.add("active");
+
+        document.getElementById("studentForm").style.display = "none";
+        document.getElementById("adminForm").style.display = "block";
+    }
+}
