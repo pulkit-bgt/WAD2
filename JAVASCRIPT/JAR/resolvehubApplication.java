@@ -1,12 +1,15 @@
-package com.resolvehub;
+package com.dashboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ResolveHubApplication {
+public class resolvehubApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ResolveHubApplication.class, args);
+        SpringApplication.run(resolvehubApplication.class, args);
     }
+}
+ {
+    
 }
