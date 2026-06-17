@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class StudentDao {
+public class Studentdao {
 
     public boolean addStudent(Student student) {
         String query = "INSERT INTO students(name, email, department) VALUES (?, ?, ?)";

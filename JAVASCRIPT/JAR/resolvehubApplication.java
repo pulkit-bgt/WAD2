@@ -1,4 +1,4 @@
-package com.dashboard;
+package com.resolvehub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +10,4 @@ public class resolvehubApplication {
         SpringApplication.run(resolvehubApplication.class, args);
     }
 }
- {
-    
-}
+ 
