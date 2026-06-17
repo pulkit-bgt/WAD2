@@ -113,13 +113,10 @@
       
       }
 
-      .firstname{
-         color:#000000
-      }
+    
 
-      .lastname{
+      .hero-content h1 span{
       color: #1e88e5;
-      margin-left: -25px;
       }
 
       .hero-content h2{
