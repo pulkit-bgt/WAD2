@@ -1,0 +1,101 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="logo.webp"></a>
+            <div class="nav-links">
+                <ul>
+                
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li><a href="reportissue.html">ISSUE</a></li>
+                <li><a href="dashboard.html">DASHBOARD</a></li>
+                <li><a href="adminpanel.html">ADMIN</a></li>
+                <li><a href="aboutus.html">ABOUT</a></li>
+                <li><a href="contactus.html">CONTACT</a></li>
+                <button class="register-btn" onclick="window.location.href='register.html'">REGISTER</button>
+                <button class="login-btn" onclick="window.location.href='login.html'">LOGIN</button>
+               
+                
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Sign Up Form -->
+    <section class="signup-container">
+
+        <div class="signup-box">
+
+            <h2>Create Account</h2>
+
+            <form action="#" method="POST">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>College Email</label>
+                    <input type="email" placeholder="example@college.edu" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Department</label>
+                    <select required>
+                        <option value="">Select Department</option>
+                        <option>CSE</option>
+                        <option>ECE</option>
+                        <option>EE</option>
+                        <option>ME</option>
+                        <option>CE</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Roll Number</label>
+                    <input type="text" placeholder="Enter Roll Number" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create Password" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm Password" required>
+                </div>
+
+                <button type="submit" class="signup-btn">
+                    Sign Up
+                </button>
+
+            </form>
+
+            <div class="login-link">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </div>
+
+        </div>
+
+    </section>
+        <footer class="site-footer">
+        <p>© 2026 My Website
+            <br>
+            All Rights Reserved
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

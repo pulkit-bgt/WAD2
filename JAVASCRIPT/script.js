@@ -1,3 +1,4 @@
+/* SHOW PASSWORD */
 
 function togglePassword(){
 
@@ -21,6 +22,9 @@ function togglePassword(){
 }
 
 
+
+/* SWTICH BETWEEN ADMIN LOGIN AND STUDENT LOGIN */
+
 function showLogin(type) {
 
     const tabs = document.querySelectorAll(".tab");
@@ -42,3 +46,31 @@ function showLogin(type) {
         document.getElementById("adminForm").style.display = "block";
     }
 }
+
+
+/* STORE ISSUES AT LOCAL STORAGE */
+
+document.getElementById("issueForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const issue = {
+        id: Date.now(),
+        category: document.getElementById("category").value,
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        location: document.getElementById("location").value,
+        priority: document.getElementById("priority").value,
+        status: "Pending"
+    };
+
+    let issues = JSON.parse(localStorage.getItem("issues")) || [];
+
+    issues.push(issue);
+
+    localStorage.setItem("issues", JSON.stringify(issues));
+
+    alert("Issue Submitted Successfully!");
+
+    document.getElementById("issueForm").reset();
+});
+
