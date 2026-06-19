@@ -347,7 +347,8 @@ function addLostFoundItem()
 
   let lostFoundItems = getData("lostFoundItems") || [];
 
-  const item = {
+  const item = 
+  {
     itemName: itemName,
     itemDescription: itemDescription,
     contact: contact,
@@ -420,7 +421,8 @@ document.addEventListener("DOMContentLoaded", function()
 
 /* SHOW PASSWORD */
 
-function togglePassword(){
+function togglePassword()
+{
 
     let password =
     document.getElementById("password");
