@@ -62,7 +62,7 @@
       width: 100%;
       }
 
-   /*HOMEPAGE-LOGIN BTN*/
+   /*HOMEPAGE-LOGIN BTN & REGISTER BTN */
       
       .login-btn{
       font-weight: 700;
@@ -74,6 +74,9 @@
       cursor:pointer;
       }
 
+      .login-btn:hover{
+      background:#0d5eb7;
+      }
 
       .register-btn{
       font-weight: 700;
@@ -85,13 +88,8 @@
       cursor:pointer;
       }
 
-        .register-btn:hover{
+      .register-btn:hover{
       background:rgb(230, 246, 247);
-      }
-
-
-      .login-btn:hover{
-      background:#0d5eb7;
       }
 
 
@@ -452,7 +450,7 @@
       .issuecontainer {
       max-width: 700px;
       margin: 50px auto;
-      background: #fff;
+      background: #ffffff;
       padding: 35px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -556,11 +554,12 @@
 
    /* Page Background */
       .login-container {
-      min-height: 80vh;
+      margin: 50px auto;
+      max-width: 700px;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 35px;
       }
 
    /* Login Card */
@@ -715,79 +714,83 @@
 /* REGISTER PAGE HTML - START */
 
       .signup-container{
-            min-height: 80vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background: linear-gradient(rgba(255, 255, 255, 0.6),
-            rgba(255, 255, 255, 0.6)), url("campus.jpg");
-            background-size:cover;
-            background-position:center;
-            padding:40px;
-        }
+      max-width:900px;
+      margin: 50px auto;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)), url("campus.jpg");
+      background-size:cover;
+      background-position:center;
+      padding:35px;
+      }
 
-        .signup-box{
-            width:400px;
-            background:#fff;
-            padding:35px;
-            border-radius:12px;
-            box-shadow:0 0 20px rgba(0,0,0,0.3);
-        }
+      .signup-box{
+      width:400px;
+      background:#fff;
+      padding:35px;
+      border-radius:12px;
+      box-shadow:0 0 20px rgba(0,0,0,0.3);
+      }
 
-        .signup-box h2{
-            text-align:center;
-            margin-bottom:20px;
-            color:#333;
-        }
+      .signup-box h2{
+      text-align:center;
+      margin-bottom:20px;
+      color:#333;
+      }
 
-        .input-group{
-            margin-bottom:15px;
-        }
+      .input-group{
+      margin-bottom:15px;
+      }
 
-        .input-group label{
-            display:block;
-            margin-bottom:5px;
-            font-weight:600;
-            color:#444;
-        }
+      .input-group label{
+      display:block;
+      margin-bottom:5px;
+      font-weight:600;
+      color:#444;
+      }
 
-        .input-group input,
-        .input-group select{
-            width:100%;
-            padding:12px;
-            border:1px solid #ccc;
-            border-radius:6px;
-            outline:none;
-        }
+      .input-group input,
+      .input-group select{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      outline:none;
+      }
 
-        .signup-btn{
-            width:100%;
-            padding:12px;
-            background:#007bff;
-            color:white;
-            border:none;
-            border-radius:6px;
-            cursor:pointer;
-            font-size:16px;
-            transition:0.3s;
-            font-weight: 700;
-        }
+      .signup-btn{
+      width:100%;
+      padding:12px;
+      background:#007bff;
+      color:white;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      font-size:16px;
+      transition:0.3s;
+      font-weight: 700;
+      }
 
-        .signup-btn:hover{
-            background:#0056b3;
-        }
+      .signup-btn:hover{
+      background:#0056b3;
+      }
 
-        .login-link{
-            text-align:center;
-            margin-top:15px;
-        }
+      .login-link{
+      text-align:center;
+      margin-top:15px;
+      }
 
-        .login-link a{
-            text-decoration:none;
-            color:#007bff;
-            font-weight:bold;
-        }
+      .login-link a{
+      text-decoration:none;
+      color:#007bff;
+      font-weight:bold;
+      }
 
-        .login-link a:hover{
-            text-decoration:underline;
-        }
+      .login-link a:hover{
+      text-decoration:underline;
+      }
+
+
+/* REGISTER PAGE HTML - START */
