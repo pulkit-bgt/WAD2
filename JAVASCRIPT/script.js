@@ -2,7 +2,7 @@
 // Default Resolve Hub Data
 
 
-// Sample announcements shown on the home page
+// Sample announcements on the home page
 let announcements = [
   {
     title: "Library Timings Extended",
@@ -37,17 +37,20 @@ let events = [
 
 
 // This function saves data into browser localStorage
-function saveData(key, data) {
+function saveData(key, data) 
+{
   localStorage.setItem(key, JSON.stringify(data));
 }
 
 // This function gets data from browser localStorage
-function getData(key) {
+function getData(key) 
+{
   return JSON.parse(localStorage.getItem(key));
 }
 
 // This function checks whether a user is logged in
-function isLoggedIn() {
+function isLoggedIn()
+ {
   return localStorage.getItem("loggedInUser") !== null;
 }
 
@@ -55,14 +58,16 @@ function isLoggedIn() {
 // Register / Signup Function
 
 
-function registerUser() {
+function registerUser() 
+{
   // Get input values from the signup form
   const name = document.getElementById("registerName").value;
   const email = document.getElementById("registerEmail").value;
   const password = document.getElementById("registerPassword").value;
 
   // Basic validation
-  if (name === "" || email === "" || password === "") {
+  if (name === "" || email === "" || password === "") 
+    {
     alert("Please fill all registration fields.");
     return;
   }
@@ -71,17 +76,20 @@ function registerUser() {
   let users = getData("users") || [];
 
   // Check if email already exists
-  const existingUser = users.find(function(user) {
+  const existingUser = users.find(function(user) 
+  {
     return user.email === email;
   });
 
-  if (existingUser) {
+  if (existingUser) 
+    {
     alert("This email is already registered.");
     return;
   }
 
   // Create a new user object
-  const newUser = {
+  const newUser = 
+  {
     name: name,
     email: email,
     password: password
@@ -95,7 +103,7 @@ function registerUser() {
 
   alert("Registration successful. Please login now.");
 
-  // Clear form fields
+  // Clearing form fields
   document.getElementById("registerName").value = "";
   document.getElementById("registerEmail").value = "";
   document.getElementById("registerPassword").value = "";
@@ -105,13 +113,15 @@ function registerUser() {
 // Login Function
 
 
-function loginUser() {
+function loginUser() 
+{
   // Get input values from login form
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
   // Basic validation
-  if (email === "" || password === "") {
+  if (email === "" || password === "") 
+    {
     alert("Please enter email and password.");
     return;
   }
@@ -120,11 +130,13 @@ function loginUser() {
   let users = getData("users") || [];
 
   // Check if user exists
-  const validUser = users.find(function(user) {
+  const validUser = users.find(function(user) 
+  {
     return user.email === email && user.password === password;
   });
 
-  if (validUser) {
+  if (validUser) 
+    {
     // Save logged-in user details
     localStorage.setItem("loggedInUser", JSON.stringify(validUser));
 
@@ -132,7 +144,8 @@ function loginUser() {
 
     // Redirect to home page
     window.location.href = "home.html";
-  } else {
+  } else 
+    {
     alert("Invalid email or password.");
   }
 }
@@ -141,7 +154,8 @@ function loginUser() {
 // Logout Function
 
 
-function logoutUser() {
+function logoutUser() 
+{
   // Remove logged-in user from localStorage
   localStorage.removeItem("loggedInUser");
 
@@ -155,10 +169,12 @@ function logoutUser() {
 // Display Logged-In User Name
 
 
-function displayUserName() {
+function displayUserName() 
+{
   const user = getData("loggedInUser");
 
-  if (user && document.getElementById("studentName")) {
+  if (user && document.getElementById("studentName")) 
+  {
     document.getElementById("studentName").innerText = user.name;
   }
 }
@@ -167,17 +183,20 @@ function displayUserName() {
 // Announcement Section
 
 
-function displayAnnouncements() {
+function displayAnnouncements() 
+{
   const announcementBox = document.getElementById("announcementList");
 
-  // Stop function if announcementList element is not found
-  if (!announcementBox) {
+  // Stopping function if announcementList element is not found
+  if (!announcementBox) 
+  {
     return;
   }
 
   announcementBox.innerHTML = "";
 
-  announcements.forEach(function(item) {
+  announcements.forEach(function(item)
+  {
     const card = document.createElement("div");
     card.className = "announcement-card";
 
@@ -191,17 +210,20 @@ function displayAnnouncements() {
   });
 }
 
-function addAnnouncement() {
+function addAnnouncement() 
+{
   const title = document.getElementById("announcementTitle").value;
   const message = document.getElementById("announcementMessage").value;
   const date = document.getElementById("announcementDate").value;
 
-  if (title === "" || message === "" || date === "") {
+  if (title === "" || message === "" || date === "") 
+  {
     alert("Please fill all announcement fields.");
     return;
   }
 
-  const newAnnouncement = {
+  const newAnnouncement =
+  {
     title: title,
     message: message,
     date: date
@@ -218,16 +240,19 @@ function addAnnouncement() {
 // Events Section
 
 
-function displayEvents() {
+function displayEvents() 
+{
   const eventBox = document.getElementById("eventList");
 
-  if (!eventBox) {
+  if (!eventBox) 
+  {
     return;
   }
 
   eventBox.innerHTML = "";
 
-  events.forEach(function(event) {
+  events.forEach(function(event) 
+  {
     const card = document.createElement("div");
     card.className = "event-card";
 
@@ -246,19 +271,22 @@ function displayEvents() {
 // Feedback Form Section
 
 
-function submitFeedback() {
+function submitFeedback() 
+{
   const name = document.getElementById("feedbackName").value;
   const category = document.getElementById("feedbackCategory").value;
   const message = document.getElementById("feedbackMessage").value;
 
-  if (name === "" || category === "" || message === "") {
+  if (name === "" || category === "" || message === "") 
+  {
     alert("Please fill all feedback fields.");
     return;
   }
 
   let feedbackList = getData("feedbackList") || [];
 
-  const feedback = {
+  const feedback = 
+  {
     name: name,
     category: category,
     message: message,
@@ -278,10 +306,12 @@ function submitFeedback() {
   displayFeedback();
 }
 
-function displayFeedback() {
+function displayFeedback() 
+{
   const feedbackBox = document.getElementById("feedbackList");
 
-  if (!feedbackBox) {
+  if (!feedbackBox) 
+  {
     return;
   }
 
@@ -289,7 +319,8 @@ function displayFeedback() {
 
   feedbackBox.innerHTML = "";
 
-  feedbackList.forEach(function(feedback) {
+  feedbackList.forEach(function(feedback) 
+  {
     const card = document.createElement("div");
     card.className = "feedback-card";
 
@@ -307,12 +338,14 @@ function displayFeedback() {
 // Lost and Found Section
 
 
-function addLostFoundItem() {
+function addLostFoundItem() 
+{
   const itemName = document.getElementById("itemName").value;
   const itemDescription = document.getElementById("itemDescription").value;
   const contact = document.getElementById("contactInfo").value;
 
-  if (itemName === "" || itemDescription === "" || contact === "") {
+  if (itemName === "" || itemDescription === "" || contact === "") 
+  {
     alert("Please fill all lost and found fields.");
     return;
   }
@@ -339,10 +372,12 @@ function addLostFoundItem() {
   displayLostFoundItems();
 }
 
-function displayLostFoundItems() {
+function displayLostFoundItems() 
+{
   const itemBox = document.getElementById("lostFoundList");
 
-  if (!itemBox) {
+  if (!itemBox) 
+  {
     return;
   }
 
@@ -369,7 +404,8 @@ function displayLostFoundItems() {
 // Page Load Function
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() 
+{
   // Display logged-in student name if available
   displayUserName();
 
