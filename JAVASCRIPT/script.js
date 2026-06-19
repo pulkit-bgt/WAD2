@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-/* SHOW PASSWORD */
-=======
-// Resolve Hub Java Script
-// Default Resolve Hub Data
->>>>>>> 5b852a4e0fd68f3c7dc7646f38d78d24df5022e1
-
 
 // Sample announcements shown on the home page
 let announcements = [
@@ -56,16 +49,6 @@ function isLoggedIn() {
 }
 
 
-<<<<<<< HEAD
-
-/* SWTICH BETWEEN ADMIN LOGIN AND STUDENT LOGIN */
-
-function showLogin(type) {
-=======
-// Register / Signup Function
->>>>>>> 5b852a4e0fd68f3c7dc7646f38d78d24df5022e1
-
-
 function registerUser() {
   // Get input values from the signup form
   const name = document.getElementById("registerName").value;
@@ -98,40 +81,7 @@ function registerUser() {
     password: password
   };
 
-<<<<<<< HEAD
-        document.getElementById("studentForm").style.display = "none";
-        document.getElementById("adminForm").style.display = "block";
-    }
-}
 
-
-/* STORE ISSUES AT LOCAL STORAGE */
-
-document.getElementById("issueForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const issue = {
-        id: Date.now(),
-        category: document.getElementById("category").value,
-        title: document.getElementById("title").value,
-        description: document.getElementById("description").value,
-        location: document.getElementById("location").value,
-        priority: document.getElementById("priority").value,
-        status: "Pending"
-    };
-
-    let issues = JSON.parse(localStorage.getItem("issues")) || [];
-
-    issues.push(issue);
-
-    localStorage.setItem("issues", JSON.stringify(issues));
-
-    alert("Issue Submitted Successfully!");
-
-    document.getElementById("issueForm").reset();
-});
-
-=======
   // Add new user to users array
   users.push(newUser);
 
@@ -430,4 +380,81 @@ document.addEventListener("DOMContentLoaded", function() {
   // Display lost and found items
   displayLostFoundItems();
 });
->>>>>>> 5b852a4e0fd68f3c7dc7646f38d78d24df5022e1
+
+
+/* SHOW PASSWORD */
+
+function togglePassword(){
+
+    let password =
+    document.getElementById("password");
+
+    password.style.opacity="0.5";
+
+    setTimeout(() => {
+
+        if(password.type==="password"){
+            password.type="text";
+        }
+        else{
+            password.type="password";
+        }
+
+        password.style.opacity="1";
+
+    },150);
+}
+
+
+
+/* SWTICH BETWEEN ADMIN LOGIN AND STUDENT LOGIN */
+
+function showLogin(type) {
+
+    const tabs = document.querySelectorAll(".tab");
+
+    tabs.forEach(tab => tab.classList.remove("active"));
+
+    if(type === "student") {
+
+        tabs[0].classList.add("active");
+
+        document.getElementById("studentForm").style.display = "block";
+        document.getElementById("adminForm").style.display = "none";
+
+    } else {
+
+        tabs[1].classList.add("active");
+
+        document.getElementById("studentForm").style.display = "none";
+        document.getElementById("adminForm").style.display = "block";
+    }
+}
+
+
+/* STORE ISSUES AT LOCAL STORAGE */
+
+document.getElementById("issueForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const issue = {
+        id: Date.now(),
+        category: document.getElementById("category").value,
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        location: document.getElementById("location").value,
+        priority: document.getElementById("priority").value,
+        status: "Pending"
+    };
+
+    let issues = JSON.parse(localStorage.getItem("issues")) || [];
+
+    issues.push(issue);
+
+    localStorage.setItem("issues", JSON.stringify(issues));
+
+    alert("Issue Submitted Successfully!");
+
+    document.getElementById("issueForm").reset();
+});
+
