@@ -495,4 +495,50 @@ document.getElementById("issueForm").addEventListener("submit", function(e) {
 
     document.getElementById("issueForm").reset();
 });
+// Admin Dashboard - Showing Local Storage Data
+
+function loadAdminDashboard() 
+{
+  displayUsersInAdmin();
+  displayFeedbackInAdmin();
+  displayLostFoundInAdmin();
+  displayAnnouncementsInAdmin();
+}
+
+// Displaying registered users in Admin Panel
+
+
+function displayUsersInAdmin() 
+{
+  const userBox = document.getElementById("adminUserList");
+
+  if (!userBox) 
+{
+    return;
+  }
+
+  const users = getData("users") || [];
+
+  userBox.innerHTML = "";
+
+  if (users.length === 0) 
+{
+    userBox.innerHTML = "<p>No registered users found.</p>";
+    return;
+  }
+
+  users.forEach(function(user, index) 
+{
+    const card = document.createElement("div");
+    card.className = "admin-card";
+
+    card.innerHTML = `
+      <h3>${user.name}</h3>
+      <p><strong>Email:</strong> ${user.email}</p>
+      <button onclick="deleteUser(${index})">Delete User</button>
+    `;
+
+    userBox.appendChild(card);
+  });
+}
 
