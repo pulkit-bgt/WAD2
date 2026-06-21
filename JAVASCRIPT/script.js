@@ -541,7 +541,26 @@ function displayUsersInAdmin()
     userBox.appendChild(card);
   });
 }
+// Deleting user data from localStorage
+function deleteUser(index) 
+{
+  let users = getData("users") || [];
 
+  const confirmDelete = confirm("Are you sure you want to delete this user?");
+
+  if (!confirmDelete) 
+{
+    return;
+  }
+
+  users.splice(index, 1);
+
+  saveData("users", users);
+
+  alert("User deleted successfully.");
+
+  displayUsersInAdmin();
+}
 
 /* BUTTONS */
 
