@@ -6,7 +6,6 @@
 </head>
 <body>
 
-    <!-- Navbar -->
     <section class="header">
         <nav>
             <a href="index.html"><img src="logo.webp"></a>
@@ -19,8 +18,8 @@
                 <li><a href="adminpanel.html">ADMIN</a></li>
                 <li><a href="aboutus.html">ABOUT</a></li>
                 <li><a href="contactus.html">CONTACT</a></li>
-                <button class="register-btn" onclick="window.location.href='register.html'">REGISTER</button>
-                <button class="login-btn" onclick="window.location.href='login.html'">LOGIN</button>
+                <button class="register-btn" id="registerBtn">REGISTER</button>
+                <button class="login-btn" id="loginBtn">LOGIN</button>
                
                 
                 </ul>
@@ -33,7 +32,7 @@
 
     <form id="issueForm">
 
-        <label>Category</label>
+        <label>Category</label>   
         <select id="category">
             <option>Facilities</option>
             <option>Academic</option>
