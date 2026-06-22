@@ -614,3 +614,11 @@ document.getElementById("loginBtn").addEventListener("click", function ()
 {
     window.location.href = "login.html";
 });
+
+document.getElementById("reportissueBtn").addEventListener("click", function () {
+    window.location.href = "reportissue.html";
+  });
+
+document.getElementById("viewdashboardBtn").addEventListener("click", function () {
+    window.location.href = "dashboard.html";
+  });
