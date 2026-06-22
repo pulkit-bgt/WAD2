@@ -562,6 +562,46 @@ function deleteUser(index)
   displayUsersInAdmin();
 }
 
+// Displaying feedback in admin panel
+
+
+function displayFeedbackInAdmin() 
+{
+  const feedbackBox = document.getElementById("adminFeedbackList");
+
+  if (!feedbackBox) 
+{
+    return;
+  }
+
+  const feedbackList = getData("feedbackList") || [];
+
+  feedbackBox.innerHTML = "";
+
+  if (feedbackList.length === 0) {
+    feedbackBox.innerHTML = "<p>No feedback found.</p>";
+    return;
+  }
+
+  feedbackList.forEach(function(feedback, index) 
+{
+    const card = document.createElement("div");
+    card.className = "admin-card";
+
+    card.innerHTML = `
+      <h3>${feedback.category}</h3>
+      <p><strong>Name:</strong> ${feedback.name}</p>
+      <p>${feedback.message}</p>
+      <small>Date: ${feedback.date}</small>
+      <br><br>
+      <button onclick="editFeedback(${index})">Edit</button>
+      <button onclick="deleteFeedback(${index})">Delete</button>
+    `;
+
+    feedbackBox.appendChild(card);
+  });
+}
+
 /* BUTTONS */
 
 
