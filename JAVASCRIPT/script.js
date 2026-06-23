@@ -601,6 +601,27 @@ function displayFeedbackInAdmin()
     feedbackBox.appendChild(card);
   });
 }
+// Deleting  feedback data
+function deleteFeedback(index) 
+{
+  let feedbackList = getData("feedbackList") || [];
+
+  const confirmDelete = confirm("Are you sure you want to delete this feedback?");
+
+  if (!confirmDelete) 
+{
+    return;
+  }
+
+  feedbackList.splice(index, 1);
+
+  saveData("feedbackList", feedbackList);
+
+  alert("Feedback deleted successfully.");
+
+  displayFeedbackInAdmin();
+  displayFeedback();
+}
 
 /* BUTTONS */
 
@@ -614,11 +635,3 @@ document.getElementById("loginBtn").addEventListener("click", function ()
 {
     window.location.href = "login.html";
 });
-
-document.getElementById("reportissueBtn").addEventListener("click", function () {
-    window.location.href = "reportissue.html";
-  });
-
-document.getElementById("viewdashboardBtn").addEventListener("click", function () {
-    window.location.href = "dashboard.html";
-  });
