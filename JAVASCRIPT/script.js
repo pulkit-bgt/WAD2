@@ -622,6 +622,46 @@ function deleteFeedback(index)
   displayFeedbackInAdmin();
   displayFeedback();
 }
+// Displaying Lost and Found Data in Admin Panel
+
+
+function displayLostFoundInAdmin() 
+{
+  const itemBox = document.getElementById("adminLostFoundList");
+
+  if (!itemBox) 
+{
+    return;
+  }
+
+  const lostFoundItems = getData("lostFoundItems") || [];
+
+  itemBox.innerHTML = "";
+
+  if (lostFoundItems.length === 0) 
+{
+    itemBox.innerHTML = "<p>No lost and found items found.</p>";
+    return;
+  }
+
+  lostFoundItems.forEach(function(item, index) {
+    const card = document.createElement("div");
+    card.className = "admin-card";
+
+    card.innerHTML = `
+      <h3>${item.itemName}</h3>
+      <p>${item.itemDescription}</p>
+      <p><strong>Contact:</strong> ${item.contact}</p>
+      <small>Posted on ${item.date}</small>
+      <br><br>
+      <button onclick="editLostFoundItem(${index})">Edit</button>
+      <button onclick="deleteLostFoundItem(${index})">Delete</button>
+    `;
+
+    itemBox.appendChild(card);
+  });
+}
+
 
 /* BUTTONS */
 
