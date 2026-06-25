@@ -662,6 +662,37 @@ function displayLostFoundInAdmin()
   });
 }
 
+// Editing lost and found item raised
+function editLostFoundItem(index) 
+{
+  let lostFoundItems = getData("lostFoundItems") || [];
+
+  const item = lostFoundItems[index];
+
+  const newItemName = prompt("Enter item name:", item.itemName);
+  const newDescription = prompt("Enter item description:", item.itemDescription);
+  const newContact = prompt("Enter contact information:", item.contact);
+
+  if (newItemName === null || newDescription === null || newContact === null) {
+    return;
+  }
+
+  lostFoundItems[index] = 
+{
+    itemName: newItemName,
+    itemDescription: newDescription,
+    contact: newContact,
+    date: item.date
+  };
+
+  saveData("lostFoundItems", lostFoundItems);
+
+  alert("Lost and found item updated successfully.");
+
+  displayLostFoundInAdmin();
+  displayLostFoundItems();
+}
+
 
 /* BUTTONS */
 
