@@ -692,6 +692,27 @@ function editLostFoundItem(index)
   displayLostFoundInAdmin();
   displayLostFoundItems();
 }
+// Deleting lost and found item 
+function deleteLostFoundItem(index) 
+{
+  let lostFoundItems = getData("lostFoundItems") || [];
+
+  const confirmDelete = confirm("Are you sure you want to delete this item?");
+
+  if (!confirmDelete) 
+{
+    return;
+  }
+
+  lostFoundItems.splice(index, 1);
+
+  saveData("lostFoundItems", lostFoundItems);
+
+  alert("Item deleted successfully.");
+
+  displayLostFoundInAdmin();
+  displayLostFoundItems();
+}
 
 
 /* BUTTONS */
