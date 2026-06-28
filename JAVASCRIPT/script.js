@@ -764,6 +764,40 @@ function displayAnnouncementsInAdmin()
   });
 }
 
+// Adding announcement from admin panel
+
+function addAdminAnnouncement() 
+{
+  const title = document.getElementById("adminAnnouncementTitle").value;
+  const message = document.getElementById("adminAnnouncementMessage").value;
+  const date = document.getElementById("adminAnnouncementDate").value;
+
+  if (title === "" || message === "" || date === "") 
+{
+    alert("Please fill all announcement fields.");
+    return;
+  }
+
+  let announcementList = getAnnouncements();
+
+  announcementList.push({
+    title: title,
+    message: message,
+    date: date
+  });
+
+  saveAnnouncements(announcementList);
+
+  alert("Announcement added successfully.");
+
+  document.getElementById("adminAnnouncementTitle").value = "";
+  document.getElementById("adminAnnouncementMessage").value = "";
+  document.getElementById("adminAnnouncementDate").value = "";
+
+  displayAnnouncementsInAdmin();
+  displayAnnouncements();
+}
+
 
 /* BUTTONS */
 
