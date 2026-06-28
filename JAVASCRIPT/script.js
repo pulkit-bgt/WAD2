@@ -714,6 +714,56 @@ function deleteLostFoundItem(index)
   displayLostFoundItems();
 }
 
+// Displaying  announcements in admin panel
+
+
+function getAnnouncements() 
+{
+  return getData("announcements") || announcements;
+}
+
+function saveAnnouncements(updatedAnnouncements) 
+{
+  saveData("announcements", updatedAnnouncements);
+}
+
+function displayAnnouncementsInAdmin() 
+{
+  const announcementBox = document.getElementById("adminAnnouncementList");
+
+  if (!announcementBox) 
+{
+    return;
+  }
+
+  const announcementList = getAnnouncements();
+
+  announcementBox.innerHTML = "";
+
+  if (announcementList.length === 0) 
+{
+    announcementBox.innerHTML = "<p>No announcements found.</p>";
+    return;
+  }
+
+  announcementList.forEach(function(item, index) 
+{
+    const card = document.createElement("div");
+    card.className = "admin-card";
+
+    card.innerHTML = `
+      <h3>${item.title}</h3>
+      <p>${item.message}</p>
+      <small>Date: ${item.date}</small>
+      <br><br>
+      <button onclick="editAnnouncement(${index})">Edit</button>
+      <button onclick="deleteAnnouncement(${index})">Delete</button>
+    `;
+
+    announcementBox.appendChild(card);
+  });
+}
+
 
 /* BUTTONS */
 
