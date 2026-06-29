@@ -797,6 +797,60 @@ function addAdminAnnouncement()
   displayAnnouncementsInAdmin();
   displayAnnouncements();
 }
+// Editing announcement or changing announcement data
+
+function editAnnouncement(index) 
+{
+  let announcementList = getAnnouncements();
+
+  const item = announcementList[index];
+
+  const newTitle = prompt("Enter new title:", item.title);
+  const newMessage = prompt("Enter new message:", item.message);
+  const newDate = prompt("Enter new date:", item.date);
+
+  if (newTitle === null || newMessage === null || newDate === null) 
+{
+    return;
+  }
+
+  announcementList[index] = 
+{
+    title: newTitle,
+    message: newMessage,
+    date: newDate
+  };
+
+  saveAnnouncements(announcementList);
+
+  alert("Announcement updated successfully.");
+
+  displayAnnouncementsInAdmin();
+  displayAnnouncements();
+}
+
+// Deleting announcement
+function deleteAnnouncement(index) 
+{
+  let announcementList = getAnnouncements();
+
+  const confirmDelete = confirm("Are you sure you want to delete this announcement?");
+
+  if (!confirmDelete) 
+{
+    return;
+  }
+
+  announcementList.splice(index, 1);
+
+  saveAnnouncements(announcementList);
+
+  alert("Announcement deleted successfully.");
+
+  displayAnnouncementsInAdmin();
+  displayAnnouncements();
+}
+
 
 
 /* BUTTONS */
