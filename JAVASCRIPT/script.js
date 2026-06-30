@@ -850,8 +850,35 @@ function deleteAnnouncement(index)
   displayAnnouncementsInAdmin();
   displayAnnouncements();
 }
+// Clearing all local storage data
 
 
+function clearAllLocalStorageData() 
+{
+  const confirmClear = confirm(
+    "Are you sure you want to clear all saved project data?"
+  );
+
+  if (!confirmClear) 
+{
+    return;
+  }
+
+  localStorage.clear();
+
+  alert("All local storage data has been cleared.");
+
+  loadAdminDashboard();
+}
+
+
+// Loading admin dashboard automatically
+
+
+document.addEventListener("DOMContentLoaded", function() 
+{
+  loadAdminDashboard();
+});
 
 /* BUTTONS */
 
