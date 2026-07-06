@@ -1,5 +1,5 @@
 
-// Sample announcements on the home page
+// Sample announcements shown on the home page
 let announcements = [
   {
     title: "Library Timings Extended",
@@ -34,34 +34,29 @@ let events = [
 
 
 // This function saves data into browser localStorage
-function saveData(key, data) 
-{
+function saveData(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
 // This function gets data from browser localStorage
-function getData(key) 
-{
+function getData(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
 // This function checks whether a user is logged in
-function isLoggedIn()
- {
+function isLoggedIn() {
   return localStorage.getItem("loggedInUser") !== null;
 }
 
 
-function registerUser() 
-{
+function registerUser() {
   // Get input values from the signup form
   const name = document.getElementById("registerName").value;
   const email = document.getElementById("registerEmail").value;
   const password = document.getElementById("registerPassword").value;
 
   // Basic validation
-  if (name === "" || email === "" || password === "") 
-    {
+  if (name === "" || email === "" || password === "") {
     alert("Please fill all registration fields.");
     return;
   }
@@ -70,20 +65,17 @@ function registerUser()
   let users = getData("users") || [];
 
   // Check if email already exists
-  const existingUser = users.find(function(user) 
-  {
+  const existingUser = users.find(function(user) {
     return user.email === email;
   });
 
-  if (existingUser) 
-    {
+  if (existingUser) {
     alert("This email is already registered.");
     return;
   }
 
   // Create a new user object
-  const newUser = 
-  {
+  const newUser = {
     name: name,
     email: email,
     password: password
@@ -98,7 +90,7 @@ function registerUser()
 
   alert("Registration successful. Please login now.");
 
-  // Clearing form fields
+  // Clear form fields
   document.getElementById("registerName").value = "";
   document.getElementById("registerEmail").value = "";
   document.getElementById("registerPassword").value = "";
@@ -108,15 +100,13 @@ function registerUser()
 // Login Function
 
 
-function loginUser() 
-{
+function loginUser() {
   // Get input values from login form
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
   // Basic validation
-  if (email === "" || password === "") 
-    {
+  if (email === "" || password === "") {
     alert("Please enter email and password.");
     return;
   }
@@ -125,13 +115,11 @@ function loginUser()
   let users = getData("users") || [];
 
   // Check if user exists
-  const validUser = users.find(function(user) 
-  {
+  const validUser = users.find(function(user) {
     return user.email === email && user.password === password;
   });
 
-  if (validUser) 
-    {
+  if (validUser) {
     // Save logged-in user details
     localStorage.setItem("loggedInUser", JSON.stringify(validUser));
 
@@ -139,8 +127,7 @@ function loginUser()
 
     // Redirect to home page
     window.location.href = "home.html";
-  } else 
-    {
+  } else {
     alert("Invalid email or password.");
   }
 }
@@ -149,8 +136,7 @@ function loginUser()
 // Logout Function
 
 
-function logoutUser() 
-{
+function logoutUser() {
   // Remove logged-in user from localStorage
   localStorage.removeItem("loggedInUser");
 
@@ -164,12 +150,10 @@ function logoutUser()
 // Display Logged-In User Name
 
 
-function displayUserName() 
-{
+function displayUserName() {
   const user = getData("loggedInUser");
 
-  if (user && document.getElementById("studentName")) 
-  {
+  if (user && document.getElementById("studentName")) {
     document.getElementById("studentName").innerText = user.name;
   }
 }
@@ -178,20 +162,17 @@ function displayUserName()
 // Announcement Section
 
 
-function displayAnnouncements() 
-{
+function displayAnnouncements() {
   const announcementBox = document.getElementById("announcementList");
 
-  // Stopping function if announcementList element is not found
-  if (!announcementBox) 
-  {
+  // Stop function if announcementList element is not found
+  if (!announcementBox) {
     return;
   }
 
   announcementBox.innerHTML = "";
 
-  announcements.forEach(function(item)
-  {
+  announcements.forEach(function(item) {
     const card = document.createElement("div");
     card.className = "announcement-card";
 
@@ -205,20 +186,17 @@ function displayAnnouncements()
   });
 }
 
-function addAnnouncement() 
-{
+function addAnnouncement() {
   const title = document.getElementById("announcementTitle").value;
   const message = document.getElementById("announcementMessage").value;
   const date = document.getElementById("announcementDate").value;
 
-  if (title === "" || message === "" || date === "") 
-  {
+  if (title === "" || message === "" || date === "") {
     alert("Please fill all announcement fields.");
     return;
   }
 
-  const newAnnouncement =
-  {
+  const newAnnouncement = {
     title: title,
     message: message,
     date: date
@@ -235,19 +213,16 @@ function addAnnouncement()
 // Events Section
 
 
-function displayEvents() 
-{
+function displayEvents() {
   const eventBox = document.getElementById("eventList");
 
-  if (!eventBox) 
-  {
+  if (!eventBox) {
     return;
   }
 
   eventBox.innerHTML = "";
 
-  events.forEach(function(event) 
-  {
+  events.forEach(function(event) {
     const card = document.createElement("div");
     card.className = "event-card";
 
@@ -266,22 +241,19 @@ function displayEvents()
 // Feedback Form Section
 
 
-function submitFeedback() 
-{
+function submitFeedback() {
   const name = document.getElementById("feedbackName").value;
   const category = document.getElementById("feedbackCategory").value;
   const message = document.getElementById("feedbackMessage").value;
 
-  if (name === "" || category === "" || message === "") 
-  {
+  if (name === "" || category === "" || message === "") {
     alert("Please fill all feedback fields.");
     return;
   }
 
   let feedbackList = getData("feedbackList") || [];
 
-  const feedback = 
-  {
+  const feedback = {
     name: name,
     category: category,
     message: message,
@@ -301,12 +273,10 @@ function submitFeedback()
   displayFeedback();
 }
 
-function displayFeedback() 
-{
+function displayFeedback() {
   const feedbackBox = document.getElementById("feedbackList");
 
-  if (!feedbackBox) 
-  {
+  if (!feedbackBox) {
     return;
   }
 
@@ -314,8 +284,7 @@ function displayFeedback()
 
   feedbackBox.innerHTML = "";
 
-  feedbackList.forEach(function(feedback) 
-  {
+  feedbackList.forEach(function(feedback) {
     const card = document.createElement("div");
     card.className = "feedback-card";
 
@@ -333,22 +302,19 @@ function displayFeedback()
 // Lost and Found Section
 
 
-function addLostFoundItem() 
-{
+function addLostFoundItem() {
   const itemName = document.getElementById("itemName").value;
   const itemDescription = document.getElementById("itemDescription").value;
   const contact = document.getElementById("contactInfo").value;
 
-  if (itemName === "" || itemDescription === "" || contact === "") 
-  {
+  if (itemName === "" || itemDescription === "" || contact === "") {
     alert("Please fill all lost and found fields.");
     return;
   }
 
   let lostFoundItems = getData("lostFoundItems") || [];
 
-  const item = 
-  {
+  const item = {
     itemName: itemName,
     itemDescription: itemDescription,
     contact: contact,
@@ -368,12 +334,10 @@ function addLostFoundItem()
   displayLostFoundItems();
 }
 
-function displayLostFoundItems() 
-{
+function displayLostFoundItems() {
   const itemBox = document.getElementById("lostFoundList");
 
-  if (!itemBox) 
-  {
+  if (!itemBox) {
     return;
   }
 
@@ -400,8 +364,7 @@ function displayLostFoundItems()
 // Page Load Function
 
 
-document.addEventListener("DOMContentLoaded", function() 
-{
+document.addEventListener("DOMContentLoaded", function() {
   // Display logged-in student name if available
   displayUserName();
 
@@ -419,10 +382,10 @@ document.addEventListener("DOMContentLoaded", function()
 });
 
 
+
 /* SHOW PASSWORD */
 
-function togglePassword()
-{
+function togglePassword(){
 
     let password =
     document.getElementById("password");
@@ -470,425 +433,302 @@ function showLogin(type) {
 }
 
 
+
 /* STORE ISSUES AT LOCAL STORAGE */
 
-document.getElementById("issueForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".rpissue");
 
-    const issue = {
-        id: Date.now(),
-        category: document.getElementById("category").value,
-        title: document.getElementById("title").value,
-        description: document.getElementById("description").value,
-        location: document.getElementById("location").value,
-        priority: document.getElementById("priority").value,
-        status: "Pending"
-    };
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Get values from form
+        const category = document.querySelector(".cdd").value;
+        const title = document.querySelector(".category-card input[type='textti']").value;
+        const description = document.querySelector(".description-card textarea").value;
+        const location = document.querySelector(".location-card textarea").value;
+
+        // Get selected priority
+        const priority =
+            document.querySelector("input[name='priority']:checked")?.value || "Not Set";
+
+        // Create issue object (IMPORTANT FIX HERE)
+        const issue = {
+            id: Date.now(),
+            category,
+            title,
+            description,
+            location,
+            priority,
+            date: new Date().toLocaleString(),
+
+            // ✅ DEFAULT STATUS ADDED
+            status: "pending"
+        };
+
+        // Get existing issues from localStorage
+        let issues = JSON.parse(localStorage.getItem("issues")) || [];
+
+        // Add new issue
+        issues.push(issue);
+
+        // Save back to localStorage
+        localStorage.setItem("issues", JSON.stringify(issues));
+
+        // Show popup message
+        alert("Issue submitted successfully");
+
+        // Redirect to dashboard
+        window.location.href = "dashboard.html";
+    });
+});
+
+
+    // Display all issues
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const tableBody = document.getElementById("issueTable");
+    const searchInput = document.getElementById("searchInput");
+    const filterSelect = document.getElementById("filterSelect");
+
+    const totalIssuesBox = document.getElementById("totalIssues");
+    const solvedIssuesBox = document.getElementById("solvedIssues");
 
     let issues = JSON.parse(localStorage.getItem("issues")) || [];
 
-    issues.push(issue);
+    function updateStats(data) {
 
-    localStorage.setItem("issues", JSON.stringify(issues));
+        totalIssuesBox.textContent = data.length;
 
-    alert("Issue Submitted Successfully!");
+        solvedIssuesBox.textContent = data.filter(issue =>
+            (issue.status || "").toLowerCase() === "solved"
+        ).length;
+    }
 
-    document.getElementById("issueForm").reset();
+    function renderIssues() {
+
+        const searchText = searchInput.value.toLowerCase().trim();
+        const filterValue = filterSelect.value.toLowerCase();
+
+        let filtered = issues.filter(issue => {
+
+            const idMatch = issue.id.toString().includes(searchText);
+
+            const titleMatch = issue.title.toLowerCase().includes(searchText);
+
+            const categoryMatch = issue.category.toLowerCase().includes(searchText);
+
+            const searchMatch = idMatch || titleMatch || categoryMatch;
+
+            const status = (issue.status || "").toLowerCase().trim();
+
+            const filterMatch =
+                filterValue === "all" || status === filterValue;
+
+            return searchMatch && filterMatch;
+        });
+
+        tableBody.innerHTML = "";
+
+        if (filtered.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align:center;">
+                        No issues found
+                    </td>
+                </tr>
+            `;
+            updateStats(filtered);
+            return;
+        }
+
+        filtered.forEach(issue => {
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${issue.id}</td>
+                <td>${issue.title}</td>
+                <td>${issue.category}</td>
+                <td>${issue.description}</td>
+                <td>${issue.date}</td>
+                <td>${issue.priority}</td>
+                <td>
+                    <span class="status ${(issue.status || "pending")}">
+                        ${(issue.status || "pending")}
+                    </span>
+                </td>
+            `;
+
+            tableBody.appendChild(row);
+        });
+
+        updateStats(filtered);
+    }
+
+    // Events
+    searchInput.addEventListener("input", renderIssues);
+    filterSelect.addEventListener("change", renderIssues);
+
+    // Initial load
+    renderIssues();
+
 });
-// Admin Dashboard - Showing Local Storage Data
 
-function loadAdminDashboard() 
-{
-  displayUsersInAdmin();
-  displayFeedbackInAdmin();
-  displayLostFoundInAdmin();
-  displayAnnouncementsInAdmin();
-}
-
-// Displaying registered users in Admin Panel
+/* ADMIN PANEL */
 
+document.addEventListener("DOMContentLoaded", function () {
 
-function displayUsersInAdmin() 
-{
-  const userBox = document.getElementById("adminUserList");
+    const tableBody = document.getElementById("adminIssueTable");
 
-  if (!userBox) 
-{
-    return;
-  }
+    const totalIssues = document.getElementById("totalIssues");
+    const solvedIssues = document.getElementById("solvedIssues");
 
-  const users = getData("users") || [];
+    const searchInput = document.getElementById("searchInput");
+    const filterSelect = document.getElementById("filterSelect");
 
-  userBox.innerHTML = "";
+    let issues = JSON.parse(localStorage.getItem("issues")) || [];
 
-  if (users.length === 0) 
-{
-    userBox.innerHTML = "<p>No registered users found.</p>";
-    return;
-  }
+    function saveIssues() {
+        localStorage.setItem("issues", JSON.stringify(issues));
+    }
 
-  users.forEach(function(user, index) 
-{
-    const card = document.createElement("div");
-    card.className = "admin-card";
+    function updateStats() {
+        totalIssues.textContent = issues.length;
 
-    card.innerHTML = `
-      <h3>${user.name}</h3>
-      <p><strong>Email:</strong> ${user.email}</p>
-      <button onclick="deleteUser(${index})">Delete User</button>
-    `;
+        solvedIssues.textContent = issues.filter(issue =>
+            issue.status === "solved"
+        ).length;
+    }
 
-    userBox.appendChild(card);
-  });
-}
-// Deleting user data from localStorage
-function deleteUser(index) 
-{
-  let users = getData("users") || [];
+    function renderIssues() {
 
-  const confirmDelete = confirm("Are you sure you want to delete this user?");
+    tableBody.innerHTML = "";
 
-  if (!confirmDelete) 
-{
-    return;
-  }
+    let filteredIssues = issues.filter(issue => {
 
-  users.splice(index, 1);
+        const searchText = searchInput.value.toLowerCase().trim();
 
-  saveData("users", users);
+        const searchMatch =
+            issue.id.toString().includes(searchText) ||
+            issue.title.toLowerCase().includes(searchText) ||
+            issue.category.toLowerCase().includes(searchText);
 
-  alert("User deleted successfully.");
+        const filterMatch =
+            filterSelect.value === "all" ||
+            issue.status === filterSelect.value;
 
-  displayUsersInAdmin();
-}
+        return searchMatch && filterMatch;
 
-// Displaying feedback in admin panel
+    });
 
+        if (filteredIssues.length === 0) {
 
-function displayFeedbackInAdmin() 
-{
-  const feedbackBox = document.getElementById("adminFeedbackList");
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="8" style="text-align:center;">
+                        No issues found
+                    </td>
+                </tr>
+            `;
 
-  if (!feedbackBox) 
-{
-    return;
-  }
+            return;
+        }
 
-  const feedbackList = getData("feedbackList") || [];
+        filteredIssues.forEach(issue => {
 
-  feedbackBox.innerHTML = "";
+            const originalIndex = issues.findIndex(i => i.id === issue.id);
 
-  if (feedbackList.length === 0) {
-    feedbackBox.innerHTML = "<p>No feedback found.</p>";
-    return;
-  }
+            const row = document.createElement("tr");
 
-  feedbackList.forEach(function(feedback, index) 
-{
-    const card = document.createElement("div");
-    card.className = "admin-card";
+            row.innerHTML = `
+                <td>${issue.id}</td>
+                <td>${issue.title}</td>
+                <td>${issue.category}</td>
+                <td>${issue.description}</td>
+                <td>${issue.date}</td>
+                <td>${issue.priority}</td>
 
-    card.innerHTML = `
-      <h3>${feedback.category}</h3>
-      <p><strong>Name:</strong> ${feedback.name}</p>
-      <p>${feedback.message}</p>
-      <small>Date: ${feedback.date}</small>
-      <br><br>
-      <button onclick="editFeedback(${index})">Edit</button>
-      <button onclick="deleteFeedback(${index})">Delete</button>
-    `;
-
-    feedbackBox.appendChild(card);
-  });
-}
-// Deleting  feedback data
-function deleteFeedback(index) 
-{
-  let feedbackList = getData("feedbackList") || [];
-
-  const confirmDelete = confirm("Are you sure you want to delete this feedback?");
+                <td>
+                    <select class="statusSelect" data-index="${originalIndex}">
+                        <option value="pending" ${issue.status==="pending"?"selected":""}>Pending</option>
+                        <option value="approved" ${issue.status==="approved"?"selected":""}>Approved</option>
+                        <option value="in-progress" ${issue.status==="in-progress"?"selected":""}>In Progress</option>
+                        <option value="solved" ${issue.status==="solved"?"selected":""}>Solved</option>
+                    </select>
+                </td>
 
-  if (!confirmDelete) 
-{
-    return;
-  }
+                <td>
+                    <button class="deleteBtn" data-index="${originalIndex}">
+                        Delete
+                    </button>
+                </td>
+            `;
 
-  feedbackList.splice(index, 1);
+            tableBody.appendChild(row);
 
-  saveData("feedbackList", feedbackList);
+        });
 
-  alert("Feedback deleted successfully.");
+        updateStats();
+    }
 
-  displayFeedbackInAdmin();
-  displayFeedback();
-}
-// Displaying Lost and Found Data in Admin Panel
+    tableBody.addEventListener("change", function (e) {
 
+        if (e.target.classList.contains("statusSelect")) {
 
-function displayLostFoundInAdmin() 
-{
-  const itemBox = document.getElementById("adminLostFoundList");
+            const index = e.target.dataset.index;
 
-  if (!itemBox) 
-{
-    return;
-  }
+            issues[index].status = e.target.value;
 
-  const lostFoundItems = getData("lostFoundItems") || [];
+            saveIssues();
 
-  itemBox.innerHTML = "";
+            renderIssues();
+        }
 
-  if (lostFoundItems.length === 0) 
-{
-    itemBox.innerHTML = "<p>No lost and found items found.</p>";
-    return;
-  }
+    });
 
-  lostFoundItems.forEach(function(item, index) {
-    const card = document.createElement("div");
-    card.className = "admin-card";
+    tableBody.addEventListener("click", function (e) {
 
-    card.innerHTML = `
-      <h3>${item.itemName}</h3>
-      <p>${item.itemDescription}</p>
-      <p><strong>Contact:</strong> ${item.contact}</p>
-      <small>Posted on ${item.date}</small>
-      <br><br>
-      <button onclick="editLostFoundItem(${index})">Edit</button>
-      <button onclick="deleteLostFoundItem(${index})">Delete</button>
-    `;
+        if (e.target.classList.contains("deleteBtn")) {
 
-    itemBox.appendChild(card);
-  });
-}
+            const index = e.target.dataset.index;
 
-// Editing lost and found item raised
-function editLostFoundItem(index) 
-{
-  let lostFoundItems = getData("lostFoundItems") || [];
+            if (confirm("Delete this issue?")) {
 
-  const item = lostFoundItems[index];
+                issues.splice(index, 1);
 
-  const newItemName = prompt("Enter item name:", item.itemName);
-  const newDescription = prompt("Enter item description:", item.itemDescription);
-  const newContact = prompt("Enter contact information:", item.contact);
+                saveIssues();
 
-  if (newItemName === null || newDescription === null || newContact === null) {
-    return;
-  }
-
-  lostFoundItems[index] = 
-{
-    itemName: newItemName,
-    itemDescription: newDescription,
-    contact: newContact,
-    date: item.date
-  };
-
-  saveData("lostFoundItems", lostFoundItems);
+                renderIssues();
+            }
+        }
 
-  alert("Lost and found item updated successfully.");
+    });
 
-  displayLostFoundInAdmin();
-  displayLostFoundItems();
-}
-// Deleting lost and found item 
-function deleteLostFoundItem(index) 
-{
-  let lostFoundItems = getData("lostFoundItems") || [];
+    searchInput.addEventListener("input", renderIssues);
 
-  const confirmDelete = confirm("Are you sure you want to delete this item?");
+    filterSelect.addEventListener("change", renderIssues);
 
-  if (!confirmDelete) 
-{
-    return;
-  }
+    renderIssues();
 
-  lostFoundItems.splice(index, 1);
-
-  saveData("lostFoundItems", lostFoundItems);
-
-  alert("Item deleted successfully.");
-
-  displayLostFoundInAdmin();
-  displayLostFoundItems();
-}
-
-// Displaying  announcements in admin panel
-
-
-function getAnnouncements() 
-{
-  return getData("announcements") || announcements;
-}
-
-function saveAnnouncements(updatedAnnouncements) 
-{
-  saveData("announcements", updatedAnnouncements);
-}
-
-function displayAnnouncementsInAdmin() 
-{
-  const announcementBox = document.getElementById("adminAnnouncementList");
-
-  if (!announcementBox) 
-{
-    return;
-  }
-
-  const announcementList = getAnnouncements();
-
-  announcementBox.innerHTML = "";
-
-  if (announcementList.length === 0) 
-{
-    announcementBox.innerHTML = "<p>No announcements found.</p>";
-    return;
-  }
-
-  announcementList.forEach(function(item, index) 
-{
-    const card = document.createElement("div");
-    card.className = "admin-card";
-
-    card.innerHTML = `
-      <h3>${item.title}</h3>
-      <p>${item.message}</p>
-      <small>Date: ${item.date}</small>
-      <br><br>
-      <button onclick="editAnnouncement(${index})">Edit</button>
-      <button onclick="deleteAnnouncement(${index})">Delete</button>
-    `;
-
-    announcementBox.appendChild(card);
-  });
-}
-
-// Adding announcement from admin panel
-
-function addAdminAnnouncement() 
-{
-  const title = document.getElementById("adminAnnouncementTitle").value;
-  const message = document.getElementById("adminAnnouncementMessage").value;
-  const date = document.getElementById("adminAnnouncementDate").value;
-
-  if (title === "" || message === "" || date === "") 
-{
-    alert("Please fill all announcement fields.");
-    return;
-  }
-
-  let announcementList = getAnnouncements();
-
-  announcementList.push({
-    title: title,
-    message: message,
-    date: date
-  });
-
-  saveAnnouncements(announcementList);
-
-  alert("Announcement added successfully.");
-
-  document.getElementById("adminAnnouncementTitle").value = "";
-  document.getElementById("adminAnnouncementMessage").value = "";
-  document.getElementById("adminAnnouncementDate").value = "";
-
-  displayAnnouncementsInAdmin();
-  displayAnnouncements();
-}
-// Editing announcement or changing announcement data
-
-function editAnnouncement(index) 
-{
-  let announcementList = getAnnouncements();
-
-  const item = announcementList[index];
-
-  const newTitle = prompt("Enter new title:", item.title);
-  const newMessage = prompt("Enter new message:", item.message);
-  const newDate = prompt("Enter new date:", item.date);
-
-  if (newTitle === null || newMessage === null || newDate === null) 
-{
-    return;
-  }
-
-  announcementList[index] = 
-{
-    title: newTitle,
-    message: newMessage,
-    date: newDate
-  };
-
-  saveAnnouncements(announcementList);
-
-  alert("Announcement updated successfully.");
-
-  displayAnnouncementsInAdmin();
-  displayAnnouncements();
-}
-
-// Deleting announcement
-function deleteAnnouncement(index) 
-{
-  let announcementList = getAnnouncements();
-
-  const confirmDelete = confirm("Are you sure you want to delete this announcement?");
-
-  if (!confirmDelete) 
-{
-    return;
-  }
-
-  announcementList.splice(index, 1);
-
-  saveAnnouncements(announcementList);
-
-  alert("Announcement deleted successfully.");
-
-  displayAnnouncementsInAdmin();
-  displayAnnouncements();
-}
-// Clearing all local storage data
-
-
-function clearAllLocalStorageData() 
-{
-  const confirmClear = confirm(
-    "Are you sure you want to clear all saved project data?"
-  );
-
-  if (!confirmClear) 
-{
-    return;
-  }
-
-  localStorage.clear();
-
-  alert("All local storage data has been cleared.");
-
-  loadAdminDashboard();
-}
-
-
-// Loading admin dashboard automatically
-
-
-document.addEventListener("DOMContentLoaded", function() 
-{
-  loadAdminDashboard();
 });
 
 /* BUTTONS */
 
 
-document.getElementById("registerBtn").addEventListener("click", function () 
-{
+  document.getElementById("registerBtn").addEventListener("click", function () {
     window.location.href = "register.html";
-});
+  });
 
-document.getElementById("loginBtn").addEventListener("click", function () 
-{
+  document.getElementById("loginBtn").addEventListener("click", function () {
     window.location.href = "login.html";
-});
+  });
+
+  document.getElementById("reportissueBtn").addEventListener("click", function () {
+    window.location.href = "reportissue.html";
+  });
+
+  document.getElementById("viewdashboardBtn").addEventListener("click", function () {
+    window.location.href = "dashboard.html";
+  });

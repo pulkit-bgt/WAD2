@@ -15,18 +15,19 @@
       padding: 8px 20px;
       justify-content: space-between;
       align-items: center;
-      background-color: #f1f1f1;
+      background: linear-gradient(to right, #006dd3, #0082a3);
       } 
 
 
       nav img{
       width:140px;
+      transform: scale(1.16);
       transition: transform 0.3s ease;
    
       }
       
       nav img:hover {
-      transform: scale(1.25);
+      transform: scale(1.35);
       }
 
       .nav-links{
@@ -42,7 +43,7 @@
       }
     
       .nav-links ul li a{
-      color: #000000;
+      color: #f1f1f1;
       text-decoration:none;
       font-size: 15px;
       }
@@ -51,7 +52,7 @@
       content: '';
       width: 0%;
       height: 2px;
-      background: #1976d2;
+      background: #ffffff;
       display: block;
       margin: auto;
       transition:0.4s;
@@ -64,33 +65,44 @@
    /*HOMEPAGE-LOGIN BTN & REGISTER BTN */
       
       .login-btn{
+      margin:2px;
       font-weight: 700;
-      background:#1976d2;
-      color:white;
-      border:1px solid #1976d2;
+      background:#ffffff;
+      color:rgb(0, 0, 0);
+      border:1px solid #ffffff;
       padding:8px 16px;
       border-radius:4px;
       cursor:pointer;
       }
 
-      .login-btn:hover{
-      background:#0d5eb7;
+      .login-btn span {
+      display: inline-block;
+      transition: transform 0.3s ease;
       }
 
+      .login-btn:hover span {
+      transform: scale(1.1);
+      }
+        
       .register-btn{
+      margin:2px;
       font-weight: 700;
       background:rgb(255, 255, 255);
       color:#1976d2;
-      border: 1px solid #696969;
+      border: 1px solid #ffffff;
       padding:8px 16px;
       border-radius:4px;
       cursor:pointer;
       }
 
-      .register-btn:hover{
-      background:rgb(230, 246, 247);
+      .register-btn span {
+      display: inline-block;
+      transition: transform 0.3s ease;
       }
 
+      .register-btn:hover span {
+      transform: scale(1.1);
+      }
 
    /* HERO SECTION */
 
@@ -182,59 +194,101 @@
 
 
    /* CARDS */
-      .cards{
-      display:flex;
-      justify-content:center;
-      gap: 50px;
-      padding: 10px;
-      background: #ffffff;
-      }
-    
-      .card{
-      position: relative;
-      margin-top: -25px;
-      margin-bottom: 50px;
-      width: 400px;
-      padding: 25px;
-      background-color: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
-      }
 
-      .card:hover{
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.30);
-      }
+.featuring {
+    position: relative;
+     width: 100%;
+    max-width: 1500px;
+    margin: 60px auto;
+    margin-top: -50px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    padding: 50px;
+    position: relative;
+    max-height: 350px;
+    border-radius: 20px;
+}
+
+.feature-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.feature-top .left,
+.feature-top .right {
+    flex: 1;
+}
+
+.feature-top h2 {
+    color: #000000;
+    margin-left: 50px;
+   font-size: 55px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.feature-top h2 span {
+    color: #2f80ed;
+}
+
+.feature-top p {
+    margin-right: 50px;
+    color: #666;
+    font-size: 18;
+    line-height: 1.8;
+}
+
+.f-cards {
+    background-color: #ffffff;
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.f-card {
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    color: rgb(0, 0, 0);
+}
+
+.f-card h2 {
+    margin-bottom: 15px;
+    color:#0ea5e9;
+    font-size: 28;
+      font-weight: 700;
+}
+
+.f-card p {
+    line-height: 1.7;
+    font-weight: bold;
+    color: #000000;
+}
+   
+.box {
+    background: #dff3ff;
+    padding: 30px ;
+    height: 400px;
+}
 
 
-      .card h2{
-      font-size: 30px;
-      margin-bottom: 15px;
-      color:#0ea5e9;
-      }
-
-      .card p{
-      font-size: 14;
-      font-weight: 575;
-      margin: 0;
-      line-height: 1.6;
-      }
-
-      
    /* Team Section */
 
       #team {
+        margin: auto;
+      position:relative;
       padding: 80px 20px;
-      background: #ffffff;
+      background-color: #dff3ff;
       text-align: center;
       }
 
       #team h2 {
       font-size: 2.5rem;
-      color: #25a2eb;
+      color: #222;
       margin-bottom: 50px;
       text-decoration: underline;
       text-decoration-color: rgba(0, 0, 0, 0.500);
@@ -252,15 +306,6 @@
       }
 
    /* Individual Card */
-
-      .member-card {
-      width: 300px;
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transition: 0.3s ease;
-      }
 
       .member-card {
       width: 300px;
@@ -309,7 +354,7 @@
       left: 0;
       width: 100%;
       height: 50px;
-      background: #1e88e5;
+      background: linear-gradient(to right, #006dd3, #0082a3);
       color: white;
       display: flex;
       align-items: center;
@@ -336,15 +381,14 @@
 
 
       .about h2{
-      color:#0ea5e9;
+      color: #222;
       font-weight: 700;
-      font-size: 2rem;
-      text-decoration: underline;
+      font-size: 2.5rem;
       margin-bottom: 20px;
       }
 
       .about p{
-      font-size: 18;
+      font-size: 20;
       font-weight: 700;
       line-height: 1.8;
       margin-bottom: 15px;
@@ -373,7 +417,7 @@
       }
 
       .contact > p {
-      font-size: 1.1rem;
+      font-size: 20;
       color: #555;
       margin-bottom: 50px;
       line-height: 1.8;
@@ -444,105 +488,303 @@
 
 /* REPORT ISSUE HTML - START */
 
+    #pagedes{
+    background-color: #dff3ff;   /* Light blue */
+    min-height: 100vh;
+    margin: 0;
+}
 
-   /* Form Container */
-      .issuecontainer {
-      max-width: 700px;
-      margin: 50px auto;
-      background: #ffffff;
-      padding: 35px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+
+
+
+/* Form Container */
+      .reportpanel{
+         align-items: center;
+         justify-content: center;
       }
 
    /* Heading */
-      .issuecontainer h2 {
+      .reportpanel h2 {
+         margin: 30px auto;
       text-align: center;
-      color:#0ea5e9;
-      margin-bottom: 30px;
-      font-size: 2rem;
-      font-size: 40;
+      color:#222;
+      margin-bottom: 20px;
+      font-size: 34;
+      font-weight: 800;
       }
 
-   /* Form Layout */
-      #issueForm {
-      display: flex;
-      flex-direction: column;
+      .reportpanel h4 {
+      text-align: center;
+      color:#222;
+      margin-top: -20px;
+      font-size: 16;
+      text-decoration:underline;
       }
+/*---------------- TOP ----------------*/
+.rpissue{
+   margin-top:-50px;
+}
 
-   /* Labels */
-      #issueForm label {
-      font-weight: 600;
-      margin-bottom: 8px;
-      margin-top: 15px;
-      color: #374151;
-      }
+.top-section{
+      padding: 35px;
+     
+    display:flex;
+    max-width: 1500px;
+ margin-top: -40px;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
 
-   /* Inputs, Selects, Textarea */
-      #issueForm input,
-      #issueForm select,
-      #issueForm textarea {
-      width: 100%;
-      padding: 12px 15px;
-      border: 2px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 1rem;
-      outline: none;
-      transition: all 0.3s ease;
-      box-sizing: border-box;
-      }
+    margin:30px auto;
+}
 
-   /* Focus Effect */
-      #issueForm input:focus,
-      #issueForm select:focus,
-      #issueForm textarea:focus {
+.category-card{
+
+   max-width:500px;
+    max-height:250px;
+}
+
+.description-card{
+
+     max-height: 250px;
+    max-width: 800px;
+}
+
+/*---------------- BOTTOM ----------------*/
+
+.bottom-section{
+    max-width: 1500px;
+    margin:30px auto;
+    margin-top: -70px;
+      padding: 20px;
+      background-color: #ffffff00;
+    display:flex;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.priority-card{
+
+    height: 160px;
+    max-width: 550px;
+}
+
+.location-card{
+
+    max-width:600px;
+    height:160px;
+}
+
+/*---------------- CARD ----------------*/
+
+.card{
+
+    background:white;
+box-shadow: 0 15px 35px rgba(0, 0, 0, 0.250);
+
+    border-radius:35px;
+
+    padding:28px;
+}
+
+.card label{
+
+    display:flex;
+
+    font-size:22px;
+
+    font-weight:500;
+
+    margin-bottom:12px;
+}
+
+.cdd,
+input[type="textti"],
+textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border:2px solid #bebebe;
+
+    border-radius:18px;
+
+    font-size:18px;
+
+    outline:none;
+
+    margin-bottom:28px;
+}
+
+   input[type="textti"]:focus,
+      select:focus,
+      textarea:focus {
       border-color: #2563eb;
       box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
       }
 
-   /* Textarea */
-      #issueForm textarea {
-      min-height: 120px;
-      resize: vertical;
-      }
 
-   /* Submit Button */ 
-      #issueForm button{
-      margin-top: 25px;
+.cdd{
+
+    cursor:pointer;
+}
+
+textarea{
+
+    resize:none;
+}
+
+.description-card textarea{
+
+    height:160px;
+}
+
+.location-card textarea{
+
+    height:120px;
+}
+
+/*------------- FILE BUTTON-------------*/
+
+input[type=file]{
+
+    font-size:17px;
+}
+
+.priority-buttons{
+    display:flex;
+    gap:30px;
+    justify-content:center ;
+    margin-top:50px;
+}
+
+.priority-btn{
+
+    width:140px;
+    height:35px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:8px;
+    cursor:pointer;
+
+    transition:0.3s;
+
+    border:2px solid transparent;
+}
+
+.priority-btn.low{
+font-size: 24;
+text-align: center;
+font-weight: 600;
+}
+
+.priority-btn.medium{
+font-size: 24;
+text-align: center;
+font-weight: 600;
+}
+
+.priority-btn.high{
+font-size: 24;
+text-align: center;
+font-weight: 600;
+}
+
+.priority-btn.critical{
+font-size: 24;
+text-align: center;
+font-weight: 600;
+}
+
+
+
+/* Default Colors */
+
+.low{
+    background:#e8f7df;
+    text-align: center;
+    color:#2e7d32;
+}
+
+.medium{
+    background:#dceeff;
+    color:#1565c0;
+}
+
+.high{
+    background:#fff6d9;
+    color:#ef6c00;
+}
+
+.critical{
+    background:#ffd8c9;
+    color:#c62828;
+}
+
+/* Hover Effect */
+
+.priority-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+/* Selected Button */
+
+#low:checked + .low{
+    background:#4CAF50;
+    color:#fff;
+}
+
+#medium:checked + .medium{
+    background:#2196F3;
+    color:#fff;
+}
+
+#high:checked + .high{
+    background:#FFC107;
+    color:#fff;
+}
+
+#critical:checked + .critical{
+    background:#F44336;
+    color:#fff;
+}
+
+/*------------- SUBMIT-------------*/
+
+.submit-area{
+
+    text-align:center;
+
+    margin-top:35px;
+}
+
+.submit-btn{
+
+ margin-top: -40px;
       padding: 14px;
       border: none;
       border-radius: 10px;
       background: #2563eb;
       color: white;
-      font-size: 1rem;
+      font-size: 16;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s ease;
-      }
+      min-width: 150px;
+}
 
-   #issueForm button:hover {
-      background: #1d4ed8;
+.submit-btn:hover{
+
+   background: #1d4ed8;
       transform: scale(1.03);
-      }
-
-   .b-dashboard-btn {
-      display: block;
-      text-align: center;
-      margin-top: 15px;
-      padding: 14px;
-      background: #10b981;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: 0.3s ease;
-      }
-
-   .b-dashboard-btn:hover {
-      background: #059669;
-      transform: scale(1.03);
-      }
-      
+}
 
 /* REPORT ISSUE HTML - END */
 
@@ -550,93 +792,236 @@
 
 /* DASHBOARD PAGE & ADMIN PANEL HTML - START */
 
-.dashboard{
-    width:100%;
-    min-height: 80vh;
+
+   /* Heading */
+      .dashboard h2 {
+      text-align: center;
+      color:#222;
+      margin-bottom: 20px;
+      font-size: 34;
+      font-weight: 800;
+      }
+
+      .dashboard h4 {
+      text-align: center;
+      color:#222;
+      margin-top: -20px;
+      font-size: 16;
+      text-decoration:underline;
+      }
+
+/* Summary Section */
+
+.admin-summary {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px ;
+}
+
+.summary-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #ffffff;
-    background-position: center;
-    background-size: cover;
-    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 20px;
+    min-width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.summary-card h3 {
     margin: 0;
-    padding-top: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
 
+.summary-card p {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.summary-card.solved p {
+    color: #28a745;
+}
+
+/* STATUS CHANGE */
+select.statusselect{
+
+    width:100%;
+    padding:5px;
+    border:1px solid #000000;
+    border-radius: 10px;
+    font-size:16;
+}
+
+select.statusselect:focus{   
+border-color: #2563eb;
 
 }
 
-.dashboard h1{
+
+/* Search & Filter */
+
+.dashboard-controls{
+    display:flex;
+    justify-content:space-between; /* key change */
+    align-items:center;
+    margin:25px 50px 20px;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.dashboard-controls input{
+    flex:1;
+    max-width:400px;   /* keeps it left aligned */
+    padding:12px 18px;
+    font-size:16px;
+    border:1px solid #d9efff;
+    border-radius:12px;
+    outline:none;
+    background:#fff;
+    box-shadow:0 3px 8px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.dashboard-controls select{
+    margin-left:auto;   /* pushes it to the right */
+    width:200px;
+    padding:12px 18px;
+    font-size:16px;
+    border:1px solid #d9efff;
+    border-radius:12px;
+    outline:none;
+    background:#fff;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.dashboard-controls input:focus,
+.dashboard-controls select:focus{
+    border-color:#0ea5e9;
+    box-shadow:0 0 8px rgba(14,165,233,0.3);
+}
+   .dashboard{
+      width:100%;
+      min-height: 80vh;
+      position: relative;
+      margin: 0;
+      padding-top: 40px;
+      }
+
+   .dashboard h1{
     text-align:center;
-    font-size: 2.5em;
-    color:#0ea5e9;
-    font-weight:700;
-    word-spacing: 5pX;
+    color:#222;
+    font-size: 2.5rem;
+    font-weight: bold;
+    word-spacing: 1px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+    }
+
 
    /* Container */
-.table-container{
+
+   .table-container{
     background:white;
     padding: 30px;
     border-radius:20px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
     margin-left: 50px;
     margin-right: 50px;
-}
-
-   /* Search */
-.search-bar{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:25px;
-}
+   }
 
    /* Table */
-table{
+
+   table{
     width:100%;
     border-collapse:separate;
     border-spacing:0 15px;
-}
+   }
 
-thead tr{
+   thead tr{
     background:#d9efff;
-}
+   }
 
-th{
+   th{
     padding:20px;
     font-size:20px;
     font-weight: bold;
     text-align:center;
-}
+   }
 
-thead tr th:first-child{
+   thead tr th:first-child{
     border-radius:12px 0 0 12px;
-}
+   }
 
-thead tr th:last-child{
+   thead tr th:last-child{
     border-radius:0 12px 12px 0;
-}
+   }
 
-.tbody{
+   .tbody{
    margin-top: 20px;
-}
+   }
 
-th,
-td {
+   th,
+   td {
     text-align: center; 
     vertical-align: middle; 
     padding: 10px;
     border: 1px solid #ddd;
+   }
+
+/* Center stats */
+.stats-boxes {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex: 1;
 }
 
+.stat-card {
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 5px 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 200px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    margin-top: 6px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.stat-card p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+    color: #007bff
+}
+
+#solvedIssues{
+    color: rgb(0, 200, 0);
+}
+  
 
 
-   /* ADMIN PANEL */
+/* ADMIN PANEL */
 
 .admin-panel{
     width:100%;
     min-height: 80vh;
-    background: #ffffff;
-    background-position: center;
-    background-size: cover;
     position: relative;
     margin: 0;
     padding-top: 40px;
@@ -644,14 +1029,21 @@ td {
 
 }
 
-.admin-panel h1{
-    text-align:center;
-    font-size: 2.5em;
-    color:#0ea5e9;
-    font-weight:700;
-    word-spacing: 5pX;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+      .admin-panel h2 {
+      text-align: center;
+      color:#222;
+      margin-bottom: 20px;
+      font-size: 34;
+      font-weight: 800;
+      }
+
+      .admin-panel h4 {
+      text-align: center;
+      color:#222;
+      margin-top: -20px;
+      font-size: 16;
+      text-decoration:underline;
+      }
 
 /* DASHBOARD PAGE HTML - END */
 
@@ -662,18 +1054,22 @@ td {
 
    /* Page Background */
       .login-container {
-      margin: 50px auto;
-      max-width: 700px;
+      margin: 30px auto;
+      max-width: 400px;
+      max-height:550px;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 35px;
+      padding: 45px;
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 15px 35px rgba(0,0,0,0.250);
       }
 
    /* Login Card */
       .login1 {
       width: 100%;
-      max-width: 420px;
+      max-width: 600px;
       background: #ffffff;
       padding: 35px;
       border-radius: 20px;
@@ -686,7 +1082,7 @@ td {
       text-align: center;
       font-size: 1.8rem;
       font-weight: bold;
-      color: #2563eb;
+      color: #0084ff;
       margin-bottom: 25px;
       }
 
@@ -822,24 +1218,20 @@ td {
 /* REGISTER PAGE HTML - START */
 
       .signup-container{
-      max-width:900px;
-      margin: 50px auto;
+      max-width:700px;
+      margin: -10px auto;
       display:flex;
       justify-content:center;
       align-items:center;
-      background: linear-gradient(rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0.6)), url("campus.jpg");
-      background-size:cover;
-      background-position:center;
       padding:35px;
       }
 
       .signup-box{
-      width:400px;
+      width:600px;
       background:#fff;
       padding:35px;
       border-radius:12px;
-      box-shadow:0 0 20px rgba(0,0,0,0.3);
+      box-shadow:0 15px 35px rgba(0,0,0,0.250);
       }
 
       .signup-box h2{
@@ -902,3 +1294,43 @@ td {
 
 
 /* REGISTER PAGE HTML - START */
+
+
+
+
+
+
+
+
+
+
+
+
+.popup-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+

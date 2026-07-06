@@ -1,105 +1,176 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>ResolveHub Login</title>
 
-    <!-- Navbar -->
-    <section class="header">
-        <nav>
-            <a href="index.html"><img src="logo.webp"></a>
-            <div class="nav-links">
-                <ul>
-                
-                <li><a href="index.html" class="active">HOME</a></li>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body id="pagedes">
+
+<!-- ================= Navbar ================= -->
+
+<section class="header">
+    <nav>
+        <a href="index.html">
+            <img src="logo.webp" alt="Logo">
+        </a>
+
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="reportissue.html">ISSUE</a></li>
                 <li><a href="dashboard.html">DASHBOARD</a></li>
                 <li><a href="adminpanel.html">ADMIN</a></li>
                 <li><a href="aboutus.html">ABOUT</a></li>
                 <li><a href="contactus.html">CONTACT</a></li>
-                <button class="register-btn" id="registerBtn">REGISTER</button>
-                <button class="login-btn" id="loginBtn">LOGIN</button>
-               
-                
-                </ul>
-            </div>
-        </nav>
-    </section>
+                <button class="register-btn" id="registerBtn"><span>REGISTER</span></button>
+                <button class="login-btn" id="loginBtn"><span>LOGIN</span></button>
+
+            </ul>
+        </div>
+    </nav>
+</section>
+
+<!-- ================= Login ================= -->
+
 <main>
-    <div class="login-container">
-    <div class="login1">
 
-    <div class="login-logo">
-        <i class="fa-solid fa-user-graduate"></i>
-        ResolveHub Portal
-    </div>
+<div class="login-container">
 
-   <div class="tabs">
-    <button class="tab active" onclick="showLogin('student')">
-        STUDENT LOGIN
-    </button>
+<div class="login-card">
 
-    <button class="tab" onclick="showLogin('admin')">
-        ADMIN LOGIN
-    </button>
+<div class="login-logo">
+    <i class="fa-solid fa-user-graduate"></i>
+    <h2>ResolveHub Portal</h2>
 </div>
 
-<div id="studentForm">
-    <h3>Student Login</h3>
-    <!-- Student Fields -->
+<!-- Tabs -->
+
+<div class="tabs">
+
+<button class="tab active" onclick="showLogin('student')">
+Student Login
+</button>
+
+<button class="tab" onclick="showLogin('admin')">
+Admin Login
+</button>
+
 </div>
 
-<div id="adminForm" style="display:none;">
-    <h3>Admin Login</h3>
-    <!-- Admin Fields -->
+<!-- ================= Student Form ================= -->
+
+<form id="studentForm">
+
+<h3>Student Login</h3>
+
+<label>Email</label>
+
+<div class="input-box">
+<i class="fa-solid fa-envelope"></i>
+<input
+type="email"
+name="studentEmail"
+placeholder="Enter your email"
+required>
 </div>
 
-    <div class="form-section">
+<label>Password</label>
 
-        <label>Email</label>
-
-        <div class="input-box">
-            <i class="fa-solid fa-envelope"></i>
-            <input type="email" placeholder="Enter your email">
-        </div>
-
-        <label>Password</label>
-
-        <div class="input-box">
-            <i class="fa-solid fa-lock"></i>
-            <input type="password" id="password" placeholder="Enter your password">
-        </div>
-
-        <div class="show-password">
-            <input type="checkbox" id="showPass"
-                   onclick="togglePassword()">
-            <label for="showPass">Show Password</label>
-        </div>
-
-        <button class="loginpage-btn">LOGIN</button>
-
-        <div class="forgot">
-            <a href="#">Forgot Password?</a>
-        </div
-        >
-        <div class="register-link">
-                New to ResolveHub?
-                <a href="register.html">Login</a>
-            </div>
-
-    </div>
+<div class="input-box">
+<i class="fa-solid fa-lock"></i>
+<input
+type="password"
+id="studentPassword"
+placeholder="Enter password"
+required>
 </div>
-</div>
-    </main>
-    <footer class="site-footer">
-        <p>© 2026 My Website
-            <br>
-            All Rights Reserved
-        </p>
-    </footer>
 
-    <script src="script.js"></script>
-    </body>
-    </html>
+<div class="show-password">
+<input
+type="checkbox"
+onclick="togglePassword('studentPassword')">
+<label>Show Password</label>
+</div>
+
+<button type="submit" class="loginpage-btn">
+LOGIN
+</button>
+
+<div class="forgot">
+<a href="#">Forgot Password?</a>
+</div>
+
+<div class="register-link">
+New to ResolveHub?
+<a href="register.html">Register</a>
+</div>
+
+</form>
+
+<!-- ================= Admin Form ================= -->
+
+<form id="adminForm" style="display:none;">
+
+<h3>Admin Login</h3>
+
+<label>Admin Email</label>
+
+<div class="input-box">
+<i class="fa-solid fa-envelope"></i>
+<input
+type="email"
+name="adminEmail"
+placeholder="Enter admin email"
+required>
+</div>
+
+<label>Password</label>
+
+<div class="input-box">
+<i class="fa-solid fa-lock"></i>
+<input
+type="password"
+id="adminPassword"
+placeholder="Enter password"
+required>
+</div>
+
+<div class="show-password">
+<input
+type="checkbox"
+onclick="togglePassword('adminPassword')">
+<label>Show Password</label>
+</div>
+
+<button type="submit" class="loginpage-btn">
+ADMIN LOGIN
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</main>
+
+<!-- ================= Footer ================= -->
+
+<footer class="site-footer">
+<p>
+© 2026 ResolveHub<br>
+All Rights Reserved
+</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

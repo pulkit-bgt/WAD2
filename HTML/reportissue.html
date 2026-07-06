@@ -4,7 +4,7 @@
     <title>Report Issue</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="pagedes">
 
     <section class="header">
         <nav>
@@ -18,53 +18,106 @@
                 <li><a href="adminpanel.html">ADMIN</a></li>
                 <li><a href="aboutus.html">ABOUT</a></li>
                 <li><a href="contactus.html">CONTACT</a></li>
-                <button class="register-btn" id="registerBtn">REGISTER</button>
-                <button class="login-btn" id="loginBtn">LOGIN</button>
+                <button class="register-btn" id="registerBtn"><span>REGISTER</span></button>
+                <button class="login-btn" id="loginBtn"><span>LOGIN</span></button>
                
-                
                 </ul>
             </div>
         </nav>
     </section>
 
-<div class="issuecontainer">
-    <h2>Report Campus Issue</h2>
+<section class="reportpanel">
+<h2>REPORT ISSUE</h2>
+<h4>Report your campus issue here.</h4>
 
-    <form id="issueForm">
+    <form class="rpissue">
 
-        <label>Category</label>   
-        <select id="category">
-            <option>Facilities</option>
-            <option>Academic</option>
-            <option>IT</option>
-            <option>Housing</option>
-            <option>Safety</option>
-        </select>
+        <div class="top-section">
 
-        <label>Title</label>
-        <input type="text" id="title" required>
+            <!-- Category Card -->
+            <div class="card category-card">
 
-        <label>Description</label>
-        <textarea id="description"></textarea>
+                <label>Category :</label>
 
-        <label>Location</label>
-        <input type="text" id="location">
+                <select class="cdd">
+                    <option>Facilities</option>
+                    <option>Wi-Fi</option>
+                    <option>Library</option>
+                    <option>Laboratory</option>
+                    <option>Parking</option>
+                    <option>Canteen</option>
+                    <option>Water Supply</option>
+                    <option>Electricity</option>
+                    <option>Classroom</option>
+                </select>
 
-        <label>Priority</label>
-        <select id="priority">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-            <option>Critical</option>
-        </select>
+                <label>Title :</label>
 
-        <button type="submit">Submit Report</button>
+                <input type="textti" placeholder="Enter issue title">
+
+            </div>
+
+            <!-- Description Card -->
+            <div class="card description-card">
+
+                <label>Description :</label>
+
+                <textarea placeholder="Describe the issue..."></textarea>
+
+                <input type="file">
+
+            </div>
+
+        </div>
+
+        <div class="bottom-section">
+
+            <!-- Priority -->
+            <div class="card priority-card">
+
+    <label>Priority :</label>
+
+    <div class="priority-buttons">
+
+        <input type="radio" id="low" name="priority" value="Low" hidden>
+        <label for="low" class="priority-btn low">Low</label>
+
+        <input type="radio" id="medium" name="priority" value="Medium" hidden>
+        <label for="medium" class="priority-btn medium">Medium</label>
+
+        <input type="radio" id="high" name="priority" value="High" hidden>
+        <label for="high" class="priority-btn high">High</label>
+
+        <input type="radio" id="critical" name="priority" value="Critical" hidden>
+        <label for="critical" class="priority-btn critical">Critical</label>
+
+    </div>
+
+</div>
+
+            <!-- Location -->
+            <div class="card location-card">
+
+                <label>Location :</label>
+
+                <textarea placeholder="Mention issue location"></textarea>
+
+            </div>
+
+        </div>
+
+        <div class="submit-area">
+
+            <button type="submit" class="submit-btn">
+                Submit Report
+            </button>
+
+        </div>
 
     </form>
-        <a href="dashboard.html" class="b-dashboard-btn">
-        View Dashboard
-    </a>
+
 </div>
+</section>
 
 <footer class="site-footer">
         <p>© 2026 My Website
