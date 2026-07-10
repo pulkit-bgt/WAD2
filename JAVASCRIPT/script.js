@@ -1,35 +1,3 @@
-
-// Sample announcements shown on the home page
-let announcements = [
-  {
-    title: "Library Timings Extended",
-    message: "The college library will remain open until 8:00 PM from Monday.",
-    date: "2026-06-19"
-  },
-  {
-    title: "Internal Exam Notice",
-    message: "Internal exams will begin from next week. Check the timetable on the notice board.",
-    date: "2026-06-20"
-  }
-];
-
-// Sample events
-let events = [
-  {
-    name: "Tech Fest 2026",
-    description: "A college-level technical event with coding, quiz, and project exhibition.",
-    date: "2026-06-25",
-    venue: "Main Auditorium"
-  },
-  {
-    name: "Sports Day",
-    description: "Annual sports day with indoor and outdoor games.",
-    date: "2026-06-28",
-    venue: "College Ground"
-  }
-];
-
-
 // Utility Functions
 
 
@@ -156,57 +124,6 @@ function displayUserName() {
   if (user && document.getElementById("studentName")) {
     document.getElementById("studentName").innerText = user.name;
   }
-}
-
-
-// Announcement Section
-
-
-function displayAnnouncements() {
-  const announcementBox = document.getElementById("announcementList");
-
-  // Stop function if announcementList element is not found
-  if (!announcementBox) {
-    return;
-  }
-
-  announcementBox.innerHTML = "";
-
-  announcements.forEach(function(item) {
-    const card = document.createElement("div");
-    card.className = "announcement-card";
-
-    card.innerHTML = `
-      <h3>${item.title}</h3>
-      <p>${item.message}</p>
-      <small>Date: ${item.date}</small>
-    `;
-
-    announcementBox.appendChild(card);
-  });
-}
-
-function addAnnouncement() {
-  const title = document.getElementById("announcementTitle").value;
-  const message = document.getElementById("announcementMessage").value;
-  const date = document.getElementById("announcementDate").value;
-
-  if (title === "" || message === "" || date === "") {
-    alert("Please fill all announcement fields.");
-    return;
-  }
-
-  const newAnnouncement = {
-    title: title,
-    message: message,
-    date: date
-  };
-
-  announcements.push(newAnnouncement);
-
-  alert("Announcement added successfully.");
-
-  displayAnnouncements();
 }
 
 
