@@ -1,30 +1,33 @@
 // Utility Functions
 
-
 // This function saves data into browser localStorage
-function saveData(key, data) {
+function saveData(key, data) 
+{
   localStorage.setItem(key, JSON.stringify(data));
 }
 
 // This function gets data from browser localStorage
-function getData(key) {
+function getData(key) 
+{
   return JSON.parse(localStorage.getItem(key));
 }
 
 // This function checks whether a user is logged in
-function isLoggedIn() {
+function isLoggedIn()
+ {
   return localStorage.getItem("loggedInUser") !== null;
 }
 
-
-function registerUser() {
+function registerUser()
+ {
   // Get input values from the signup form
   const name = document.getElementById("registerName").value;
   const email = document.getElementById("registerEmail").value;
   const password = document.getElementById("registerPassword").value;
 
   // Basic validation
-  if (name === "" || email === "" || password === "") {
+  if (name === "" || email === "" || password === "") 
+{
     alert("Please fill all registration fields.");
     return;
   }
@@ -33,22 +36,24 @@ function registerUser() {
   let users = getData("users") || [];
 
   // Check if email already exists
-  const existingUser = users.find(function(user) {
+  const existingUser = users.find(function(user) 
+{
     return user.email === email;
   });
 
-  if (existingUser) {
+  if (existingUser) 
+{
     alert("This email is already registered.");
     return;
   }
 
   // Create a new user object
-  const newUser = {
+  const newUser = 
+{
     name: name,
     email: email,
     password: password
   };
-
 
   // Add new user to users array
   users.push(newUser);
@@ -64,17 +69,17 @@ function registerUser() {
   document.getElementById("registerPassword").value = "";
 }
 
-
 // Login Function
 
-
-function loginUser() {
+function loginUser() 
+{
   // Get input values from login form
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
   // Basic validation
-  if (email === "" || password === "") {
+  if (email === "" || password === "") 
+{
     alert("Please enter email and password.");
     return;
   }
@@ -83,7 +88,8 @@ function loginUser() {
   let users = getData("users") || [];
 
   // Check if user exists
-  const validUser = users.find(function(user) {
+  const validUser = users.find(function(user) 
+{
     return user.email === email && user.password === password;
   });
 
@@ -100,11 +106,10 @@ function loginUser() {
   }
 }
 
-
 // Logout Function
 
-
-function logoutUser() {
+function logoutUser() 
+{
   // Remove logged-in user from localStorage
   localStorage.removeItem("loggedInUser");
 
@@ -114,32 +119,36 @@ function logoutUser() {
   window.location.href = "login.html";
 }
 
-
 // Display Logged-In User Name
 
-
-function displayUserName() {
+function displayUserName() 
+{
   const user = getData("loggedInUser");
+  const studentName = document.getElementById("studentName");
 
-  if (user && document.getElementById("studentName")) {
-    document.getElementById("studentName").innerText = user.name;
+  if (user && studentName)
+ {
+    studentName.innerText = user.name;
   }
 }
 
-
 // Events Section
 
-
-function displayEvents() {
+function displayEvents()
+ {
   const eventBox = document.getElementById("eventList");
 
-  if (!eventBox) {
+  if (!eventBox)
+ {
     return;
   }
 
+  const events = getData("events") || [];
+
   eventBox.innerHTML = "";
 
-  events.forEach(function(event) {
+  events.forEach(function(event) 
+{
     const card = document.createElement("div");
     card.className = "event-card";
 
@@ -154,23 +163,24 @@ function displayEvents() {
   });
 }
 
-
 // Feedback Form Section
 
-
-function submitFeedback() {
+function submitFeedback() 
+{
   const name = document.getElementById("feedbackName").value;
   const category = document.getElementById("feedbackCategory").value;
   const message = document.getElementById("feedbackMessage").value;
 
-  if (name === "" || category === "" || message === "") {
+  if (name === "" || category === "" || message === "") 
+{
     alert("Please fill all feedback fields.");
     return;
   }
 
   let feedbackList = getData("feedbackList") || [];
 
-  const feedback = {
+  const feedback = 
+{
     name: name,
     category: category,
     message: message,
@@ -190,10 +200,12 @@ function submitFeedback() {
   displayFeedback();
 }
 
-function displayFeedback() {
+function displayFeedback()
+ {
   const feedbackBox = document.getElementById("feedbackList");
 
-  if (!feedbackBox) {
+  if (!feedbackBox) 
+{
     return;
   }
 
@@ -201,7 +213,8 @@ function displayFeedback() {
 
   feedbackBox.innerHTML = "";
 
-  feedbackList.forEach(function(feedback) {
+  feedbackList.forEach(function(feedback) 
+{
     const card = document.createElement("div");
     card.className = "feedback-card";
 
@@ -215,23 +228,24 @@ function displayFeedback() {
   });
 }
 
-
 // Lost and Found Section
 
-
-function addLostFoundItem() {
+function addLostFoundItem()
+ {
   const itemName = document.getElementById("itemName").value;
   const itemDescription = document.getElementById("itemDescription").value;
   const contact = document.getElementById("contactInfo").value;
 
-  if (itemName === "" || itemDescription === "" || contact === "") {
+  if (itemName === "" || itemDescription === "" || contact === "") 
+{
     alert("Please fill all lost and found fields.");
     return;
   }
 
   let lostFoundItems = getData("lostFoundItems") || [];
 
-  const item = {
+  const item = 
+{
     itemName: itemName,
     itemDescription: itemDescription,
     contact: contact,
@@ -251,10 +265,12 @@ function addLostFoundItem() {
   displayLostFoundItems();
 }
 
-function displayLostFoundItems() {
+function displayLostFoundItems() 
+{
   const itemBox = document.getElementById("lostFoundList");
 
-  if (!itemBox) {
+  if (!itemBox) 
+{
     return;
   }
 
@@ -262,7 +278,8 @@ function displayLostFoundItems() {
 
   itemBox.innerHTML = "";
 
-  lostFoundItems.forEach(function(item) {
+  lostFoundItems.forEach(function(item)
+ {
     const card = document.createElement("div");
     card.className = "lost-found-card";
 
@@ -277,16 +294,18 @@ function displayLostFoundItems() {
   });
 }
 
-
 // Page Load Function
 
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() 
+{
   // Display logged-in student name if available
   displayUserName();
 
-  // Display announcements
-  displayAnnouncements();
+  // Display announcements only if this function exists in another script
+  if (typeof displayAnnouncements === "function") 
+{
+    displayAnnouncements();
+  }
 
   // Display events
   displayEvents();
@@ -298,354 +317,389 @@ document.addEventListener("DOMContentLoaded", function() {
   displayLostFoundItems();
 });
 
-
-
 /* SHOW PASSWORD */
 
-function togglePassword(){
+function togglePassword() 
+{
+  const password =
+    document.getElementById("password") ||
+    document.getElementById("loginPassword") ||
+    document.getElementById("registerPassword");
 
-    let password =
-    document.getElementById("password");
+  if (!password) 
+{
+    return;
+  }
 
-    password.style.opacity="0.5";
+  password.style.opacity = "0.5";
 
-    setTimeout(() => {
+  setTimeout(() => 
+{
+    if (password.type === "password") 
+{
+      password.type = "text";
+    } else 
+{
+      password.type = "password";
+    }
 
-        if(password.type==="password"){
-            password.type="text";
-        }
-        else{
-            password.type="password";
-        }
-
-        password.style.opacity="1";
-
-    },150);
+    password.style.opacity = "1";
+  }, 150);
 }
 
-
-
-/* SWTICH BETWEEN ADMIN LOGIN AND STUDENT LOGIN */
+/* SWITCH BETWEEN ADMIN LOGIN AND STUDENT LOGIN */
 
 function showLogin(type) {
+  const tabs = document.querySelectorAll(".tab");
+  const studentForm = document.getElementById("studentForm");
+  const adminForm = document.getElementById("adminForm");
 
-    const tabs = document.querySelectorAll(".tab");
+  if (!studentForm || !adminForm || tabs.length < 2) {
+    return;
+  }
 
-    tabs.forEach(tab => tab.classList.remove("active"));
+  tabs.forEach(tab => tab.classList.remove("active"));
 
-    if(type === "student") {
+  if (type === "student") 
+{
+    tabs[0].classList.add("active");
 
-        tabs[0].classList.add("active");
+    studentForm.style.display = "block";
+    adminForm.style.display = "none";
+  } else 
+{
+    tabs[1].classList.add("active");
 
-        document.getElementById("studentForm").style.display = "block";
-        document.getElementById("adminForm").style.display = "none";
-
-    } else {
-
-        tabs[1].classList.add("active");
-
-        document.getElementById("studentForm").style.display = "none";
-        document.getElementById("adminForm").style.display = "block";
-    }
+    studentForm.style.display = "none";
+    adminForm.style.display = "block";
+  }
 }
-
-
 
 /* STORE ISSUES AT LOCAL STORAGE */
 
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector(".rpissue");
+document.addEventListener("DOMContentLoaded", () => 
+{
+  const form = document.querySelector(".rpissue");
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
+  if (!form) 
+{
+    return;
+  }
 
-        // Get values from form
-        const category = document.querySelector(".cdd").value;
-        const title = document.querySelector(".category-card input[type='textti']").value;
-        const description = document.querySelector(".description-card textarea").value;
-        const location = document.querySelector(".location-card textarea").value;
+  form.addEventListener("submit", function(e) 
+{
+    e.preventDefault();
 
-        // Get selected priority
-        const priority =
-            document.querySelector("input[name='priority']:checked")?.value || "Not Set";
+    // Get values from form
+    const category = document.querySelector(".cdd").value;
+    const title = document.querySelector(".category-card input[type='text']").value;
+    const description = document.querySelector(".description-card textarea").value;
+    const location = document.querySelector(".location-card textarea").value;
 
-        // Create issue object (IMPORTANT FIX HERE)
-        const issue = {
-            id: Date.now(),
-            category,
-            title,
-            description,
-            location,
-            priority,
-            date: new Date().toLocaleString(),
+    // Get selected priority
+    const priority =
+      document.querySelector("input[name='priority']:checked")?.value || "Not Set";
 
-            // ✅ DEFAULT STATUS ADDED
-            status: "pending"
-        };
+    // Create issue object
+    const issue = 
+{
+      id: Date.now(),
+      category,
+      title,
+      description,
+      location,
+      priority,
+      date: new Date().toLocaleString(),
+      status: "pending"
+    };
 
-        // Get existing issues from localStorage
-        let issues = JSON.parse(localStorage.getItem("issues")) || [];
-
-        // Add new issue
-        issues.push(issue);
-
-        // Save back to localStorage
-        localStorage.setItem("issues", JSON.stringify(issues));
-
-        // Show popup message
-        alert("Issue submitted successfully");
-
-        // Redirect to dashboard
-        window.location.href = "dashboard.html";
-    });
-});
-
-
-    // Display all issues
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const tableBody = document.getElementById("issueTable");
-    const searchInput = document.getElementById("searchInput");
-    const filterSelect = document.getElementById("filterSelect");
-
-    const totalIssuesBox = document.getElementById("totalIssues");
-    const solvedIssuesBox = document.getElementById("solvedIssues");
-
+    // Get existing issues from localStorage
     let issues = JSON.parse(localStorage.getItem("issues")) || [];
 
-    function updateStats(data) {
+    // Add new issue
+    issues.push(issue);
 
-        totalIssuesBox.textContent = data.length;
+    // Save back to localStorage
+    localStorage.setItem("issues", JSON.stringify(issues));
 
-        solvedIssuesBox.textContent = data.filter(issue =>
-            (issue.status || "").toLowerCase() === "solved"
-        ).length;
+    // Show popup message
+    alert("Issue submitted successfully");
+
+    // Redirect to dashboard
+    window.location.href = "dashboard.html";
+  });
+});
+
+// Display all issues
+
+document.addEventListener("DOMContentLoaded", function() 
+{
+  const tableBody = document.getElementById("issueTable");
+  const searchInput = document.getElementById("searchInput");
+  const filterSelect = document.getElementById("filterSelect");
+
+  const totalIssuesBox = document.getElementById("totalIssues");
+  const solvedIssuesBox = document.getElementById("solvedIssues");
+
+  if (!tableBody || !searchInput || !filterSelect || !totalIssuesBox || !solvedIssuesBox) 
+{
+    return;
+  }
+
+  let issues = JSON.parse(localStorage.getItem("issues")) || [];
+
+  function updateStats(data) 
+{
+    totalIssuesBox.textContent = data.length;
+
+    solvedIssuesBox.textContent = data.filter(issue =>
+      (issue.status || "").toLowerCase() === "solved"
+    ).length;
+  }
+
+  function renderIssues() 
+{
+    const searchText = searchInput.value.toLowerCase().trim();
+    const filterValue = filterSelect.value.toLowerCase();
+
+    let filtered = issues.filter(issue => 
+{
+      const idMatch = issue.id.toString().includes(searchText);
+      const titleMatch = issue.title.toLowerCase().includes(searchText);
+      const categoryMatch = issue.category.toLowerCase().includes(searchText);
+      const searchMatch = idMatch || titleMatch || categoryMatch;
+      const status = (issue.status || "").toLowerCase().trim();
+      const filterMatch =
+        filterValue === "all" || status === filterValue;
+
+      return searchMatch && filterMatch;
+    });
+
+    tableBody.innerHTML = "";
+
+    if (filtered.length === 0) 
+{
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="7" style="text-align:center;">
+            No issues found
+          </td>
+        </tr>
+      `;
+      updateStats(filtered);
+      return;
     }
 
-    function renderIssues() {
+    filtered.forEach(issue => 
+{
+      const row = document.createElement("tr");
 
-        const searchText = searchInput.value.toLowerCase().trim();
-        const filterValue = filterSelect.value.toLowerCase();
+      row.innerHTML = `
+        <td>${issue.id}</td>
+        <td>${issue.title}</td>
+        <td>${issue.category}</td>
+        <td>${issue.description}</td>
+        <td>${issue.date}</td>
+        <td>${issue.priority}</td>
+        <td>
+          <span class="status ${issue.status || "pending"}">
+            ${issue.status || "pending"}
+          </span>
+        </td>
+      `;
 
-        let filtered = issues.filter(issue => {
+      tableBody.appendChild(row);
+    });
 
-            const idMatch = issue.id.toString().includes(searchText);
+    updateStats(filtered);
+  }
 
-            const titleMatch = issue.title.toLowerCase().includes(searchText);
+  // Events
+  searchInput.addEventListener("input", renderIssues);
+  filterSelect.addEventListener("change", renderIssues);
 
-            const categoryMatch = issue.category.toLowerCase().includes(searchText);
-
-            const searchMatch = idMatch || titleMatch || categoryMatch;
-
-            const status = (issue.status || "").toLowerCase().trim();
-
-            const filterMatch =
-                filterValue === "all" || status === filterValue;
-
-            return searchMatch && filterMatch;
-        });
-
-        tableBody.innerHTML = "";
-
-        if (filtered.length === 0) {
-            tableBody.innerHTML = `
-                <tr>
-                    <td colspan="7" style="text-align:center;">
-                        No issues found
-                    </td>
-                </tr>
-            `;
-            updateStats(filtered);
-            return;
-        }
-
-        filtered.forEach(issue => {
-
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-                <td>${issue.id}</td>
-                <td>${issue.title}</td>
-                <td>${issue.category}</td>
-                <td>${issue.description}</td>
-                <td>${issue.date}</td>
-                <td>${issue.priority}</td>
-                <td>
-                    <span class="status ${(issue.status || "pending")}">
-                        ${(issue.status || "pending")}
-                    </span>
-                </td>
-            `;
-
-            tableBody.appendChild(row);
-        });
-
-        updateStats(filtered);
-    }
-
-    // Events
-    searchInput.addEventListener("input", renderIssues);
-    filterSelect.addEventListener("change", renderIssues);
-
-    // Initial load
-    renderIssues();
-
+  // Initial load
+  renderIssues();
 });
 
 /* ADMIN PANEL */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() 
+{
+  const tableBody = document.getElementById("adminIssueTable");
 
-    const tableBody = document.getElementById("adminIssueTable");
+  const totalIssues = document.getElementById("totalIssues");
+  const solvedIssues = document.getElementById("solvedIssues");
 
-    const totalIssues = document.getElementById("totalIssues");
-    const solvedIssues = document.getElementById("solvedIssues");
+  const searchInput = document.getElementById("searchInput");
+  const filterSelect = document.getElementById("filterSelect");
 
-    const searchInput = document.getElementById("searchInput");
-    const filterSelect = document.getElementById("filterSelect");
+  if (!tableBody || !totalIssues || !solvedIssues || !searchInput || !filterSelect) 
+{
+    return;
+  }
 
-    let issues = JSON.parse(localStorage.getItem("issues")) || [];
+  let issues = JSON.parse(localStorage.getItem("issues")) || [];
 
-    function saveIssues() {
-        localStorage.setItem("issues", JSON.stringify(issues));
-    }
+  function saveIssues() 
+{
+    localStorage.setItem("issues", JSON.stringify(issues));
+  }
 
-    function updateStats() {
-        totalIssues.textContent = issues.length;
+  function updateStats() 
+{
+    totalIssues.textContent = issues.length;
 
-        solvedIssues.textContent = issues.filter(issue =>
-            issue.status === "solved"
-        ).length;
-    }
+    solvedIssues.textContent = issues.filter(issue =>
+      issue.status === "solved"
+    ).length;
+  }
 
-    function renderIssues() {
-
+  function renderIssues() 
+{
     tableBody.innerHTML = "";
 
-    let filteredIssues = issues.filter(issue => {
+    let filteredIssues = issues.filter(issue => 
+{
+      const searchText = searchInput.value.toLowerCase().trim();
 
-        const searchText = searchInput.value.toLowerCase().trim();
+      const searchMatch =
+        issue.id.toString().includes(searchText) ||
+        issue.title.toLowerCase().includes(searchText) ||
+        issue.category.toLowerCase().includes(searchText);
 
-        const searchMatch =
-            issue.id.toString().includes(searchText) ||
-            issue.title.toLowerCase().includes(searchText) ||
-            issue.category.toLowerCase().includes(searchText);
+      const filterMatch =
+        filterSelect.value === "all" ||
+        issue.status === filterSelect.value;
 
-        const filterMatch =
-            filterSelect.value === "all" ||
-            issue.status === filterSelect.value;
-
-        return searchMatch && filterMatch;
-
+      return searchMatch && filterMatch;
     });
 
-        if (filteredIssues.length === 0) {
+    if (filteredIssues.length === 0) 
+{
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="8" style="text-align:center;">
+            No issues found
+          </td>
+        </tr>
+      `;
 
-            tableBody.innerHTML = `
-                <tr>
-                    <td colspan="8" style="text-align:center;">
-                        No issues found
-                    </td>
-                </tr>
-            `;
-
-            return;
-        }
-
-        filteredIssues.forEach(issue => {
-
-            const originalIndex = issues.findIndex(i => i.id === issue.id);
-
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-                <td>${issue.id}</td>
-                <td>${issue.title}</td>
-                <td>${issue.category}</td>
-                <td>${issue.description}</td>
-                <td>${issue.date}</td>
-                <td>${issue.priority}</td>
-
-                <td>
-                    <select class="statusSelect" data-index="${originalIndex}">
-                        <option value="pending" ${issue.status==="pending"?"selected":""}>Pending</option>
-                        <option value="approved" ${issue.status==="approved"?"selected":""}>Approved</option>
-                        <option value="in-progress" ${issue.status==="in-progress"?"selected":""}>In Progress</option>
-                        <option value="solved" ${issue.status==="solved"?"selected":""}>Solved</option>
-                    </select>
-                </td>
-
-                <td>
-                    <button class="deleteBtn" data-index="${originalIndex}">
-                        Delete
-                    </button>
-                </td>
-            `;
-
-            tableBody.appendChild(row);
-
-        });
-
-        updateStats();
+      updateStats();
+      return;
     }
 
-    tableBody.addEventListener("change", function (e) {
+    filteredIssues.forEach(issue =>
+{
+      const originalIndex = issues.findIndex(i => i.id === issue.id);
+      const row = document.createElement("tr");
 
-        if (e.target.classList.contains("statusSelect")) {
+      row.innerHTML = `
+        <td>${issue.id}</td>
+        <td>${issue.title}</td>
+        <td>${issue.category}</td>
+        <td>${issue.description}</td>
+        <td>${issue.date}</td>
+        <td>${issue.priority}</td>
 
-            const index = e.target.dataset.index;
+        <td>
+          <select class="statusSelect" data-index="${originalIndex}">
+            <option value="pending" ${issue.status === "pending" ? "selected" : ""}>Pending</option>
+            <option value="approved" ${issue.status === "approved" ? "selected" : ""}>Approved</option>
+            <option value="in-progress" ${issue.status === "in-progress" ? "selected" : ""}>In Progress</option>
+            <option value="solved" ${issue.status === "solved" ? "selected" : ""}>Solved</option>
+          </select>
+        </td>
 
-            issues[index].status = e.target.value;
+        <td>
+          <button class="deleteBtn" data-index="${originalIndex}">
+            Delete
+          </button>
+        </td>
+      `;
 
-            saveIssues();
-
-            renderIssues();
-        }
-
+      tableBody.appendChild(row);
     });
 
-    tableBody.addEventListener("click", function (e) {
+    updateStats();
+  }
 
-        if (e.target.classList.contains("deleteBtn")) {
+  tableBody.addEventListener("change", function(e) 
+{
+    if (e.target.classList.contains("statusSelect")) 
+{
+      const index = e.target.dataset.index;
 
-            const index = e.target.dataset.index;
+      issues[index].status = e.target.value;
 
-            if (confirm("Delete this issue?")) {
+      saveIssues();
 
-                issues.splice(index, 1);
+      renderIssues();
+    }
+  });
 
-                saveIssues();
+  tableBody.addEventListener("click", function(e) 
+{
+    if (e.target.classList.contains("deleteBtn")) 
+{
+      const index = e.target.dataset.index;
 
-                renderIssues();
-            }
-        }
+      if (confirm("Delete this issue?")) 
+{
+        issues.splice(index, 1);
 
-    });
+        saveIssues();
 
-    searchInput.addEventListener("input", renderIssues);
+        renderIssues();
+      }
+    }
+  });
 
-    filterSelect.addEventListener("change", renderIssues);
+  searchInput.addEventListener("input", renderIssues);
 
-    renderIssues();
+  filterSelect.addEventListener("change", renderIssues);
 
+  renderIssues();
 });
 
 /* BUTTONS */
 
+document.addEventListener("DOMContentLoaded", function() 
+{
+  const registerBtn = document.getElementById("registerBtn");
+  const loginBtn = document.getElementById("loginBtn");
+  const reportissueBtn = document.getElementById("reportissueBtn");
+  const viewdashboardBtn = document.getElementById("viewdashboardBtn");
 
-  document.getElementById("registerBtn").addEventListener("click", function () {
-    window.location.href = "register.html";
-  });
+  if (registerBtn) 
+{
+    registerBtn.addEventListener("click", function() 
+{
+      window.location.href = "register.html";
+    });
+  }
 
-  document.getElementById("loginBtn").addEventListener("click", function () {
-    window.location.href = "login.html";
-  });
+  if (loginBtn) 
+{
+    loginBtn.addEventListener("click", function() 
+{
+      window.location.href = "login.html";
+    });
+  }
 
-  document.getElementById("reportissueBtn").addEventListener("click", function () {
-    window.location.href = "reportissue.html";
-  });
+  if (reportissueBtn) 
+{
+    reportissueBtn.addEventListener("click", function() 
+{
+      window.location.href = "reportissue.html";
+    });
+  }
 
-  document.getElementById("viewdashboardBtn").addEventListener("click", function () {
-    window.location.href = "dashboard.html";
-  });
+  if (viewdashboardBtn) 
+{
+    viewdashboardBtn.addEventListener("click", function() 
+{
+      window.location.href = "dashboard.html";
+    });
+  }
+});
