@@ -1,5 +1,4 @@
 // Utility Functions
-
 // This function saves data into browser localStorage
 function saveData(key, data) 
 {
