@@ -1,4 +1,5 @@
 // Utility Functions
+
 // This function saves data into browser localStorage
 function saveData(key, data) 
 {
@@ -72,17 +73,42 @@ function registerUser()
 
 function loginUser() 
 {
-  // Get input values from login form
-  const email = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
+  const emailInput =
+    document.getElementById("email") ||
+    document.getElementById("loginEmail");
 
-  // Basic validation
+  const passwordInput =
+    document.getElementById("password") ||
+    document.getElementById("loginPassword");
+
+  if (!emailInput || !passwordInput) return;
+
+  const email = emailInput.value.trim().toLowerCase();
+  const password = passwordInput.value;
+
   if (email === "" || password === "") 
 {
     alert("Please enter email and password.");
     return;
   }
 
+  const users = getData("users") || [];
+
+  const validUser = users.find(function (user) 
+{
+    return user.email.toLowerCase() === email && user.password === password;
+  });
+
+  if (validUser) 
+{
+    localStorage.setItem("loggedInUser", JSON.stringify(validUser));
+    window.location.href = "login-success.html";
+  } 
+else 
+{
+    alert("Invalid email or password.");
+  }
+}
   // Get registered users
   let users = getData("users") || [];
 
@@ -700,5 +726,24 @@ document.addEventListener("DOMContentLoaded", function()
 {
       window.location.href = "dashboard.html";
     });
+  }
+});
+document.addEventListener("DOMContentLoaded", function () 
+{
+  const loginForm = document.getElementById("loginForm");
+  const showPassword = document.getElementById("showPassword");
+
+  if (loginForm) 
+{
+    loginForm.addEventListener("submit", function (event) 
+{
+      event.preventDefault();
+      loginUser();
+    });
+  }
+
+  if (showPassword) 
+{
+    showPassword.addEventListener("change", togglePassword);
   }
 });
