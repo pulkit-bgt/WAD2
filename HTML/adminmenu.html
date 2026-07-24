@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<section class="header">
+    <nav>
+        <div class="logo">
+            <img src="logo.webp" alt="Logo">
+        </div>
+        
+        <div class="header-right">
+            <div class="notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span class="badge">0</span>
+            </div>
+
+            <!-- Admin Info Box -->
+            <div class="student-card">
+                <div class="student-details">
+                    <h2 id="username">Admin</h2>
+                    <p>Role: <span id="rollno">Administrator</span></p>
+                </div>
+                <div class="profile-pic">
+                    <img src="profile.png" alt="Profile Picture">
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="main-body">
+    <div class="page-top-bar">
+        <div class="page-heading-group">
+            <h2 class="page-name">Admin Control Panel</h2>
+            <p style="color: #666; font-weight: 500; margin-top: 5px;">Manage and update all campus issues.</p>
+        </div>
+<div class="switches">
+    <select class="menu" onchange="handleMenuSwitch(this)">
+        <option value="" disabled selected>Admin Menu</option>
+        <option value="registeredstudents.html">Registered Students</option>
+        <option value="logout">Logout</option>
+    </select>
+</div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+        <div class="student-menu-layout">
+            
+            <!-- Left Side: Admin Profile Sidebar -->
+            <div class="profile-sidebar">
+                <div class="profile-pic-wrapper">
+                    <img src="profile.png" alt="Admin Picture" class="circle-pic" id="sidebar-profile-pic">
+                </div>
+                <div class="profile-details">
+                    <p>NAME : <span id="page-username">Admin User</span></p>
+                    <p>ROLE : <span>System Administrator</span></p>
+                    <p>DEPARTMENT : <span>Campus Management</span></p>
+                    <p>EMAIL: <span id="page-email">admin@resolvehub.com</span></p>
+                </div>
+                <button id="editProfileBtn" class="edit-btn">Edit Profile</button>
+            </div>
+
+            <!-- Right Side: Stats & Admin Issue Management Table -->
+            <div class="right-content">
+                
+                <!-- Top Stats Row -->
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <h3>TOTAL ISSUES</h3>
+                        <p id="adminTotalIssues">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>ISSUES SOLVED</h3>
+                        <p id="adminSolvedIssues">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>ISSUES PENDING</h3>
+                        <p id="adminPendingIssues">0</p>
+                    </div>
+                </div>
+
+                <!-- Bottom Table Container -->
+                <div class="issues-table-container">
+                    <div class="table-header">
+                        <h3>MANAGE REPORTED ISSUES</h3>
+                    </div>
+                    
+                    <div class="dashboard-controls-student">
+                        <input type="text" id="adminSearchInput" placeholder="Search issues by ID or Title...">
+                        <select id="adminFilterSelect">
+                            <option value="all">All</option>
+                            <option value="pending">Pending</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="in progress">In Progress</option>
+                            <option value="solved">Solved</option>
+                        </select>
+                    </div>
+
+<div class="table-container-student" style="overflow-x: auto;">
+    <table id="issueTableData">
+        <thead>
+            <tr>
+                <th>Issue ID</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Reported By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="adminIssueTable"></tbody>
+    </table>
+</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Edit Profile Modal (Reused for Admin) -->
+<div id="editProfileModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Edit Admin Profile</h2>
+        <form id="editProfileForm">
+            <div class="form-group">
+                <label for="editPic">Profile Picture:</label>
+                <input type="file" id="editPic" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="editName">Name:</label>
+                <input type="text" id="editName" required>
+            </div>
+            <div class="form-group">
+                <label for="editEmail">Email:</label>
+                <input type="email" id="editEmail" required>
+            </div>
+            <!-- Hidden inputs so JS doesn't break when saving Admin profile -->
+            <input type="hidden" id="editRoll" value="Administrator">
+            <input type="hidden" id="editDept" value="Management">
+            
+            <!-- Elegantly Styled Save Changes Button Matching Student Menu Aesthetic -->
+            <button type="submit" class="submit-btn" style="background: linear-gradient(to right, #4d7ad9, #20a8e0); color: #fff; border: none; padding: 14px; font-size: 16px; font-weight: 700; cursor: pointer; border-radius: 30px; width: 100%; margin-top: 20px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(32, 168, 224, 0.3);">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<!-- Link to external JS -->
+<script src="Scripts.js"></script>
+
+</body>
+</html>

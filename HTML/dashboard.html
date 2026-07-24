@@ -1,100 +1,115 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body id="pagedes">
+<body>
 
-
-    <!-- Navbar -->
-    <section class="header">
-        <nav>
-            <a href="index.html"><img src="logo.webp"></a>
-            <div class="nav-links">
-                <ul>
-                
-                <li><a href="index.html" class="active">HOME</a></li>
-                <li><a href="reportissue.html">ISSUE</a></li>
-                <li><a href="dashboard.html">DASHBOARD</a></li>
-                <li><a href="adminpanel.html">ADMIN</a></li>
-                <li><a href="aboutus.html">ABOUT</a></li>
-                <li><a href="contactus.html">CONTACT</a></li>
-                <button class="register-btn" id="registerBtn"><span>REGISTER</span></button>
-                <button class="login-btn" id="loginBtn"><span>LOGIN</span></button>
-                
-                </ul>
-
-            </div>
-        </nav>
-    </section>
-
-<!-- Dashboard -->
-<section class="dashboard">
-    <h2>ISSUE DASHBOARD</h2>
-    <h4>All the reported issues are diplayed here.</h4>
-
-    <!-- TOP CONTROLS ROW -->
-    <div class="dashboard-controls">
-
-        <!-- Search (Left) -->
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search issues...">
+<section class="header">
+    <nav>
+        <!-- Logo updated to a div so it doesn't redirect -->
+        <div class="logo">
+            <img src="logo.webp" alt="Logo">
         </div>
-
-        <!-- Stats (Center) -->
-        <div class="stats-boxes">
-            <div class="stat-card">
-                <h3>Total Issues</h3>
-                <p id="totalIssues">0</p>
+        
+        <div class="header-right">
+            <div class="notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span class="badge">1</span>
             </div>
 
-            <div class="stat-card">
-                <h3>Issues Solved</h3>
-                <p id="solvedIssues">0</p>
+            <div class="student-card">
+                <div class="student-details">
+                    <h2 id="username">Loading...</h2>
+                    <p>Roll No: <span id="rollno">...</span></p>
+                </div>
+                <div class="profile-pic">
+                    <img src="profile.png" alt="Profile Picture">
+                </div>
             </div>
         </div>
+    </nav>
+</section>
 
-        <!-- Filter (Right) -->
-        <div class="filter-box">
-            <select id="filterSelect">
-                <option value="all">All</option>
-                <option value="pending">Pending</option>
-                <option value="approved">Approved</option>
-                <option value="in-progress">In Progress</option>
-                <option value="solved">Solved</option>
+<section class="main-body">
+    <div class="page-top-bar">
+        <div class="page-heading-group">
+            <h2 class="page-name">Issue Dashboard</h2>
+            <p style="color: #666; font-weight: 500; margin-top: 5px;">All the reported issues are displayed here.</p>
+        </div>
+        
+        <div class="switches">
+            <select class="menu" onchange="handleMenuSwitch(this)">
+                <option value="" disabled selected>Dashboard</option>
+                <option value="studentmenu.html">Student Menu</option>
+                <option value="reportissue.html">Report Issue</option>
+                <!-- Removed Settings Option -->
+                <option value="logout">Logout</option>
             </select>
         </div>
-
     </div>
 
-    <!-- TABLE -->
-    <div class="table-container">
-        <table id="issueTableData">
-            <thead>
-                <tr>
-                    <th>Issue ID</th>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Priority</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+   <div class="page-content">
+        <!-- Top Stats Row -->
+        <div class="stats-row" style="margin-bottom: 25px;">
+            <div class="stat-box">
+                <h3>TOTAL ISSUES</h3>
+                <p id="totalIssues">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>ISSUES SOLVED</h3>
+                <p id="solvedIssues">0</p>
+            </div>
+            <!-- Added Pending Issues Box -->
+            <div class="stat-box">
+                <h3>ISSUES PENDING</h3>
+                <p id="pendingIssues">0</p>
+            </div>
+        </div>
 
-            <tbody id="issueTable"></tbody>
-        </table>
+        <!-- Bottom Table Container -->
+        <div class="issues-table-container">
+            <div class="table-header">
+                <h3>ALL CAMPUS ISSUES</h3>
+            </div>
+            
+            <div class="dashboard-controls-student">
+                <input type="text" id="searchInput" placeholder="Search issues...">
+                <select id="filterSelect">
+                    <option value="all">All</option>
+                    <option value="pending">Pending</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="solved">Solved</option>
+                </select>
+            </div>
+
+            <div class="table-container-student">
+                <table id="issueTableData">
+<thead>
+    <tr>
+        <th>Issue ID</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Reported By</th>
+    </tr>
+</thead>
+                    <tbody id="issueTable"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </section>
 
-<footer class="site-footer">
-        <p>© 2026 My Website
-            <br>
-            All Rights Reserved
-        </p>
-    </footer>
+<script src="Scripts.js"></script>
 
-    <script src="script.js"></script>
 </body>
 </html>

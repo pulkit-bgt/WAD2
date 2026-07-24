@@ -1,0 +1,140 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Students</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<section class="header">
+    <nav>
+        <div class="logo">
+            <img src="logo.webp" alt="Logo">
+        </div>
+        
+        <div class="header-right">
+            <div class="notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span class="badge">0</span>
+            </div>
+
+            <div class="student-card">
+                <div class="student-details">
+                    <h2 id="username">Admin</h2>
+                    <p>Role: <span id="rollno">Administrator</span></p>
+                </div>
+                <div class="profile-pic">
+                    <img src="profile.png" alt="Profile Picture">
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="main-body">
+    <div class="page-top-bar">
+        <div class="page-heading-group">
+            <h2 class="page-name">Registered Students List</h2>
+            <p style="color: #666; font-weight: 500; margin-top: 5px;">View all students registered on the platform.</p>
+        </div>
+        <div class="switches">
+            <select class="menu" onchange="handleMenuSwitch(this)">
+                <option value="" disabled selected>Registered Students</option>
+                <option value="adminmenu.html">Admin Menu</option>
+                <option value="logout">Logout</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+        <div class="issues-table-container">
+            <div class="table-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>ALL REGISTERED STUDENTS</h3>
+                <button id="addStudentBtn" style="background: #ffffff; color: #1b2d59; border: none; padding: 8px 18px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 13px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;"><i class="fa-solid fa-user-plus" style="margin-right: 6px;"></i> Add Student</button>
+            </div>
+            
+            <div class="dashboard-controls-student">
+                <input type="text" id="studentSearchInput" placeholder="Search students by name, email or roll no...">
+                
+                <!-- Department Filter Dropdown -->
+                <select id="studentFilterSelect" style="padding: 12px 20px; border: 1px solid #d9efff; border-radius: 30px; background: #fff; width: 180px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); outline: none; cursor: pointer;">
+                    <option value="all">All Departments</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BBA">BBA</option>
+                    <option value="BFMO">BFMO</option>
+                    <option value="BJMC">BJMC</option>
+                    <option value="B.Com">B.Com</option>
+                    <option value="ELL">ELL</option>
+                    <option value="BMS">BMS</option>
+                    <option value="BFA">BFA</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+
+            <div class="table-container-student" style="overflow-x: auto;">
+                <table id="registeredStudentsTableData">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Roll No</th>
+                            <th>Department / Course</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registeredStudentsTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add Student Modal -->
+<div id="addStudentModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeAddStudentModal">&times;</span>
+        <h2>Add New Student</h2>
+        <form id="addStudentForm">
+            <div class="form-group">
+                <label for="newStudentName">Full Name:</label>
+                <input type="text" id="newStudentName" required>
+            </div>
+            <div class="form-group">
+                <label for="newStudentEmail">College Email:</label>
+                <input type="email" id="newStudentEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="newStudentRoll">Roll Number:</label>
+                <input type="text" id="newStudentRoll" required>
+            </div>
+            <div class="form-group">
+                <label for="newStudentDept">Department / Course:</label>
+                <select id="newStudentDept" required style="height: 45px; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 12px; outline: none; background: #f8fafc; font-size: 15px; width: 100%;">
+                    <option value="" disabled selected>Select course</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BBA">BBA</option>
+                    <option value="BFMO">BFMO</option>
+                    <option value="BJMC">BJMC</option>
+                    <option value="B.Com">B.Com</option>
+                    <option value="ELL">ELL</option>
+                    <option value="BMS">BMS</option>
+                    <option value="BFA">BFA</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="newStudentPassword">Password:</label>
+                <input type="password" id="newStudentPassword" placeholder="Enter temporary password" required>
+            </div>
+            <button type="submit" class="submit-btn" style="background: linear-gradient(to right, #4d7ad9, #20a8e0); color: #fff; border: none; padding: 14px; font-size: 16px; font-weight: 700; cursor: pointer; border-radius: 30px; width: 100%; margin-top: 15px;">Create Student Account</button>
+        </form>
+    </div>
+</div>
+
+<script src="Scripts.js"></script>
+
+</body>
+</html>

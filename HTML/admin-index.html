@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResolveHub - Admin Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<section class="header">
+    <nav>
+        <div class="logo">
+            <img src="logo.webp" alt="Logo">
+        </div>
+
+        <div class="nav-links">
+            <ul>
+                <li><a href="#home" class="active">ADMIN HOME</a></li>
+                <li><a href="#workflow">WORKFLOW</a></li>
+                <li><a href="#stats">STATISTICS</a></li>
+                <li><a href="index.html">STUDENT PORTAL</a></li>
+            </ul>
+        </div>
+
+        <div class="index-buttons">
+            <button class="login-btn" id="adminLoginNavBtn" onclick="window.location.href='adminlogin.html'"><span>ADMIN LOGIN</span></button>
+        </div>
+    </nav>
+</section>
+
+<!-- Hero Section -->
+<main class="indexo" id="home">
+    <section class="hero">
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+            <h1>Resolve<span>Hub</span></h1>
+            <h2>Admin Portal: Manage Campus Life with Precision.</h2>
+        
+            <div class="buttons">
+                <button class="join-btn" onclick="window.location.href='adminlogin.html'">Admin Login</button>
+                <button class="learn-more-btn" onclick="window.location.href='index.html'">Switch to Student Portal</button>
+            </div>
+        </div>
+    </section>
+
+<section class="box">
+    <section class="featuring">
+        <div class="feature-top">
+            <div class="left">
+                <h2>MAINTAINING EXCELLENCE<br>ACROSS THE <span>CAMPUS.</span></h2>
+            </div>
+            <div class="right">
+                <p>
+                    Oversee reported student issues, evaluate priorities, assign department workflows, 
+                    and ensure timely resolutions to keep the campus environment flawless and fully functional.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="workflow">
+        <h2>Admin Control Workflow</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="icon-box">
+                    <img src="step1.png" alt="Monitor Issues" class="step-img">
+                </div>
+                <h3>1. Monitor Submissions</h3>
+                <p>Review incoming student reports in real-time.</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step">
+                <div class="icon-box">
+                    <img src="step2.png" alt="Evaluate & Update" class="step-img">
+                </div>
+                <h3>2. Update Status</h3>
+                <p>Change issue states to Pending, In Progress, or Solved.</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step">
+                <div class="icon-box">
+                    <img src="step3.png" alt="Resolution" class="step-img">
+                </div>
+                <h3>3. Efficient Resolution</h3>
+                <p>Ensure quick closure and maintain campus satisfaction.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="categories" id="categories">
+        <div class="statistics" id="stats">
+            <h2>Administrative Oversight</h2>
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <h3>Full Control</h3>
+                    <p>Manage and delete outdated or resolved records securely.</p>
+                </div>
+                <div class="stats-card">
+                    <h3>Priority Filtering</h3>
+                    <p>Sort issues instantly by low, medium, high, or critical severity.</p>
+                </div>
+                <div class="stats-card">
+                    <h3>Real-time Sync</h3>
+                    <p>Instant updates across student dashboards upon status modification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- Information Section -->
+<section class="info-services-section" id="services">
+    <h2 class="section-title">Admin Guidelines & Support</h2>
+
+    <!-- Card 1 -->
+    <div class="info-service-card info-right-icon">
+        <div class="info-card-content">
+            <h2>ROLEBASED ACCESS</h2>
+            <p>Access is strictly restricted to authorized administrative personnel to protect data integrity and ensure proper campus management channels.</p>
+        </div>
+        <div class="info-icon-box">
+            <img src="info-serve.png" alt="Admin Access" class="info-img">
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="info-service-card info-left-icon">
+        <div class="info-icon-box">
+            <img src="info-resources.png" alt="Resources" class="info-img">
+        </div>
+        <div class="info-card-content">
+            <h2>SYSTEM RESOURCES</h2>
+            <p>Administrators have access to global logs, priority matrix controls, and department resource directories to streamline task delegation.</p>
+        </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="info-service-card info-right-icon">
+        <div class="info-card-content">
+            <h2>ADMIN COMMUNITY</h2>
+            <p>Collaborate with department heads and campus supervisors to coordinate large-scale facility maintenance and issue tracking.</p>
+        </div>
+        <div class="info-icon-box">
+            <img src="info-social.png" alt="Admin Community" class="info-img">
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <a href="admin-index.html">Admin Home</a>
+                <a href="admin-login.html">Admin Login</a>
+                <a href="index.html">Student Portal</a>
+            </div>
+            <div class="footer-column">
+                <h4>Admin Helpdesk</h4>
+               <p>North Star Academy</p>
+               <p>+91 77137 XXXXX</p>
+               <p>admin-support@resolvehub.com</p>
+            </div>
+            <div class="footer-column">
+                <h4>System Compliance</h4>
+                <a href="#">Security Policy</a>
+                <a href="#">Access Protocols</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Resolve Hub - Administration Panel</p>
+        </div>
+    </div>
+</footer>
+
+<script src="Scripts.js"></script>
+</body>
+</html>

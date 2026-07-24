@@ -1,131 +1,124 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report Issue</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Included FontAwesome for the bell icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body id="pagedes">
+<body>
 
-    <section class="header">
-        <nav>
-            <a href="index.html"><img src="logo.webp"></a>
-            <div class="nav-links">
-                <ul>
-                
-                <li><a href="index.html" class="active">HOME</a></li>
-                <li><a href="reportissue.html">ISSUE</a></li>
-                <li><a href="dashboard.html">DASHBOARD</a></li>
-                <li><a href="adminpanel.html">ADMIN</a></li>
-                <li><a href="aboutus.html">ABOUT</a></li>
-                <li><a href="contactus.html">CONTACT</a></li>
-                <button class="register-btn" id="registerBtn"><span>REGISTER</span></button>
-                <button class="login-btn" id="loginBtn"><span>LOGIN</span></button>
-               
-                </ul>
-            </div>
-        </nav>
-    </section>
-
-<section class="reportpanel">
-<h2>REPORT ISSUE</h2>
-<h4>Report your campus issue here.</h4>
-
-    <form class="rpissue">
-
-        <div class="top-section">
-
-            <!-- Category Card -->
-            <div class="card category-card">
-
-                <label>Category :</label>
-
-                <select class="cdd">
-                    <option>Facilities</option>
-                    <option>Wi-Fi</option>
-                    <option>Library</option>
-                    <option>Laboratory</option>
-                    <option>Parking</option>
-                    <option>Canteen</option>
-                    <option>Water Supply</option>
-                    <option>Electricity</option>
-                    <option>Classroom</option>
-                </select>
-
-                <label>Title :</label>
-
-                <input type="textti" placeholder="Enter issue title">
-
+<section class="header">
+    <nav>
+        <!-- Logo updated to a div so it doesn't redirect -->
+        <div class="logo">
+            <img src="logo.webp" alt="Logo">
+        </div>
+        
+        <!-- Wrapper to push the bell and profile to the right -->
+        <div class="header-right">
+            
+            <!-- New Bell / Alert Icon -->
+            <div class="notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span class="badge">1</span> <!-- Optional: Unread message indicator -->
             </div>
 
-            <!-- Description Card -->
-            <div class="card description-card">
-
-                <label>Description :</label>
-
-                <textarea placeholder="Describe the issue..."></textarea>
-
-                <input type="file">
-
+            <!-- Student Info -->
+            <div class="student-card">
+                <div class="student-details">
+                    <h2 id="username">Loading...</h2>
+                    <p>Roll No: <span id="rollno">...</span></p>
+                </div>
+                <div class="profile-pic">
+                    <img src="profile.png" alt="Profile Picture">
+                </div>
             </div>
 
         </div>
-
-        <div class="bottom-section">
-
-            <!-- Priority -->
-            <div class="card priority-card">
-
-    <label>Priority :</label>
-
-    <div class="priority-buttons">
-
-        <input type="radio" id="low" name="priority" value="Low" hidden>
-        <label for="low" class="priority-btn low">Low</label>
-
-        <input type="radio" id="medium" name="priority" value="Medium" hidden>
-        <label for="medium" class="priority-btn medium">Medium</label>
-
-        <input type="radio" id="high" name="priority" value="High" hidden>
-        <label for="high" class="priority-btn high">High</label>
-
-        <input type="radio" id="critical" name="priority" value="Critical" hidden>
-        <label for="critical" class="priority-btn critical">Critical</label>
-
-    </div>
-
-</div>
-
-            <!-- Location -->
-            <div class="card location-card">
-
-                <label>Location :</label>
-
-                <textarea placeholder="Mention issue location"></textarea>
-
-            </div>
-
-        </div>
-
-        <div class="submit-area">
-
-            <button type="submit" class="submit-btn">
-                Submit Report
-            </button>
-
-        </div>
-
-    </form>
-
-</div>
+    </nav>
 </section>
 
-<footer class="site-footer">
-        <p>© 2026 My Website
-            <br>
-            All Rights Reserved
-        </p>
-    </footer>
+<section class="main-body">
+    <div class="page-top-bar">
+        <div class="page-heading-group">
+            <h2 class="page-name">Report Issue</h2>
+            <p style="color: #666; font-weight: 500; margin-top: 5px;">Report your campus issue here.</p>
+        </div>
+        <div class="switches">
+            <select class="menu" onchange="handleMenuSwitch(this)">
+                <option value="" disabled selected>Report Issue</option>
+                <option value="studentmenu.html">Student Menu</option>
+                <option value="dashboard.html">Dashboard</option>
+                <!-- Removed Settings Option -->
+                <option value="logout">Logout</option>
+            </select>
+        </div>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="page-content">
+        <form class="rpissue">
+            
+            <div class="form-row">
+                <div class="form-card category-card" style="flex: 1;">
+                    <label>Category :</label>
+                    <select class="cdd input-field">
+                        <option>Facilities</option>
+                        <option>Wi-Fi</option>
+                        <option>Library</option>
+                        <option>Laboratory</option>
+                        <option>Parking</option>
+                        <option>Canteen</option>
+                        <option>Water Supply</option>
+                        <option>Electricity</option>
+                        <option>Classroom</option>
+                    </select>
+                    
+                    <label style="margin-top: 25px;">Title :</label>
+                    <input type="textti" class="input-field" placeholder="Enter issue title">
+                </div>
+                
+                <div class="form-card description-card" style="flex: 2;">
+                    <label>Description :</label>
+                    <textarea class="input-field" placeholder="Describe the issue..."></textarea>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-card priority-card" style="flex: 1.5;">
+                    <label>Priority :</label>
+                    <div class="priority-buttons">
+                        <input type="radio" id="low" name="priority" value="Low">
+                        <label for="low" class="priority-btn low">Low</label>
+                        
+                        <input type="radio" id="medium" name="priority" value="Medium">
+                        <label for="medium" class="priority-btn medium">Medium</label>
+                        
+                        <input type="radio" id="high" name="priority" value="High">
+                        <label for="high" class="priority-btn high">High</label>
+                        
+                        <input type="radio" id="critical" name="priority" value="Critical">
+                        <label for="critical" class="priority-btn critical">Critical</label>
+                    </div>
+                </div>
+                
+                <div class="form-card location-card" style="flex: 1.5;">
+                    <label>Location :</label>
+                    <textarea class="input-field" placeholder="Mention issue location"></textarea>
+                </div>
+            </div>
+            
+            <div class="submit-area">
+                <button type="submit" class="submit-btn-large">Submit Report</button>
+            </div>
+            
+        </form>
+    </div>
+</section>
+
+<!-- Link to external JS -->
+<script src="Scripts.js"></script>
+
 </body>
 </html>

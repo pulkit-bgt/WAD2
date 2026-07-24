@@ -1,103 +1,117 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>ResolveHub Signup</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body id="pagedes">
+<body class="auth-body">
 
-    <!-- Navbar -->
-    <section class="header">
-        <nav>
-            <a href="index.html"><img src="logo.webp"></a>
-            <div class="nav-links">
-                <ul>
-                
-                <li><a href="index.html" class="active">HOME</a></li>
-                <li><a href="reportissue.html">ISSUE</a></li>
-                <li><a href="dashboard.html">DASHBOARD</a></li>
-                <li><a href="adminpanel.html">ADMIN</a></li>
-                <li><a href="aboutus.html">ABOUT</a></li>
-                <li><a href="contactus.html">CONTACT</a></li>
-                <button class="register-btn" id="registerBtn"><span>REGISTER</span></button>
-                <button class="login-btn" id="loginBtn"><span>LOGIN</span></button>
-               
-                
-                </ul>
+<div class="logo">
+    <a href="index.html"><img src="logo.webp" alt="Logo"></a>
+</div>
+
+<div class="auth-container">
+    <div class="left-panel">
+        <div class="overlay">
+            <h1>
+                JOIN THE <br>
+                EMERGING <br>
+                RESOLUTION <br>
+                COMMUNITY <br>
+                OF OUR <br>
+                CAMPUS
+            </h1>
+
+            <p>
+               Create a perfect campus with us making the environment beautiful 
+                and flawless as heaven. Not only for one but for Everyone.<br>
+                Here we accept your problem and try our best to solve it fast and efficiently.
+            </p>
+
+            <div class="artist">
+                <small>support@resolvehub.com</small><br>
+                <strong>Resolve Hub</strong>
             </div>
-        </nav>
-    </section>
-
-    <!-- Sign Up Form -->
-    <section class="signup-container">
-
-        <div class="signup-box">
-
-            <h2>Create Account</h2>
-
-            <form action="#" method="POST">
-
-                <div class="input-group">
-                    <label>Full Name</label>
-                    <input type="text" placeholder="Enter your name" required>
-                </div>
-
-                <div class="input-group">
-                    <label>College Email</label>
-                    <input type="email" placeholder="example@college.edu" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Department</label>
-                    <select required>
-                        <option value="">Select Department</option>
-                        <option>BCA</option>
-                        <option>BBA</option>
-                        <option>BFMO</option>
-                        <option>ELL</option>
-                        <option>BOTANY</option>
-                        <option>B.COM</option>
-                        <option>BJMC</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label>Roll Number</label>
-                    <input type="text" placeholder="Enter Roll Number" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="Create Password" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Confirm Password</label>
-                    <input type="password" placeholder="Confirm Password" required>
-                </div>
-
-                <button type="submit" class="signup-btn">
-                    Sign Up
-                </button>
-
-            </form>
-
-            <div class="login-link">
-                Already have an account?
-                <a href="login.html">Login</a>
-            </div>
-
         </div>
+    </div>
 
-    </section>
-        <footer class="site-footer">
-        <p>© 2026 My Website
-            <br>
-            All Rights Reserved
+    <div class="right-panel">
+        <a href="index.html"><span class="close">&times;</span></a>
+
+        <h2>Join ResolveHub</h2>
+
+        <form id="registerForm">
+            <label>Full Name</label>
+            <input type="text" id="name" required >
+
+            <label>College Email</label>
+            <input type="email" id="regEmail" required>
+
+            <label>Department / Course</label>
+            <select id="department" name="department" required>
+                <option value="" disabled selected>Select your course</option>
+                <option value="BCA">BCA</option>
+                <option value="BBA">BBA</option>
+                <option value="BFMO">BFMO</option>
+                <option value="BJMC">BJMC</option>
+                <option value="B.Com">B.Com</option>
+                <option value="ELL">ELL</option>
+                <option value="BMS">BMS</option>
+                <option value="BFA">BFA</option>
+                <option value="Others">Others</option>
+            </select>
+
+            <div id="otherDepartmentContainer" style="display: none; margin-top: 10px;">
+                <label>Please enter your course name</label>
+                <input type="text" id="otherDepartmentInput" placeholder="Enter course name">
+            </div>
+
+            <label>Roll Number</label>
+            <input type="text" id="rollno" required >
+
+            <label>Password</label>
+            <div class="password-container">
+                <input type="password" id="regPassword" placeholder="Enter Password" required>
+                <span class="toggle-password">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+            </div>
+
+            <label>Confirm Password</label>
+            <div class="password-container">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <span class="toggle-password">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="login">
+            Already have an account?
+            <a href="login.html">Login</a>
         </p>
-    </footer>
 
-    <script src="script.js"></script>
+        <p class="terms">
+            By joining Resolve Hub, I accept the
+            <a href="#">Terms of Service</a>,
+            and I acknowledge reading the
+            <a href="#">Privacy Policy</a>.
+        </p>
+    </div>
+</div>
 
+<script src="Scripts.js"></script>
 </body>
 </html>

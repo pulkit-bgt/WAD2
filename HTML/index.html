@@ -1,178 +1,240 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <section class="header">
-        <nav>
-            <a href="index.html"><img src="logo.webp"></a>
-            <div class="nav-links">
-                <ul>
-                
-                <li><a href="index.html" class="active">HOME</a></li>
-                <li><a href="reportissue.html">ISSUE</a></li>
-                <li><a href="dashboard.html">DASHBOARD</a></li>
-                <li><a href="adminpanel.html">ADMIN</a></li>
-                <li><a href="aboutus.html">ABOUT</a></li>
-                <li><a href="contactus.html">CONTACT</a></li>
-                <button class="register-btn" id="registerBtn"><span>REGISTER</span></button>
-                <button class="login-btn" id="loginBtn"><span>LOGIN</span></button>
-               
-                </ul>
-            </div>
-        </nav>
-    </section>
+<!-- Navbar -->
+<section class="header">
+    <nav>
+        <div class="logo">
+            <img src="logo.webp" alt="Logo">
+        </div>
 
-    <!-- Hero Section -->
-<main class="indexo">
+<div class="nav-links">
+    <ul>
+        <li><a href="#home" class="active">HOME</a></li>
+        <li><a href="#working">ACTION</a></li>
+        <li><a href="#categories">CATEGORIES</a></li>
+        <li><a href="#stats">STATISTICS</a></li>
+        <li><a href="#services">SERVICES</a></li>
+    </ul>
+</div>
+
+        <div class="index-buttons">
+            <button class="register-btn" id="registerBtn"><span>REGISTER</span></button>
+            <button class="login-btn" id="loginBtn"><span>LOGIN</span></button>
+        </div>
+    </nav>
+</section>
+
+<!-- Hero Section -->
+<main class="indexo" id="home">
     <section class="hero">
         <div class="overlay"></div>
 
         <div class="hero-content">
-            <h1>
-                Resolve<span>Hub</span>
-            </h1><br>
-            <h2>Making Campus Life Better, Together.
-            </h2><br>
-        
+    <h1>Resolve<span>Hub</span></h1>
+    <h2>Making Campus Life Better, Together.</h2>
 
-            <div class="buttons">
-                <button class="reportissue-btn" id="reportissueBtn">
-                    Report an Issue
-                </button>
+    
+    <div class="buttons">
+        <button class="join-btn" id="joinBtn">Join</button>
+        <button class="learn-more-btn" id="learnMoreBtn">Learn More</button>
+    </div>
+</div>
+    </section>
 
-                <button class="viewdashboard-btn" id="viewdashboardBtn">
-                    View Dashboard
-                </button>
+<section class="box">
+    <section class="featuring">
+        <div class="feature-top">
+            <div class="left">
+                <h2>YOUR ISSUE WILL<br>BE RESOLVED<span>                SOON.</span></h2>
+            </div>
+            <div class="right">
+                <p>
+                    Create a perfect campus with us making the environment beautiful 
+                    and flawless as heaven. Not only for one but for Everyone.<br>
+                    Here we accept your problem and try our best to solve it fast and efficiently.
+                </p>
             </div>
         </div>
     </section>
 
-<section class="box">
-<section class="featuring">
+    <section class="how-it-works" id="working">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="icon-box">
+                    <!-- Image Placeholder for Step 1 -->
+                    <img src="step1.svg" alt="Report Issue" class="step-img">
+                </div>
+                <h3>1. Report an Issue</h3>
+                <p>Submit problems easily.</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step">
+                <div class="icon-box">
+                    <!-- Image Placeholder for Step 2 -->
+                    <img src="step2.svg" alt="Admin Reviews" class="step-img">
+                </div>
+                <h3>2. Admin Reviews</h3>
+                <p>Admin evaluates and prioritizes.</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step">
+                <div class="icon-box">
+                    <!-- Image Placeholder for Step 3 -->
+                    <img src="step3.svg" alt="Issue Resolved" class="step-img">
+                </div>
+                <h3>3. Issue Gets Resolved</h3>
+                <p>Problem fixed efficiently.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="feature-top">
-
-        <div class="left">
-            <h2>
-                YOUR ISSUE WILL BE <br>
-                RESOLVED
-                <span>SOON.</span> 
-            </h2>
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <div class="category-box">
+            <h2>Issue Categories</h2>
+            <div class="cards">
+                <div class="card">
+                    <!-- Image Placeholder -->
+                    <img src="cat-wifi.svg" alt="WiFi Issues" class="category-img">
+                    <h4>WiFi Issues</h4>
+                    <p>Connectivity Problems</p>
+                </div>
+                <div class="card">
+                    <!-- Image Placeholder -->
+                    <img src="cat-lab.svg" alt="Lab Equipment" class="category-img">
+                    <h4>Lab Equipment</h4>
+                    <p>Tech & Lab Gear</p>
+                </div>
+                <div class="card">
+                    <!-- Image Placeholder -->
+                    <img src="cat-class.svg" alt="Classroom Problems" class="category-img">
+                    <h4>Classroom Problems</h4>
+                    <p>Classroom Maintenance</p>
+                </div>
+                <div class="card">
+                    <!-- Image Placeholder -->
+                    <img src="cat-library.svg" alt="Library Issues" class="category-img">
+                    <h4>Library Issues</h4>
+                    <p>Library & Study Areas</p>
+                </div>
+            </div>
         </div>
 
-        <div class="right">
-            <p>
-                Create a perfect campus with us making the environment beautiful 
-                and flawless as heaven. Not only for one but for Everyone.<br>
-                Here we accept your problem and try our best to solve it fast and efficiently.
-            </p>
+<div class="statistics" id="stats">
+            <h2>Platform Statistics</h2>
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <h3 id="registered-students">0+</h3>
+                    <p>Registered Students</p>
+                </div>
+                <div class="stats-card">
+                    <h3 id="issue-reported">0+</h3>
+                    <p>Issues Reported</p>
+                </div>
+                <!-- Added Pending Issues Card -->
+                <div class="stats-card">
+                    <h3 id="issue-pending">0+</h3>
+                    <p>Issues Pending</p>
+                </div>
+                <div class="stats-card">
+                    <h3 id="issue-solved">0+</h3>
+                    <p>Issues Solved</p>
+                </div>
+            </div>
         </div>
+    </section>
+</section>
 
-    </div>
+<!-- Information Section -->
+<section class="info-services-section" id="services">
+    <h2 class="section-title">Information & Services</h2>
 
-    <div class="f-cards">
-
-        <div class="f-card">
+    <!-- Card 1 -->
+    <div class="info-service-card info-right-icon">
+        <div class="info-card-content">
             <h2>WHAT WE SERVE</h2>
-            <p>
-                We provide quality services for the issues
-                faced on the college campus. We accept reports from
-                students and work to resolve them efficiently.
-            </p>
+            <p>We provide quality services for the issues faced on the college campus. We accept reports from students and work to resolve them efficiently.</p>
         </div>
-
-        <div class="f-card">
-            <h2>RESOURCES</h2>
-            <p>
-                The resources we use include all departments and campus
-                authorities that play an important role in maintaining
-                the college environment.
-            </p>
+        <div class="info-icon-box">
+            <!-- Custom Image 1 -->
+            <img src="info-serve.svg" alt="What We Serve" class="info-img">
         </div>
-
-        <div class="f-card">
-            <h2>SOCIALS</h2>
-            <p>
-                ResolveHub provides a collaborative environment where
-                students can freely share and discuss campus issues.
-            </p>
-        </div>
-
     </div>
 
-</section>
-</section>
-
-    <section id="team">
-    <h2>Meet Our Team</h2>
-
-    <div class="team-container">
-        <div class="member-card">
-            <img src="leader1.webp" alt="Leader 1">
-            <h3>Ashish Oraon</h3>
-            <h4>Leader</h4>
-            <p>
-                Manages the overall working and maintainance of the campus.
-                Provides resources for the workers and drinks Chai with HODs.
-            </p>
+    <!-- Card 2 -->
+    <div class="info-service-card info-left-icon">
+        <div class="info-icon-box">
+            <!-- Custom Image 2 -->
+            <img src="info-resources.svg" alt="Resources" class="info-img">
         </div>
-        
-
-        <div class="member-card">
-            <img src="member1.webp" alt="Member 1">
-            <h3>Amit Minj</h3>
-            <h4>Mechanic</h4>
-            <p>
-                Manages the problems occured in Bikes,
-                 Cars which are brought in Campus.
-                HOD's Favourite Student.
-            </p>
+        <div class="info-card-content">
+            <h2>RESOURCES</h2>
+            <p>The resources we use include all departments and campus authorities that play an important role in maintaining the college environment.</p>
         </div>
+    </div>
 
-        <div class="member-card">
-            <img src="member2.webp" alt="Member 2">
-            <h3>Harshit Kujur</h3>
-            <h4>Technician</h4>
-            <p>
-                Manages the techy materials used in campus like 
-                computers, lights and several elecrical appliances used. 
-            </p>
+    <!-- Card 3 -->
+    <div class="info-service-card info-right-icon">
+        <div class="info-card-content">
+            <h2>SOCIALS</h2>
+            <p>ResolveHub provides a collaborative environment where students can freely share and discuss campus issues.</p>
         </div>
-
-        <div class="member-card">
-            <img src="member3.webp" alt="Member 3">
-            <h3>Pulkit Bhagat</h3>
-            <h4>Unemployed</h4>
-            <p>
-                Just Exists.
-            </p>
-        </div>
-
-        <div class="member-card">
-            <img src="member4.webp" alt="Member 4">
-            <h3>Shashi Oroan</h3>
-            <h4>Love Guru</h4>
-            <p>
-               Manages the relationships in the campus like
-               Couples, Friends and Foes, etc;
-            </p>
+        <div class="info-icon-box">
+            <!-- Custom Image 3 -->
+            <img src="info-socials.svg" alt="Socials" class="info-img">
         </div>
     </div>
 </section>
 </main>
 
-    <footer class="site-footer">
-        <p>© 2026 My Website
-            <br>
-            All Rights Reserved
-        </p>
-    </footer>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="#">Socials</a>
+                <a href="#">About Us</a>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Information</h4>
+               <p>North Star Academy</p>
+               <p>+91 77137 XXXXX</p>
+               <p>support@resolvehub.com</p>
+            </div>
+            <div class="footer-column">
+                <h4>Legal Links</h4>
+                <a href="#">Legal Notice</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Resolve Hub </p>
+            <p class="legal-text">*  Time needed for solving the Issue may vary upon the type of issue reported.</p>
+            <p class="legal-text">** Important information about issues and their solution can be found here.</p>
+        </div>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
+<script src="Scripts.js"></script>
 </body>
 </html>
