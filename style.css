@@ -2044,3 +2044,76 @@ body.auth-body {
         font-size: 14px;
     }
 }
+
+/* =========================================
+   ELEGANT MOBILE HEADER (ADMIN / DASHBOARD)
+========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Ensure the header has a consistent, comfortable height */
+    .header {
+        height: 70px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav {
+        height: 100%;
+        padding: 0 15px;
+    }
+
+    /* 2. Perfectly scale the logo for mobile */
+    .logo img {
+        width: 130px !important;
+        transform: scale(1) !important;
+    }
+
+    /* 3. Transform the Info Card into a sleek Glassmorphism pill */
+    .student-card {
+        background: rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 5px 12px !important;
+        gap: 10px !important;
+        box-shadow: none !important; /* Removes the heavy desktop shadow */
+    }
+
+    /* 4. Style the Admin name to pop against the blue header */
+    .student-details h2 {
+        color: #ffffff !important;
+        font-size: 14px !important;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    /* Hide the secondary "Role" text to keep the mobile header clean and minimalist */
+    .student-details p {
+        display: none !important;
+    }
+
+    /* 5. Refine the profile picture border to match the elegant glass theme */
+    .profile-pic img {
+        border: 2px solid #ffffff !important;
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    /* 6. Adjust notification bell sizing */
+    .notifications {
+        margin-right: 5px;
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* On extra small screens, slightly shrink the logo to ensure nothing collides */
+    .logo img {
+        width: 110px !important;
+    }
+    
+    /* Make the info pill even more compact */
+    .student-card {
+        padding: 4px 10px !important;
+        gap: 8px !important;
+    }
+}
