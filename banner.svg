@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Rich Icy Blue Base Gradient -->
+    <linearGradient id="blue-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbe5ff"/>
+      <stop offset="50%" stop-color="#e3f0ff"/>
+      <stop offset="100%" stop-color="#d9efff"/>
+    </linearGradient>
+
+    <!-- Vibrant Brand Wave Gradient -->
+    <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#20a8e0"/>
+      <stop offset="100%" stop-color="#4d7ad9"/>
+    </linearGradient>
+
+    <!-- Gaussian Blur for Glowing Effects -->
+    <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="90" />
+    </filter>
+  </defs>
+
+  <!-- Base Icy Blue Background -->
+  <rect width="100%" height="100%" fill="url(#blue-bg)"/>
+
+  <!-- Deep Blue Glowing Orbs for Depth -->
+  <circle cx="150" cy="150" r="450" fill="#20a8e0" opacity="0.25" filter="url(#soft-glow)"/>
+  <circle cx="1290" cy="650" r="500" fill="#4d7ad9" opacity="0.2" filter="url(#soft-glow)"/>
+
+  <!-- Fluid / Liquid Waves (Top Left & Bottom Right) -->
+  <path d="M 0 0 L 600 0 C 450 200, 250 150, 0 350 Z" fill="url(#wave-grad)" opacity="0.08"/>
+  <path d="M 0 0 L 400 0 C 300 150, 150 100, 0 250 Z" fill="url(#wave-grad)" opacity="0.12"/>
+  
+  <path d="M 1440 800 L 840 800 C 1000 600, 1200 650, 1440 450 Z" fill="url(#wave-grad)" opacity="0.08"/>
+  <path d="M 1440 800 L 1040 800 C 1150 650, 1300 700, 1440 550 Z" fill="url(#wave-grad)" opacity="0.12"/>
+
+  <!-- Center Bright Spotlight (Ensures your text is perfectly readable) -->
+  <circle cx="720" cy="350" r="380" fill="#ffffff" opacity="0.55" filter="url(#soft-glow)"/>
+
+  <!-- Tech / Hub Grid Lines (Centered) -->
+  <g transform="translate(720, 350)">
+    <!-- Concentric Rings -->
+    <circle cx="0" cy="0" r="300" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+    <circle cx="0" cy="0" r="450" fill="none" stroke="#4d7ad9" stroke-width="1.5" stroke-dasharray="8 16" opacity="0.3"/>
+    <circle cx="0" cy="0" r="600" fill="none" stroke="#20a8e0" stroke-width="1" opacity="0.2"/>
+    
+    <!-- Subtle Crosshairs / Connection Lines -->
+    <path d="M -600 0 L 600 0" stroke="#ffffff" stroke-width="1.5" opacity="0.4" stroke-dasharray="4 12"/>
+    <path d="M 0 -450 L 0 450" stroke="#ffffff" stroke-width="1.5" opacity="0.4" stroke-dasharray="4 12"/>
+
+    <!-- Glowing Network Nodes -->
+    <circle cx="-212" cy="-212" r="7" fill="#20a8e0" opacity="0.7"/>
+    <circle cx="212" cy="212" r="7" fill="#4d7ad9" opacity="0.7"/>
+    <circle cx="318" cy="-318" r="5" fill="#ffffff" opacity="0.9"/>
+    <circle cx="-318" cy="318" r="5" fill="#ffffff" opacity="0.9"/>
+    <circle cx="0" cy="-300" r="6" fill="#20a8e0" opacity="0.8"/>
+  </g>
+</svg>
