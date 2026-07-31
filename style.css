@@ -1769,9 +1769,19 @@ body.auth-body {
     nav { padding: 0 20px; }
     .nav-links { display: none !important; }
     .logo img { width: 140px; transform: scale(1.4); }
-    .index-buttons { gap: 10px; }
-    .login-btn, .register-btn { padding: 8px 16px; font-size: 12px; min-width: auto; }
+    .index-buttons { 
+        gap: 10px; 
+        justify-content: flex-start !important; /* Aligns the buttons to the left */
+        margin-left: 15px; /* Adds a little spacing between the logo and buttons */
+    }
 
+    /* Make buttons a little bit smaller */
+    .login-btn, .register-btn { 
+        padding: 5px 12px !important; /* Reduced from 8px 16px */
+        font-size: 11px !important;   /* Reduced from 12px */
+        min-width: auto; 
+    }
+    
     /* Hero Section */
     .hero-content { margin-left: 0; padding: 0 20px; text-align: left; }
     .hero-content h1 { font-size: 3.2rem; }
@@ -2064,7 +2074,7 @@ body.auth-body {
     /* 2. Perfectly scale the logo for mobile */
     .logo img {
         width: 130px !important;
-        transform: scale(1) !important;
+        transform: scale(1.4) !important;
     }
 
     /* 3. Transform the Info Card into a sleek Glassmorphism pill */
