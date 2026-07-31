@@ -1746,7 +1746,7 @@ body.auth-body {
     /* Header & Navbar Adjustments */
     nav { padding: 0 20px; }
     .nav-links { display: none !important; }
-    .logo img { width: 140px; transform: scale(1.4); }
+    .logo img { width: 140px;}
     .index-buttons { gap: 10px; }
     .login-btn, .register-btn { padding: 8px 16px; font-size: 12px; min-width: auto; }
 
