@@ -1659,89 +1659,547 @@ body.auth-body {
     100% { transform: translateX(60px) scale(0.9); opacity: 0; }
 }
 
+/* =========================================
+    MOBILE RESPONSIVENESS - INDEX PAGE(max-width: 768px)
+========================================= */
+@media (max-width: 768px) {
+    /* Header & Navbar Adjustments */
+    nav {
+        padding: 0 20px;
+    }
+    
+    /* REMOVE NAV LINKS ON MOBILE ONLY */
+    .nav-links {
+        display: none !important;
+    }
+    
+    .logo img {
+        width: 140px; 
+    }
+    
+    .index-buttons {
+        gap: 10px;
+    }
+    
+    .login-btn, .register-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+        min-width: auto;
+    }
+
+    /* Hero Section - Left Aligned */
+    .hero-content {
+        margin-left: 0;
+        padding: 0 20px;
+        text-align: left; /* Changed to left */
+    }
+    
+    .hero-content h1 {
+        font-size: 3.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.1rem;
+        margin-left: 0; /* Keep flush left */
+    }
+    
+    .buttons {
+        justify-content: flex-start; /* Aligns buttons to the left */
+    }
+
+    /* Featuring Section */
+    .featuring {
+        width: 95%;
+        padding: 30px 20px;
+        margin-top: -30px;
+    }
+    
+    .feature-top {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .feature-top h2 {
+        margin-left: 0;
+        font-size: 32px;
+    }
+    
+    .feature-top p {
+        width: 100%;
+        margin-right: 0;
+        font-size: 16px;
+    }
+
+    /* How it Works */
+    .steps {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .step {
+        width: 100%;
+    }
+    
+    .arrow {
+        transform: rotate(90deg); 
+    }
+
+    /* Categories */
+    .cards {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    /* Statistics */
+    .stats-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    /* Info & Services Cards - Images ALWAYS on Top */
+    .info-service-card {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        margin: 20px auto !important; 
+    }
+    
+    .info-icon-box {
+        order: -1; /* Forces the image box to render FIRST (on top) */
+        width: 100%;
+        height: 200px;
+        border-radius: 24px 24px 0 0 !important; /* Top-rounded corners only */
+    }
+    
+    .info-card-content {
+        order: 1; /* Forces the text to render SECOND (on bottom) */
+        padding: 25px;
+        text-align: left; 
+    }
+
+    /* Footer */
+    .footer {
+        padding: 40px 20px;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    .footer-bottom {
+        text-align: center;
+    }
+}
 
 /* =========================================
-   RESPONSIVE BREAKPOINTS (UPDATED)
+   EXTRA SMALL MOBILE (max-width: 480px)
+========================================= */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.6rem;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr; 
+    }
+    
+    .buttons button {
+        width: 100%; 
+    }
+    
+    .feature-top h2 {
+        font-size: 26px;
+    }
+}
+
+
+
+
+/* =========================================
+    MERGE THIS INTO: @media (max-width: 768px)
 ========================================= */
 
-/* --- Large Devices & Tablets (Max Width: 1024px) --- */
-@media (max-width: 1024px) {
-    /* Menu & Dashboard Layouts */
-    .student-menu-layout { flex-direction: column; gap: 20px; }
-    .profile-sidebar { width: 100%; margin-bottom: 20px; }
-    .stats-row { flex-wrap: wrap; }
-    .stat-box { min-width: 45%; }
+    /* --- DASHBOARD & ADMIN PAGES MOBILE STYLES --- */
     
-    /* Auth Containers */
-    .auth-container { width: 85%; flex-direction: column; }
-    .auth-container .left-panel, .auth-container .right-panel { width: 100%; }
-    .auth-container .left-panel { min-height: 250px; }
+    /* Header Adjustments for Logged-In Users */
+    .header-right { 
+        gap: 15px; 
+    }
     
-    /* Header Elements */
-    .auth-body .logo { position: static; text-align: center; padding: 20px 0; display: flex; justify-content: center; }
-}
+    /* Hide the admin's name/role text to save space, but keep the profile picture */
+    .student-details { 
+        display: none; 
+    }
+    
+    .student-card { 
+        padding: 0; 
+        background: transparent; 
+        box-shadow: none; 
+    }
 
-/* --- Medium Devices & Small Tablets (Max Width: 900px) --- */
-@media (max-width: 900px) {
-    /* Global Navigation */
-    nav { flex-wrap: wrap; padding: 15px 20px; justify-content: center; gap: 15px; }
-    .header { height: auto; position: relative; } /* Unfixes the header to prevent overlap on mobile */
-    .main-body { margin-top: 30px; padding: 0 20px; }
-    .nav-links { order: 3; width: 100%; margin-top: 10px; }
-    .index-buttons { order: 2; }
+    /* Main Body & Top Bar */
+    .main-body { 
+        padding: 0 15px; 
+        margin-top: 100px; 
+    }
     
-    /* Homepage Components */
-    .info-service-card { width: 95%; flex-direction: column; margin: 25px auto !important; }
-    .info-right-icon { flex-direction: column-reverse; }
-    .info-left-icon { flex-direction: column; }
-    .info-icon-box { width: 100%; border-radius: 0 0 24px 24px !important; }
-    .info-card-content { padding: 25px; text-align: center; }
-    .steps { flex-direction: column; }
-    .step { width: 100%; }
-    .arrow { transform: rotate(90deg); margin: 15px 0; }
-    .cards { grid-template-columns: repeat(2, 1fr); }
+    .page-top-bar { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 15px; 
+    }
     
-    /* Forms */
-    .form-row { flex-direction: column; }
-}
+    .switches { 
+        width: 100%; 
+    }
+    
+    .switches .menu { 
+        width: 100%; 
+    }
 
-/* --- Small Devices & Phones (Max Width: 768px) --- */
-@media (max-width: 768px) {
-    /* Homepage Hero & Features */
-    .hero-content h1 { font-size: 3.5rem; }
-    .hero-content h2 { font-size: 1.1rem; }
-    .buttons { justify-content: flex-start; }
-    .feature-top { flex-direction: column; text-align: center; gap: 15px; }
-    .feature-top .left, .feature-top .right { width: 100%; margin: 0; }
-    .feature-top p { width: 100%; margin: 0 auto; }
+    /* Profile Sidebar & Layout (Admin Menu) */
+    .student-menu-layout { 
+        flex-direction: column; 
+    }
     
-    /* Dashboard Table Controls */
-    .page-top-bar { flex-direction: column; gap: 15px; text-align: center; }
-    .dashboard-controls-student { flex-direction: column; align-items: stretch; gap: 15px; }
-    .dashboard-controls-student input, .dashboard-controls-student select { width: 100%; max-width: none; }
-    .table-header { flex-direction: column; gap: 15px; text-align: center; }
+    .profile-sidebar { 
+        width: 100%; 
+        padding: 0 20px 30px 20px; 
+    }
     
+    .right-content { 
+        width: 100%; 
+    }
+    
+    /* Stats Cards */
+    .stats-row { 
+        flex-direction: column; 
+    }
+
+    /* Search & Filter Controls */
+    .dashboard-controls-student { 
+        flex-direction: column; 
+        align-items: stretch; 
+        gap: 15px; 
+        padding: 20px; 
+    }
+    
+    .dashboard-controls-student input { 
+        max-width: 100%; 
+    }
+    
+    /* Overrides the inline 180px width on the Registered Students page */
+    .dashboard-controls-student select { 
+        width: 100% !important; 
+    }
+
+    /* Overrides the inline horizontal flex styles for the Registered Students header */
+    .table-header[style] { 
+        flex-direction: column !important; 
+        align-items: flex-start !important; 
+        gap: 15px; 
+    }
+
     /* Modals */
-    .modal-content { width: 95%; padding: 25px 20px; }
+    .modal-content { 
+        padding: 25px 20px; 
+        width: 95%; 
+    }
+
+
+/* =========================================
+    MERGE THIS INTO: @media (max-width: 480px)
+========================================= */
+
+    /* --- DASHBOARD EXTRA SMALL MOBILE STYLES --- */
     
-    /* Global Footer */
-    .footer-links { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-    .footer-social { justify-content: center; }
-    .footer-bottom { text-align: center; }
+    .page-name { 
+        font-size: 22px; 
+    }
+    
+    .stat-box p { 
+        font-size: 24px; 
+    }
+
+
+/* =========================================
+    MOBILE RESPONSIVENESS - REGISTER PAGE (max-width: 768px)
+========================================= */
+@media (max-width: 768px) {
+    
+    /* ... (Keep your existing mobile CSS here) ... */
+
+    /* --- AUTH / REGISTER PAGE MOBILE STYLES --- */
+    .auth-body {
+        align-items: flex-start; /* Allows scrolling if form is tall */
+        padding-top: 100px; /* Space for the logo */
+    }
+
+    .auth-body .logo {
+        top: 25px;
+        left: 50%;
+        transform: translateX(-50%); /* Center logo on mobile */
+    }
+
+    .auth-container {
+        width: 90%;
+        flex-direction: column;
+        margin-bottom: 40px;
+        min-height: auto;
+    }
+
+    .auth-container .left-panel {
+        display: none; /* Hide the art/text panel on mobile for better UX */
+    }
+
+    .auth-container .right-panel {
+        width: 100%;
+        padding: 35px 25px;
+    }
+
+    .auth-container .close {
+        top: 10px;
+        right: 15px;
+    }
+
+    .auth-container .right-panel h2 {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
 }
 
-/* --- Extra Small Devices & Mobile Ports (Max Width: 600px) --- */
-@media (max-width: 600px) {
-    /* Component Scaling */
-    .cards { grid-template-columns: 1fr; }
-    .how-it-works, .category-box, .statistics { padding: 25px 15px; width: 95%; }
-    .stat-box { min-width: 100%; }
-    .hero-content h1 { font-size: 2.8rem; }
+/* =========================================
+   EXTRA SMALL MOBILE (max-width: 480px)
+========================================= */
+@media (max-width: 480px) {
     
-    /* Auth Containers Padding Reduction */
-    .auth-container { width: 95%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-    .auth-container .left-panel .overlay { padding: 30px 20px; }
-    .auth-container .left-panel .overlay h1 { font-size: 28px; }
-    .auth-container .right-panel { padding: 30px 20px; }
-    .auth-container .artist { left: 20px; bottom: 20px; }
+    /* ... (Keep your existing extra small mobile CSS here) ... */
+
+    /* --- AUTH / REGISTER PAGE EXTRA SMALL STYLES --- */
+    .auth-container {
+        width: 95%; /* Use almost full width on very small screens */
+    }
+
+    .auth-container .right-panel {
+        padding: 25px 15px; /* Reduce padding to give inputs more room */
+    }
+
+    .auth-container .right-panel h2 {
+        font-size: 24px;
+    }
 }
+
+
+/* =========================================
+    REPLACE YOUR PREVIOUS DASHBOARD MOBILE CSS 
+    INSIDE: @media (max-width: 768px)
+========================================= */
+
+    /* --- DASHBOARD & ADMIN PAGES MOBILE STYLES --- */
+    
+    /* 1. Header Adjustments - Show Name & Roll No horizontally */
+    nav { 
+        padding: 0 15px; 
+    }
+    
+    .logo img { 
+        width: 120px; /* Scale logo down more to make room for profile details */
+    }
+    
+    .header-right { 
+        gap: 15px; 
+    }
+    
+    /* Scale down the text and picture so they fit next to the logo */
+    .student-details {
+        display: block !important; /* Ensure it stays visible */
+        text-align: right;
+    }
+    
+    .student-details h2 { 
+        font-size: 13px; 
+        white-space: nowrap; 
+    }
+    
+    .student-details p { 
+        font-size: 10px; 
+        white-space: nowrap; 
+    }
+    
+    .profile-pic img { 
+        width: 35px; 
+        height: 35px; 
+    }
+
+    /* Main Body */
+    .main-body { 
+        padding: 0 15px; 
+        margin-top: 90px; 
+    }
+
+    /* 2. Page Top Bar - Horizontal Layout */
+    .page-top-bar { 
+        display: flex;
+        flex-direction: row !important; /* Force horizontal alignment */
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .page-heading-group {
+        flex: 1;
+        text-align: left;
+    }
+    
+    .page-name { 
+        font-size: 18px; /* Scale down heading */
+    }
+    
+    .page-heading-group p {
+        font-size: 11px !important;
+    }
+    
+    .switches { 
+        width: auto; /* Let it size to content */
+    }
+    
+    .switches .menu { 
+        padding: 8px 30px 8px 15px; 
+        font-size: 12px;
+    }
+
+    /* Profile Sidebar Container */
+    .student-menu-layout { 
+        flex-direction: column; 
+    }
+    
+    .profile-sidebar { 
+        width: 100%; 
+        padding: 0 20px 30px 20px; 
+    }
+    
+    .right-content { 
+        width: 100%; 
+    }
+
+    /* 3. Stats Cards - Horizontal Layout */
+    .stats-row { 
+        display: flex;
+        flex-direction: row !important; /* Keep horizontal */
+        gap: 10px;
+    }
+    
+    .stat-box {
+        flex: 1;
+        padding: 12px 10px; /* Reduce padding */
+        min-width: 0; /* Prevents overflow */
+    }
+    
+    .stat-box h3 {
+        font-size: 10px; /* Smaller title */
+        margin-bottom: 5px;
+    }
+    
+    .stat-box p {
+        font-size: 20px; /* Smaller number */
+    }
+
+    /* 4. Search & Filter Controls - Horizontal Layout */
+    .dashboard-controls-student { 
+        display: flex;
+        flex-direction: row !important; /* Force horizontal */
+        align-items: center;
+        gap: 10px; 
+        padding: 15px; 
+    }
+    
+    .dashboard-controls-student input { 
+        flex: 1;
+        max-width: none;
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    /* Overrides the inline 180px width */
+    .dashboard-controls-student select { 
+        width: auto !important; 
+        padding: 10px 15px;
+        font-size: 13px;
+        flex-shrink: 0; /* Prevents the dropdown from squishing */
+    }
+
+    /* Overrides the inline horizontal flex styles for the Registered Students header */
+    .table-header[style] { 
+        flex-direction: column !important; 
+        align-items: flex-start !important; 
+        gap: 15px; 
+    }
+
+    /* Modals */
+    .modal-content { 
+        padding: 25px 20px; 
+        width: 95%; 
+    }
+
+
+/* =========================================
+    REPLACE YOUR PREVIOUS DASHBOARD CSS
+    INSIDE: @media (max-width: 480px)
+========================================= */
+
+    /* --- DASHBOARD EXTRA SMALL MOBILE STYLES --- */
+    
+    /* Further scale down elements so they don't crash on very small phones */
+    .page-name { 
+        font-size: 15px; 
+    }
+    
+    .switches .menu {
+        padding: 6px 25px 6px 10px;
+        font-size: 10px;
+        background-size: 10px;
+    }
+    
+    .stat-box p { 
+        font-size: 16px; 
+    }
+    
+    .stat-box h3 {
+        font-size: 9px;
+    }
+    
+    .dashboard-controls-student {
+        padding: 10px;
+        gap: 5px;
+    }
+    
+    .dashboard-controls-student input,
+    .dashboard-controls-student select {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+
+
+    /* 5. Table Horizontal Scrolling (Mobile) */
+    .table-container-student {
+        padding: 15px 0 !important; /* Remove side padding to maximize scrollable area */
+        width: 100%;
+        overflow-x: auto !important; /* Enforces horizontal scroll */
+        -webkit-overflow-scrolling: touch; /* Enables smooth momentum scrolling on iOS */
+    }
+    
+    .table-container-student table {
+        min-width: 850px; /* Forces the table to be wider than the phone screen */
+    }
+    
+    .table-container-student th, 
+    .table-container-student td {
+        white-space: nowrap; /* Prevents text from squishing onto multiple lines */
+        padding: 12px 15px; /* Adjust padding for mobile readability */
+    }

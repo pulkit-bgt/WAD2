@@ -124,8 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
     // ==========================================
-    // 4. LOGIN LOGIC (Remember Me Integration)
+    // 4. LOGIN LOGIC (Strict Separation)
     // ==========================================
     const loginForm = document.getElementById("loginForm");
 
@@ -157,38 +158,58 @@ document.addEventListener("DOMContentLoaded", () => {
             // Choose storage based on "Remember Me" checkbox
             const storage = rememberMe ? localStorage : sessionStorage;
 
-            if (loginEmail === "admin@resolvehub.com" && loginPassword === "admin123") {
-                const adminUser = {
-                    name: "Admin User",
-                    email: "admin@resolvehub.com",
-                    rollno: "Administrator",
-                    department: "Campus Management",
-                    profilePic: "profile.png"
-                };
-                
-                // Clear any previous conflicting sessions
-                localStorage.removeItem("resolveHubAdminUser");
-                sessionStorage.removeItem("resolveHubAdminUser");
-                
-                storage.setItem("resolveHubAdminUser", JSON.stringify(adminUser));
-                showWelcomeToast("Admin");
-                setTimeout(() => window.location.href = "adminmenu.html", 1200);
-                return;
-            }
+            // Check the current page URL to separate login paths
+            const isPageAdmin = window.location.href.toLowerCase().includes("adminlogin.html");
 
-            let existingUsers = JSON.parse(localStorage.getItem("resolveHubUsers")) || [];
-            const matchedUser = existingUsers.find(user => user.email === loginEmail && user.password === loginPassword);
+            if (isPageAdmin) {
+                // ----------------------------------
+                // ADMIN LOGIN LOGIC ONLY
+                // ----------------------------------
+                if (loginEmail === "admin@resolvehub.com" && loginPassword === "admin123") {
+                    const adminUser = {
+                        name: "Admin User",
+                        email: "admin@resolvehub.com",
+                        rollno: "Administrator",
+                        department: "Campus Management",
+                        profilePic: "profile.png"
+                    };
+                    
+                    // Clear any previous conflicting sessions
+                    localStorage.removeItem("resolveHubAdminUser");
+                    sessionStorage.removeItem("resolveHubAdminUser");
+                    
+                    storage.setItem("resolveHubAdminUser", JSON.stringify(adminUser));
+                    showWelcomeToast("Admin");
+                    setTimeout(() => window.location.href = "adminmenu.html", 1200);
+                } else {
+                    // Prevent student credentials from working on the admin page
+                    alert("Invalid email or password. Please check your details and try again.");
+                }
 
-            if (matchedUser) {
-                // Clear any previous conflicting sessions
-                localStorage.removeItem("resolveHubStudentUser");
-                sessionStorage.removeItem("resolveHubStudentUser");
-                
-                storage.setItem("resolveHubStudentUser", JSON.stringify(matchedUser));
-                showWelcomeToast(matchedUser.name);
-                setTimeout(() => window.location.href = "studentmenu.html", 1200);
             } else {
-                alert("Invalid email or password. Please check your details and try again.");
+                // ----------------------------------
+                // STUDENT LOGIN LOGIC ONLY
+                // ----------------------------------
+                if (loginEmail === "admin@resolvehub.com") {
+                    // Prevent admin credentials from working on the student page
+                    alert("Invalid email or password. Please check your details and try again.");
+                    return;
+                }
+
+                let existingUsers = JSON.parse(localStorage.getItem("resolveHubUsers")) || [];
+                const matchedUser = existingUsers.find(user => user.email === loginEmail && user.password === loginPassword);
+
+                if (matchedUser) {
+                    // Clear any previous conflicting sessions
+                    localStorage.removeItem("resolveHubStudentUser");
+                    sessionStorage.removeItem("resolveHubStudentUser");
+                    
+                    storage.setItem("resolveHubStudentUser", JSON.stringify(matchedUser));
+                    showWelcomeToast(matchedUser.name);
+                    setTimeout(() => window.location.href = "studentmenu.html", 1200);
+                } else {
+                    alert("Invalid email or password. Please check your details and try again.");
+                }
             }
         });
     }
