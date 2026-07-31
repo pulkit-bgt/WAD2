@@ -1558,25 +1558,6 @@ body.auth-body {
     stroke: #333;
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 900px) {
-    .info-service-card { width: 95%; flex-direction: column; margin: 25px auto !important; }
-    .info-right-icon { flex-direction: column-reverse; }
-    .info-left-icon { flex-direction: column; }
-    .info-icon-box { width: 100%; border-radius: 0 0 24px 24px !important; }
-    .info-card-content { padding: 25px; }
-    .steps { flex-direction: column; }
-    .step { width: 100%; }
-    .arrow { transform: rotate(90deg); }
-    .cards { grid-template-columns: repeat(2, 1fr); }
-    .form-row { flex-direction: column; }
-}
-
-@media (max-width: 600px) {
-    .cards { grid-template-columns: 1fr; }
-    .how-it-works, .category-box, .statistics { padding: 25px; }
-}
-
 /* =========================================
    ELEGANT TOP-RIGHT PAGE SWITCH STYLES
 ========================================= */
@@ -1676,4 +1657,91 @@ body.auth-body {
 @keyframes fadeOutSmooth {
     0% { transform: translateX(0) scale(1); opacity: 1; }
     100% { transform: translateX(60px) scale(0.9); opacity: 0; }
+}
+
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS (UPDATED)
+========================================= */
+
+/* --- Large Devices & Tablets (Max Width: 1024px) --- */
+@media (max-width: 1024px) {
+    /* Menu & Dashboard Layouts */
+    .student-menu-layout { flex-direction: column; gap: 20px; }
+    .profile-sidebar { width: 100%; margin-bottom: 20px; }
+    .stats-row { flex-wrap: wrap; }
+    .stat-box { min-width: 45%; }
+    
+    /* Auth Containers */
+    .auth-container { width: 85%; flex-direction: column; }
+    .auth-container .left-panel, .auth-container .right-panel { width: 100%; }
+    .auth-container .left-panel { min-height: 250px; }
+    
+    /* Header Elements */
+    .auth-body .logo { position: static; text-align: center; padding: 20px 0; display: flex; justify-content: center; }
+}
+
+/* --- Medium Devices & Small Tablets (Max Width: 900px) --- */
+@media (max-width: 900px) {
+    /* Global Navigation */
+    nav { flex-wrap: wrap; padding: 15px 20px; justify-content: center; gap: 15px; }
+    .header { height: auto; position: relative; } /* Unfixes the header to prevent overlap on mobile */
+    .main-body { margin-top: 30px; padding: 0 20px; }
+    .nav-links { order: 3; width: 100%; margin-top: 10px; }
+    .index-buttons { order: 2; }
+    
+    /* Homepage Components */
+    .info-service-card { width: 95%; flex-direction: column; margin: 25px auto !important; }
+    .info-right-icon { flex-direction: column-reverse; }
+    .info-left-icon { flex-direction: column; }
+    .info-icon-box { width: 100%; border-radius: 0 0 24px 24px !important; }
+    .info-card-content { padding: 25px; text-align: center; }
+    .steps { flex-direction: column; }
+    .step { width: 100%; }
+    .arrow { transform: rotate(90deg); margin: 15px 0; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    
+    /* Forms */
+    .form-row { flex-direction: column; }
+}
+
+/* --- Small Devices & Phones (Max Width: 768px) --- */
+@media (max-width: 768px) {
+    /* Homepage Hero & Features */
+    .hero-content h1 { font-size: 3.5rem; }
+    .hero-content h2 { font-size: 1.1rem; }
+    .buttons { justify-content: flex-start; }
+    .feature-top { flex-direction: column; text-align: center; gap: 15px; }
+    .feature-top .left, .feature-top .right { width: 100%; margin: 0; }
+    .feature-top p { width: 100%; margin: 0 auto; }
+    
+    /* Dashboard Table Controls */
+    .page-top-bar { flex-direction: column; gap: 15px; text-align: center; }
+    .dashboard-controls-student { flex-direction: column; align-items: stretch; gap: 15px; }
+    .dashboard-controls-student input, .dashboard-controls-student select { width: 100%; max-width: none; }
+    .table-header { flex-direction: column; gap: 15px; text-align: center; }
+    
+    /* Modals */
+    .modal-content { width: 95%; padding: 25px 20px; }
+    
+    /* Global Footer */
+    .footer-links { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+    .footer-social { justify-content: center; }
+    .footer-bottom { text-align: center; }
+}
+
+/* --- Extra Small Devices & Mobile Ports (Max Width: 600px) --- */
+@media (max-width: 600px) {
+    /* Component Scaling */
+    .cards { grid-template-columns: 1fr; }
+    .how-it-works, .category-box, .statistics { padding: 25px 15px; width: 95%; }
+    .stat-box { min-width: 100%; }
+    .hero-content h1 { font-size: 2.8rem; }
+    
+    /* Auth Containers Padding Reduction */
+    .auth-container { width: 95%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    .auth-container .left-panel .overlay { padding: 30px 20px; }
+    .auth-container .left-panel .overlay h1 { font-size: 28px; }
+    .auth-container .right-panel { padding: 30px 20px; }
+    .auth-container .artist { left: 20px; bottom: 20px; }
 }

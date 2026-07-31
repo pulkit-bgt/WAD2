@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResolveHub Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+
+<div class="logo">
+    <a href="index.html"><img src="logo.webp" alt="Logo"></a>
+</div>
+
+<div class="auth-container">
+
+    <div class="left-panel">
+        <div class="overlay">
+            <h1>
+                YOU'RE <br>
+                WELCOMED <br>
+                IN <br>
+                RESOLVE HUB <br>
+            </h1>
+
+            <p>
+               Create a perfect campus with us making the environment beautiful 
+                and flawless as heaven. Not only for one but for Everyone.
+            </p>
+
+            <div class="artist">
+                <small>support@resolvehub.com</small><br>
+                <strong>Resolve Hub</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-panel">
+
+        <a href="index.html"><span class="close">&times;</span></a>
+
+        <h2>LOG-IN RESOLVEHUB</h2>
+
+        <form id="loginForm">
+
+            <label>College Email</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="example@college.edu"
+                required
+            >
+            
+            <label>Password</label>
+            <!-- Wrapper for input and icon -->
+            <div class="password-container">
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    required
+                >
+                <span class="toggle-password" id="togglePassword">
+                    <!-- SVG Eye Open Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+            </div>
+
+            <!-- Remember Me Checkbox -->
+            <div style="display: flex; align-items: center; margin-top: 15px; margin-bottom: 5px;">
+                <input type="checkbox" id="rememberMe" style="width: 16px; height: 16px; padding: 0; margin: 0 8px 0 0; cursor: pointer;">
+                <label for="rememberMe" style="margin: 0; font-size: 14px; cursor: pointer;">Remember Me</label>
+            </div>
+
+            <button type="submit">Log In</button>
+
+        </form>
+
+        <p class="fpass"><a href="register.html">Forgot Password?</a></p>
+      
+        <p class="login">
+            New to ResolveHub?
+            <a href="register.html">SignUp</a>
+        </p>
+
+        <!-- ADMIN LOGIN LINK -->
+        <p class="login">
+            Are you an Administrator?
+            <a href="adminlogin.html">Login As Admin</a>
+        </p>
+
+        <p class="terms">
+            By joining Resolve Hub, I accept the
+            <a href="#">Terms of Service</a>,
+            and I acknowledge reading the
+            <a href="#">Privacy Policy</a>.
+        </p>
+
+    </div>
+
+</div>
+ <script src="Scripts.js"></script>
+
+</body>
+</html>

@@ -28,32 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerBtn = document.getElementById("registerBtn");
     const loginBtn = document.getElementById("loginBtn");
     
-    if (registerBtn) {
-        registerBtn.addEventListener("click", () => {
-            window.location.href = "register.html";
-        });
-    }
-
-    if (loginBtn) {
-        loginBtn.addEventListener("click", () => {
-            window.location.href = "login.html";
-        });
-    }
+    if (registerBtn) registerBtn.addEventListener("click", () => window.location.href = "register.html");
+    if (loginBtn) loginBtn.addEventListener("click", () => window.location.href = "login.html");
 
     const joinBtn = document.getElementById("joinBtn");
     const learnMoreBtn = document.getElementById("learnMoreBtn");
 
-    if (joinBtn) {
-        joinBtn.addEventListener("click", () => {
-            window.location.href = "register.html";
-        });
-    }
-
-    if (learnMoreBtn) {
-        learnMoreBtn.addEventListener("click", () => {
-            window.location.href = "#working";
-        });
-    }
+    if (joinBtn) joinBtn.addEventListener("click", () => window.location.href = "register.html");
+    if (learnMoreBtn) learnMoreBtn.addEventListener("click", () => window.location.href = "#working");
 
     // ==========================================
     // 2. SHOW/HIDE PASSWORD LOGIC
@@ -128,21 +110,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let existingUsers = JSON.parse(localStorage.getItem("resolveHubUsers")) || [];
 
-            const userExists = existingUsers.some(user => user.email === email);
-            if (userExists) {
+            if (existingUsers.some(user => user.email === email)) {
                 alert("An account with this email already exists! Please log in.");
                 return;
             }
 
-            const newUser = {
-                name: name,
-                email: email,
-                department: department,
-                rollno: rollno,
-                password: password,
-                profilePic: "profile.png" 
-            };
-            
+            const newUser = { name, email, department, rollno, password, profilePic: "profile.png" };
             existingUsers.push(newUser);
             localStorage.setItem("resolveHubUsers", JSON.stringify(existingUsers));
 
@@ -152,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 4. LOGIN LOGIC (Fancy Welcome Toast)
+    // 4. LOGIN LOGIC (Remember Me Integration)
     // ==========================================
     const loginForm = document.getElementById("loginForm");
 
@@ -179,6 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const loginEmail = document.getElementById("email").value.trim();
             const loginPassword = document.getElementById("password").value;
+            const rememberMe = document.getElementById("rememberMe") ? document.getElementById("rememberMe").checked : false;
+            
+            // Choose storage based on "Remember Me" checkbox
+            const storage = rememberMe ? localStorage : sessionStorage;
 
             if (loginEmail === "admin@resolvehub.com" && loginPassword === "admin123") {
                 const adminUser = {
@@ -188,20 +165,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     department: "Campus Management",
                     profilePic: "profile.png"
                 };
-                localStorage.setItem("resolveHubAdminUser", JSON.stringify(adminUser));
+                
+                // Clear any previous conflicting sessions
+                localStorage.removeItem("resolveHubAdminUser");
+                sessionStorage.removeItem("resolveHubAdminUser");
+                
+                storage.setItem("resolveHubAdminUser", JSON.stringify(adminUser));
                 showWelcomeToast("Admin");
                 setTimeout(() => window.location.href = "adminmenu.html", 1200);
                 return;
             }
 
             let existingUsers = JSON.parse(localStorage.getItem("resolveHubUsers")) || [];
-
-            const matchedUser = existingUsers.find(
-                user => user.email === loginEmail && user.password === loginPassword
-            );
+            const matchedUser = existingUsers.find(user => user.email === loginEmail && user.password === loginPassword);
 
             if (matchedUser) {
-                localStorage.setItem("resolveHubStudentUser", JSON.stringify(matchedUser));
+                // Clear any previous conflicting sessions
+                localStorage.removeItem("resolveHubStudentUser");
+                sessionStorage.removeItem("resolveHubStudentUser");
+                
+                storage.setItem("resolveHubStudentUser", JSON.stringify(matchedUser));
                 showWelcomeToast(matchedUser.name);
                 setTimeout(() => window.location.href = "studentmenu.html", 1200);
             } else {
@@ -211,9 +194,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
 // ==========================================
-// 5. SECURITY CHECK & UNIVERSAL HEADER INJECTION
+// 5. SECURITY CHECK (Checks Both Storages)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const usernameElement = document.getElementById("username");
@@ -226,7 +208,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (usernameElement && rollnoElement) {
         const isAdminPage = window.location.href.includes("adminmenu.html") || window.location.href.includes("registeredstudents.html");
         const sessionKey = isAdminPage ? "resolveHubAdminUser" : "resolveHubStudentUser";
-        const currentUserData = localStorage.getItem(sessionKey);
+        
+        // Fetch from either sessionStorage or localStorage
+        const currentUserData = sessionStorage.getItem(sessionKey) || localStorage.getItem(sessionKey);
 
         if (currentUserData) {
             const currentUser = JSON.parse(currentUserData);
@@ -274,28 +258,37 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// 6. MENU SWITCHING & LOGOUT LOGIC
+// 6. MENU SWITCHING & LOGOUT (Clears Both Storages)
 // ==========================================
 function handleMenuSwitch(selectElement) {
     const selectedValue = selectElement.value;
     
     if (selectedValue === 'logout') {
-        if (window.location.href.includes("adminmenu.html") || window.location.href.includes("registeredstudents.html")) {
-            localStorage.removeItem("resolveHubAdminUser");
-            window.location.href = "admin-index.html"; 
+        // Ask for confirmation before processing the logout
+        const confirmLogout = confirm("Are you sure you want to log out?");
+        
+        if (confirmLogout) {
+            if (window.location.href.includes("adminmenu.html") || window.location.href.includes("registeredstudents.html")) {
+                localStorage.removeItem("resolveHubAdminUser");
+                sessionStorage.removeItem("resolveHubAdminUser");
+                window.location.href = "index.html"; 
+            } else {
+                localStorage.removeItem("resolveHubStudentUser");
+                sessionStorage.removeItem("resolveHubStudentUser");
+                window.location.href = "index.html"; 
+            }
         } else {
-            localStorage.removeItem("resolveHubStudentUser");
-            window.location.href = "index.html"; 
+            // If the user clicks "Cancel", reset the dropdown back to the default option
+            selectElement.selectedIndex = 0;
         }
     } else if (selectedValue) {
         window.location.href = selectedValue;
+        // Reset after navigating
+        selectElement.selectedIndex = 0;
     }
-    
-    selectElement.selectedIndex = 0;
 }
-
 // ==========================================
-// 7. EDIT PROFILE MODAL LOGIC (With Picture Removal & Others Toggle)
+// 7. EDIT PROFILE MODAL LOGIC 
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const editBtn = document.getElementById("editProfileBtn");
@@ -326,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const sessionKey = isAdminPage ? "resolveHubAdminUser" : "resolveHubStudentUser";
 
         editBtn.addEventListener("click", () => {
-            const currentUser = JSON.parse(localStorage.getItem(sessionKey));
+            const currentUser = JSON.parse(sessionStorage.getItem(sessionKey) || localStorage.getItem(sessionKey));
             if (currentUser) {
                 document.getElementById("editName").value = currentUser.name || "";
                 
@@ -369,22 +362,13 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.style.display = "flex"; 
         });
 
-        if (closeBtn) {
-            closeBtn.addEventListener("click", () => {
-                modal.style.display = "none";
-            });
-        }
-
-        window.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                modal.style.display = "none";
-            }
-        });
+        if (closeBtn) closeBtn.addEventListener("click", () => modal.style.display = "none");
+        window.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
 
         editForm.addEventListener("submit", (e) => {
             e.preventDefault();
             
-            const currentUser = JSON.parse(localStorage.getItem(sessionKey));
+            const currentUser = JSON.parse(sessionStorage.getItem(sessionKey) || localStorage.getItem(sessionKey));
             let allUsers = JSON.parse(localStorage.getItem("resolveHubUsers")) || [];
             
             const newName = document.getElementById("editName").value.trim();
@@ -426,7 +410,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentUser.profilePic = picDataUrl;
                 }
 
-                localStorage.setItem(sessionKey, JSON.stringify(currentUser));
+                // Update Active Session wherever it currently exists
+                if (sessionStorage.getItem(sessionKey)) sessionStorage.setItem(sessionKey, JSON.stringify(currentUser));
+                if (localStorage.getItem(sessionKey)) localStorage.setItem(sessionKey, JSON.stringify(currentUser));
 
                 if (!isAdminPage) {
                     const userIndex = allUsers.findIndex(u => u.email === currentUser.email);
@@ -480,16 +466,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 const sidebarProfilePic = document.getElementById("sidebar-profile-pic");
                 if (sidebarProfilePic) sidebarProfilePic.src = finalProfilePic;
 
-                setTimeout(() => {
-                    toast.remove();
-                }, 2600);
+                setTimeout(() => { toast.remove(); }, 2600);
             };
 
             if (picInput.files && picInput.files[0]) {
                 const reader = new FileReader();
-                reader.onload = function(event) {
-                    saveAndApplyProfile(event.target.result); 
-                };
+                reader.onload = function(event) { saveAndApplyProfile(event.target.result); };
                 reader.readAsDataURL(picInput.files[0]);
             } else {
                 saveAndApplyProfile(null);
@@ -499,7 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// 8. REPORT ISSUE LOGIC (With Reporter Stamping)[cite: 27, 28]
+// 8. REPORT ISSUE LOGIC (With Reporter Stamping)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const reportForm = document.querySelector(".rpissue");
@@ -521,7 +503,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const currentStudent = JSON.parse(localStorage.getItem("resolveHubStudentUser")) || {};
+            const currentStudent = JSON.parse(sessionStorage.getItem("resolveHubStudentUser") || localStorage.getItem("resolveHubStudentUser")) || {};
 
             const newIssue = {
                 id: "ISS-" + Math.floor(1000 + Math.random() * 9000), 
@@ -550,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// 9. DASHBOARD LOGIC (Shows All Campus Issues)[cite: 25, 28]
+// 9. DASHBOARD LOGIC (Shows All Campus Issues)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const issueTable = document.getElementById("issueTable");
@@ -577,17 +559,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const studentModal = document.getElementById("studentDetailModal");
     const closeStudentModal = document.getElementById("closeStudentModal");
 
-    if (closeStudentModal) {
-        closeStudentModal.addEventListener("click", () => {
-            studentModal.style.display = "none";
-        });
-    }
-
-    window.addEventListener("click", (e) => {
-        if (e.target === studentModal) {
-            studentModal.style.display = "none";
-        }
-    });
+    if (closeStudentModal) closeStudentModal.addEventListener("click", () => { studentModal.style.display = "none"; });
+    window.addEventListener("click", (e) => { if (e.target === studentModal) studentModal.style.display = "none"; });
 
     if (issueTable && !document.querySelector(".student-menu-layout") && !document.getElementById("adminIssueTable")) {
         const renderDashboardTable = () => {
@@ -689,9 +662,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
 // ==========================================
-// 10. STUDENT MENU TABLE & STATS LOGIC (Filtered strictly by Current User)[cite: 24, 28]
+// 10. STUDENT MENU TABLE & STATS LOGIC
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const studentIssueTable = document.getElementById("issueTable");
@@ -701,7 +673,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (studentIssueTable && document.querySelector(".student-menu-layout")) {
         const renderStudentTable = () => {
             const allIssues = JSON.parse(localStorage.getItem("resolveHubIssues")) || [];
-            const currentStudent = JSON.parse(localStorage.getItem("resolveHubStudentUser")) || {};
+            const currentStudent = JSON.parse(sessionStorage.getItem("resolveHubStudentUser") || localStorage.getItem("resolveHubStudentUser")) || {};
 
             const issues = allIssues.filter(issue => 
                 (currentStudent.email && issue.studentEmail === currentStudent.email) ||
@@ -777,9 +749,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
 // ==========================================
-// 11. ADMIN PANEL LOGIC, REGISTERED STUDENTS TABLE & ADD/REMOVE STUDENTS[cite: 24, 26, 28]
+// 11. ADMIN PANEL LOGIC, REGISTERED STUDENTS TABLE & ADD/REMOVE STUDENTS
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const adminIssueTable = document.getElementById("adminIssueTable");
@@ -837,7 +808,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 regStudentsTableBody.appendChild(row);
             });
 
-            // Bind Remove Button Functionality
             document.querySelectorAll(".remove-student-btn").forEach(btn => {
                 btn.addEventListener("click", (e) => {
                     const emailToRemove = e.target.getAttribute("data-email");
@@ -857,23 +827,16 @@ document.addEventListener("DOMContentLoaded", () => {
         renderRegisteredStudentsTable();
     }
 
-    // Modal Controls for Adding Student
     if (addStudentBtn && addStudentModal) {
-        addStudentBtn.addEventListener("click", () => {
-            addStudentModal.style.display = "flex";
-        });
+        addStudentBtn.addEventListener("click", () => { addStudentModal.style.display = "flex"; });
     }
 
     if (closeAddStudentModal && addStudentModal) {
-        closeAddStudentModal.addEventListener("click", () => {
-            addStudentModal.style.display = "none";
-        });
+        closeAddStudentModal.addEventListener("click", () => { addStudentModal.style.display = "none"; });
     }
 
     window.addEventListener("click", (e) => {
-        if (e.target === addStudentModal) {
-            addStudentModal.style.display = "none";
-        }
+        if (e.target === addStudentModal) { addStudentModal.style.display = "none"; }
     });
 
     if (addStudentForm) {
@@ -891,15 +854,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const newStudent = {
-                name,
-                email,
-                rollno,
-                department,
-                password,
-                profilePic: "profile.png"
-            };
-
+            const newStudent = { name, email, rollno, department, password, profilePic: "profile.png" };
             users.push(newStudent);
             localStorage.setItem("resolveHubUsers", JSON.stringify(users));
 
@@ -907,15 +862,13 @@ document.addEventListener("DOMContentLoaded", () => {
             addStudentForm.reset();
             alert("Student account successfully added!");
             
-            // Re-render table if on registered students page
-            if (regStudentsTableBody) {
-                // Dispatch input event to refresh table view
-                if (studentSearchInput) studentSearchInput.dispatchEvent(new Event('input'));
+            if (regStudentsTableBody && studentSearchInput) {
+                studentSearchInput.dispatchEvent(new Event('input'));
             }
         });
     }
 
-    // Existing Admin Issue Table Logic[cite: 24, 28]
+    // Existing Admin Issue Table Logic
     if (!document.getElementById("studentDetailModal")) {
         const modalHtml = `
         <div id="studentDetailModal" class="modal">
@@ -936,17 +889,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const studentModal = document.getElementById("studentDetailModal");
     const closeStudentModal = document.getElementById("closeStudentModal");
 
-    if (closeStudentModal) {
-        closeStudentModal.addEventListener("click", () => {
-            studentModal.style.display = "none";
-        });
-    }
-
-    window.addEventListener("click", (e) => {
-        if (e.target === studentModal) {
-            studentModal.style.display = "none";
-        }
-    });
+    if (closeStudentModal) closeStudentModal.addEventListener("click", () => { studentModal.style.display = "none"; });
+    window.addEventListener("click", (e) => { if (e.target === studentModal) studentModal.style.display = "none"; });
 
     if (adminIssueTable) {
         const renderAdminTable = () => {
@@ -959,11 +903,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             issues.forEach(issue => {
                 const statusLower = issue.status ? issue.status.toLowerCase() : "";
-                if (statusLower.includes("solved")) {
-                    solvedCount++;
-                } else if (statusLower.includes("pending") || statusLower.includes("in progress")) {
-                    pendingCount++;
-                }
+                if (statusLower.includes("solved")) solvedCount++;
+                else if (statusLower.includes("pending") || statusLower.includes("in progress")) pendingCount++;
             });
 
             const adminTotal = document.getElementById("adminTotalIssues");
@@ -1038,9 +979,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.querySelectorAll(".admin-status-dropdown").forEach(dropdown => {
                 dropdown.addEventListener("change", (e) => {
-                    const issueId = e.target.getAttribute("data-id");
-                    const newStatus = e.target.value;
-                    updateIssueStatus(issueId, newStatus);
+                    updateIssueStatus(e.target.getAttribute("data-id"), e.target.value);
                 });
             });
 
@@ -1061,10 +1000,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             document.querySelectorAll(".admin-delete-btn").forEach(btn => {
-                btn.addEventListener("click", (e) => {
-                    const issueId = e.target.getAttribute("data-id");
-                    deleteIssue(issueId);
-                });
+                btn.addEventListener("click", (e) => { deleteIssue(e.target.getAttribute("data-id")); });
             });
         };
 
@@ -1091,5 +1027,45 @@ document.addEventListener("DOMContentLoaded", () => {
         if (adminFilterSelect) adminFilterSelect.addEventListener("change", renderAdminTable);
 
         renderAdminTable();
+    }
+});
+
+
+// ==========================================
+// 12. HEADER LOGO LOGOUT & REDIRECT LOGIC
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    // Target the logo specifically inside the navigation header
+    const headerLogo = document.querySelector(".header .logo");
+    
+    if (headerLogo) {
+        // Check if the user is currently on the homepage (index.html or root directory)
+        const isHomePage = window.location.href.includes("index.html") || window.location.pathname === "/" || window.location.pathname.endsWith("/");
+        
+        headerLogo.style.cursor = "pointer"; 
+
+        if (!isHomePage) {
+            // APPLY TO INNER PAGES (Menus & Dashboards): Show confirmation and log out
+            headerLogo.addEventListener("click", () => {
+                const isConfirmed = confirm("Are you sure? Moving to the homepage will logout your account.");
+                
+                if (isConfirmed) {
+                    // Clear both local and session storage for both Admins and Students
+                    localStorage.removeItem("resolveHubAdminUser");
+                    sessionStorage.removeItem("resolveHubAdminUser");
+                    
+                    localStorage.removeItem("resolveHubStudentUser");
+                    sessionStorage.removeItem("resolveHubStudentUser");
+                    
+                    // Redirect to the homepage
+                    window.location.href = "index.html";
+                }
+            });
+        } else {
+            // APPLY TO HOMEPAGE (index.html): Just scroll to the top of the page smoothly
+            headerLogo.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     }
 });
